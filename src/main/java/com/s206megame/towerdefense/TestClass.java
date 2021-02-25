@@ -10,4 +10,9 @@ public class TestClass {
     public void b() {
 
     }
+    public void SlimlixMethod()
+    {
+
+    }
+
 }
