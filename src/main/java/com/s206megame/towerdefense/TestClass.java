@@ -4,8 +4,10 @@ public class TestClass {
     public boolean test;
     public boolean a;
 
-    public void SlimlixMethod(int a)
-    {
+    public void a() {
+
+    }
+    public void b() {
 
     }
 }
