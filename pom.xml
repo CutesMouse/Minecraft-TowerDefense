@@ -31,4 +31,17 @@
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
 
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <version>2.2</version>
+                <groupId>org.apache.maven.plugins</groupId>
+                <configuration>
+                    <descriptorRefs>jar-with-dependencies</descriptorRefs>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

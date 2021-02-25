@@ -1,0 +1,10 @@
+main: com.s206megame.towerdefense.Main
+name: "TowerDefense"
+version: 1.0
+api-version: 1.16
+commands:
+  towerdefense:
+    aliases:
+      - td
+    description: "Main command"
+    usage: "/td"
