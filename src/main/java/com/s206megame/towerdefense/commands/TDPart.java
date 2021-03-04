@@ -21,9 +21,8 @@ public class TDPart implements TDCommandBase {
     @Override
     public void run(Player player, String[] arg) {
         Location cl = player.getEyeLocation();
-        cl.getDirection().normalize();
         for (int i = 1; i <= 100; i++) {
-            cl.getWorld().spawnParticle(Particle.ASH,cl.clone().add(cl.getDirection().normalize().multiply(i)),1);
+            cl.getWorld().spawnParticle(Particle.ASH, cl.clone().add(cl.getDirection().normalize().multiply(i)),1);
         }
     }
 }
