@@ -5,7 +5,6 @@ import com.s206megame.towerdefense.commands.TDPart;
 import com.s206megame.towerdefense.commands.TDSetMap;
 import com.s206megame.towerdefense.commands.TDStart;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 
 public class Main extends JavaPlugin {
     private TDCommandManager CMD_MANAGER;
