@@ -2,7 +2,6 @@ package com.s206megame.towerdefense.api;
 
 import org.bukkit.entity.Player;
 
-import java.util.function.BiConsumer;
 import java.util.function.Function;
 
 public class ScoreData {
@@ -10,22 +9,26 @@ public class ScoreData {
     private int score;
     private ObjectiveData od;
     private Function<Player,String> upd;
-    public ScoreData(String displayName, ObjectiveData od, int score) {
-        this(od, score);
+    public ScoreData(int score,String displayName) {
+        this(score);
         this.name = displayName;
     }
-    public ScoreData(ObjectiveData od, int score) {
+    public void activate(ObjectiveData od) {
         this.od = od;
+    }
+    public ScoreData(int score) {
         this.score = score;
     }
 
-    public void setUpd(Function<Player, String> upd) {
+    public ScoreData setUpd(Function<Player, String> upd) {
         this.upd = upd;
+        return this;
     }
 
     public void update() {
+        if (od == null) return;
         String lastName = name;
-        String newName = upd.apply(od.getPlayer());
-        od.updateScore(lastName,newName,score);
+        name = upd.apply(od.getPlayer());
+        od.updateScore(lastName,name,score);
     }
 }

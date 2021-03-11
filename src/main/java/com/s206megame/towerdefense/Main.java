@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense;
 
+import com.s206megame.towerdefense.api.ScoreboardManager;
 import com.s206megame.towerdefense.commands.TDCommandManager;
 import com.s206megame.towerdefense.commands.TDPart;
 import com.s206megame.towerdefense.commands.TDSetMap;
@@ -14,5 +15,7 @@ public class Main extends JavaPlugin {
         CMD_MANAGER.registerArg(new TDStart());
         CMD_MANAGER.registerArg(new TDPart());
         CMD_MANAGER.registerArg(new TDSetMap());
+        getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
+        ScoreboardManager.init(this);
     }
 }
