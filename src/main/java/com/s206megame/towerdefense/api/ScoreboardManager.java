@@ -24,6 +24,7 @@ public class ScoreboardManager {
                     registerPlayer(e.getPlayer());
                 }
             }.runTaskLater(f_plugin,1L);
+            // delay to wait until player joins
         });
         for (Player p : Bukkit.getOnlinePlayers()) {
             registerPlayer(p);
@@ -45,7 +46,7 @@ public class ScoreboardManager {
         ObjectiveData od = new ObjectiveData(obj, p);
 
         od.addScoreData(0,new ScoreData(0).setUpd(player -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
-
+        od.addScoreData(12, new ScoreData(0).setUpd(player -> "Health " + Math.round(player.getHealth())));
         ps.setObjectiveData(od);
         PLAYER_TABLE.put(p.getName(), ps);
     }
