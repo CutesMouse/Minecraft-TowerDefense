@@ -46,7 +46,7 @@ public class ScoreboardManager {
         ObjectiveData od = new ObjectiveData(obj, p);
 
         od.addScoreData(0,new ScoreData(0).setUpd(player -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
-        od.addScoreData(12, new ScoreData(0).setUpd(player -> "Health " + Math.round(player.getHealth())));
+        od.addScoreData(12, new ScoreData(0).setUpd(player -> "§aPlayer Health: " + Math.round(player.getHealth()) + '\u2764'));
         ps.setObjectiveData(od);
         PLAYER_TABLE.put(p.getName(), ps);
     }
