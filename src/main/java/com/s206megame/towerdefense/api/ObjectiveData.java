@@ -3,26 +3,27 @@ package com.s206megame.towerdefense.api;
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Objective;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ObjectiveData {
-    private HashMap<Integer,ScoreData> SCORES;
+    private ArrayList<ScoreData> SCORES;
     private Objective obj;
     private Player p;
     public ObjectiveData(Objective obj, Player p) {
-        SCORES = new HashMap<>();
+        SCORES = new ArrayList<>();
         this.obj = obj;
         this.p = p;
     }
     public void update() {
-        for (ScoreData data : SCORES.values()) {
+        for (ScoreData data : SCORES) {
             data.update();
         }
     }
 
-    public void addScoreData(int score, ScoreData data) {
+    public void addScoreData(ScoreData data) {
         data.activate(this);
-        SCORES.put(score,data);
+        SCORES.add(data);
     }
 
     public Player getPlayer() {

@@ -2,6 +2,7 @@ package com.s206megame.towerdefense.api;
 
 import com.s206megame.towerdefense.ListenerHandler;
 import com.s206megame.towerdefense.Main;
+import com.s206megame.towerdefense.player.PlayerDataManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -45,8 +46,9 @@ public class ScoreboardManager {
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         ObjectiveData od = new ObjectiveData(obj, p);
 
-        od.addScoreData(0,new ScoreData(0).setUpd(player -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
-        od.addScoreData(12, new ScoreData(0).setUpd(player -> "Health " + Math.round(player.getHealth())));
+        od.addScoreData(new ScoreData(12).setUpd(player -> "Health " + Math.round(player.getHealth())));
+        od.addScoreData(new ScoreData(2).setUpd(player -> "§fPurse: §6" + MathTool.round(PlayerDataManager.getPlayerData(player).getBalance(),2)));
+        od.addScoreData(new ScoreData(-1).setUpd(player -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
         ps.setObjectiveData(od);
         PLAYER_TABLE.put(p.getName(), ps);
     }

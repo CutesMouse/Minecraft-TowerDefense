@@ -1,10 +1,7 @@
 package com.s206megame.towerdefense;
 
 import com.s206megame.towerdefense.api.ScoreboardManager;
-import com.s206megame.towerdefense.commands.TDCommandManager;
-import com.s206megame.towerdefense.commands.TDPart;
-import com.s206megame.towerdefense.commands.TDSetMap;
-import com.s206megame.towerdefense.commands.TDStart;
+import com.s206megame.towerdefense.commands.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {
@@ -15,6 +12,7 @@ public class Main extends JavaPlugin {
         CMD_MANAGER.registerArg(new TDStart());
         CMD_MANAGER.registerArg(new TDPart());
         CMD_MANAGER.registerArg(new TDSetMap());
+        CMD_MANAGER.registerArg(new TDEco());
         getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
         ScoreboardManager.init(this);
     }
