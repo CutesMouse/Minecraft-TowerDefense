@@ -2,10 +2,12 @@ package com.s206megame.towerdefense;
 
 import com.cutesmouse.mgui.guis.StaticGUI;
 import com.s206megame.towerdefense.api.ScoreboardManager;
+import com.s206megame.towerdefense.appearance.PlaceParticle;
 import com.s206megame.towerdefense.commands.*;
 import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
@@ -21,13 +23,7 @@ public class Main extends JavaPlugin {
         CMD_MANAGER.registerArg(new TDSetMap());
         CMD_MANAGER.registerArg(new TDEco());
         getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
-        ListenerHandler.registerPlayerItemHeldEvent(e -> {
-            if (e.getPlayer().getInventory().getItem(e.getNewSlot()).getType().equals(Material.ARMOR_STAND)) {
-
-                ParticleManager.playParticle(e.getPlayer().getEyeLocation(),
-                        e.getPlayer().getEyeLocation().getDirection(),100,0.5, Particle.CRIT_MAGIC);
-            }
-        });
+        PlaceParticle.init(this);
         ScoreboardManager.init(this);
     }
 }
