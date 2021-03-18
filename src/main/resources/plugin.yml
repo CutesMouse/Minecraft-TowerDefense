@@ -8,3 +8,5 @@ commands:
       - td
     description: "Main command"
     usage: "/td"
+depend:
+  - MGui
