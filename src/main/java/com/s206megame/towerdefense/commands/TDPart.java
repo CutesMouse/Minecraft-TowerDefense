@@ -29,6 +29,10 @@ public class TDPart implements TDCommandBase {
             e.getPlayer().sendMessage("Hello");
             e.setCancelled(true);
         }));
+        gui.put(1, new StaticGUIItem(Material.DIAMOND, "mouse", null, 1, false).setAction(e -> {
+            e.getPlayer().getHealth();
+            e.setCancelled(true); // not taking out item
+        }));
         gui.open(player);
          }
 }
