@@ -20,7 +20,7 @@ public class PlaceParticle {
                     Block tb = p.getTargetBlockExact(100);
                     if (tb == null) continue;
                     ParticleManager.playParticle(p.getEyeLocation(),
-                            p.getEyeLocation().getDirection(),100,0.5, Particle.CRIT_MAGIC);
+                            p.getEyeLocation().getDirection(),tb.getLocation().distance(p.getEyeLocation()),0.5, Particle.FLAME);
                     TempBlock.sendTempBlock(p,Material.GOLD_BLOCK,20,tb.getLocation());
                 }
             }
