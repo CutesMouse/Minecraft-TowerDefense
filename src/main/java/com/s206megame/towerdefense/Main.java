@@ -4,6 +4,7 @@ import com.cutesmouse.mgui.guis.StaticGUI;
 import com.s206megame.towerdefense.api.ScoreboardManager;
 import com.s206megame.towerdefense.appearance.PlaceParticle;
 import com.s206megame.towerdefense.commands.*;
+import com.s206megame.towerdefense.map.DefaultMap;
 import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -15,8 +16,10 @@ import java.util.HashMap;
 
 public class Main extends JavaPlugin {
     private TDCommandManager CMD_MANAGER;
+    public static DefaultMap map;
     @Override
     public void onEnable() {
+        map = new DefaultMap();
         CMD_MANAGER = TDCommandManager.getInstance(this);
         CMD_MANAGER.registerArg(new TDStart());
         CMD_MANAGER.registerArg(new TDPart());
