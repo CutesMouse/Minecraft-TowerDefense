@@ -19,6 +19,6 @@ public abstract class Tower {
         return "§f"+getTitle();
     }
     public ArrayList<String> getDescriptionLore() {
-        return new ArrayList<>(Arrays.asList("攻擊力: "+getDamage(),"Sdasd"));
+        return new ArrayList<>(Arrays.asList("介紹： " + getDescription(), "射程： " + getRange(), "單次攻擊力： " +getDamage(),"攻擊頻率： " + getHitDelay()));
     }
 }

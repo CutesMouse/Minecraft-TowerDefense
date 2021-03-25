@@ -2,6 +2,7 @@ package tower;
 
 import org.bukkit.Material;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ArcherTower extends Tower {
@@ -45,7 +46,7 @@ public class ArcherTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return "";
+        return Arrays.asList("冷血的弓箭手躲在堅固的堡壘中","準確射殺迎面而來的敵人");
     }
 
 
