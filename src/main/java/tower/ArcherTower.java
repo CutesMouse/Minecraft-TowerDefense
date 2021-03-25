@@ -1,10 +1,18 @@
 package tower;
 
+import org.bukkit.Material;
+
 import java.util.List;
 
 public class ArcherTower extends Tower {
 
     private int level;
+    private TowerCategory category = TowerCategory.Range;
+
+    @Override
+    public Material getDisplayItem() {
+        return Material.BOW;
+    }
 
     @Override
     public double getDamage() {
@@ -27,17 +35,17 @@ public class ArcherTower extends Tower {
 
     @Override
     public int getLevel() {
-        return 0;
+        return level;
     }
 
     @Override
     public String getTitle() {
-        return "Skele";
+        return "弓箭手塔" + " // 等級 " + level;
     }
 
     @Override
     public List<String> getDescription() {
-        return null;
+        return "";
     }
 
 

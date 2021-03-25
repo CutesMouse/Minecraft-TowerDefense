@@ -24,7 +24,7 @@ public class TDPart implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        StaticGUI gui = new StaticGUI("§l防禦塔建造",36);
+        StaticGUI gui = new StaticGUI("§l防禦塔建造",45);
         for (int i = 0; i < 9; i++) {
             gui.put(i,new StaticGUIItem(Material.BLACK_STAINED_GLASS_PANE,"§r",null).setAction(e -> e.setCancelled(true)));
             gui.put(i+36,new StaticGUIItem(Material.BLACK_STAINED_GLASS_PANE,"§r",null).setAction(e -> e.setCancelled(true)));
