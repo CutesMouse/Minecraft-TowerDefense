@@ -5,7 +5,6 @@ import org.bukkit.Material;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-
 public abstract class Tower {
     public abstract Material getDisplayItem();
     public abstract double getDamage();
@@ -19,6 +18,12 @@ public abstract class Tower {
         return "§f"+getTitle();
     }
     public ArrayList<String> getDescriptionLore() {
-        return new ArrayList<>(Arrays.asList("介紹： " + getDescription(), "射程： " + getRange(), "單次攻擊力： " +getDamage(),"攻擊頻率： " + getHitDelay()));
+        return new ArrayList<>(Arrays.asList(
+                "介紹： " + getDescription(),
+                "射程： " + getRange(),
+                "單次攻擊力： " +getDamage(),
+                "攻擊頻率： " + getHitDelay(),
+                "每秒傷害量； " + getDamage()*(20.0/getHitDelay())));
+
     }
 }
