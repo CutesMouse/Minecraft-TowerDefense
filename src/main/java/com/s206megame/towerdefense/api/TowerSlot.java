@@ -21,7 +21,7 @@ public class TowerSlot {
         return true;
     }
 
-    private ArrayList<Location> getBlockList() {
+    public ArrayList<Location> getBlockList() {
         int blockDiff = type.equals(TowerType.THREE_BY_THREE) ? 1 : 2;
         ArrayList<Location> locs = new ArrayList<>();
         int x = loc.getBlockX();
