@@ -16,42 +16,41 @@ public class SnowballTower extends Tower {
 
     @Override
     public double getDamage() {
-        switch (level)
-        {
+        switch (level) {
             case 1:
-                return 10;
+                return 3;
             case 2:
-                return 15;
+                return 5;
             case 3:
-                return 20;
+                return 7;
         }
         return 0;
     }
 
     @Override
     public double getHitDelay() {
-        switch (level)
-        {
+        switch (level) {
             case 1:
-                return 16;
+                return 5;
             case 2:
-                return 8;
+                return 3;
             case 3:
-                return 4;
+                return 2;
         }
+        return 0;
     }
 
     @Override
     public double getRange() {
-        switch (level)
-        {
+        switch (level) {
             case 1:
                 return 5;
             case 2:
                 return 7;
             case 3:
-                return 9;
+                return 10;
         }
+        return 0;
     }
 
     @Override
