@@ -25,6 +25,7 @@ public class Main extends JavaPlugin {
         CMD_MANAGER.registerArg(new TDPart());
         CMD_MANAGER.registerArg(new TDSetMap());
         CMD_MANAGER.registerArg(new TDEco());
+        CMD_MANAGER.registerArg(new TDMobTest());
         getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
         PlaceParticle.init(this);
         ScoreboardManager.init(this);

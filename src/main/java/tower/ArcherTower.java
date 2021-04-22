@@ -41,12 +41,12 @@ public class ArcherTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "弓箭手塔" + " // 等級 " + level;
+        return "[Lv."+getLevel()+"] 弓箭手塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("冷血的弓箭手躲在堅固的堡壘中","準確射殺迎面而來的敵人");
+        return Arrays.asList("§f冷血的弓箭手躲在§9堅固§f的堡壘中，","§f準確§c射殺§f迎面而來的§c敵人");
     }
 
 

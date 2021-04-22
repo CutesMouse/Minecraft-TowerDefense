@@ -39,6 +39,7 @@ public class SnowballTower extends Tower {
             case 3:
                 return 4;
         }
+        return 0;
     }
 
     @Override
@@ -52,6 +53,7 @@ public class SnowballTower extends Tower {
             case 3:
                 return 9;
         }
+        return 0;
     }
 
     @Override

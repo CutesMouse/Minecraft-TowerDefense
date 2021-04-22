@@ -41,12 +41,13 @@ public class DefaultMap implements Map {
 
     @Override
     public Location getMobSpawnLocation() {
-        return new Location(WORLD,-46,5,-48.5);
+        return new Location(WORLD, -46, 5, -48.5);
     }
 
     public void spawnMob(Class<? extends Mob> mob) {
         try {
             Mob mobEntity = mob.newInstance();
+            mobEntity.spawn(getMobSpawnLocation());
             moblist.add(mobEntity);
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
@@ -76,5 +77,68 @@ public class DefaultMap implements Map {
         towerSlots.add(new TowerSlot(new Location(w, -50, 5, -7), TowerType.THREE_BY_THREE));
         towerSlots.add(new TowerSlot(new Location(w, -51, 5, -10), TowerType.THREE_BY_THREE));
         towerSlots.add(new TowerSlot(new Location(w, -33, 5, -4), TowerType.FIVE_BY_FIVE));
+        towerSlots.add(new TowerSlot(new Location(w, -40, 5, -44), TowerType.FIVE_BY_FIVE));
+        towerSlots.add(new TowerSlot(new Location(w, -41, 5, -39), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -41, 5, -36), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -40, 5, -31), TowerType.FIVE_BY_FIVE));
+        towerSlots.add(new TowerSlot(new Location(w, -41, 5, -26), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -41, 5, -23), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -40, 5, -18), TowerType.FIVE_BY_FIVE));
+        towerSlots.add(new TowerSlot(new Location(w, -47, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -44, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -41, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -38, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -35, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -32, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -14, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -11, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -8, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -5, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -2, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 1, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 4, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 7, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 10, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 13, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 16, 5, 22), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, 16), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, 13), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, 10), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, 7), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, 4), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, 1), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -2), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -5), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -8), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -12), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -15), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -18), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -21), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -24), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -27), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -30), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -33), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -36), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -39), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -42), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -45), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -48), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 22, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 19, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 16, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 13, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 10, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 7, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 4, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 1, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -2, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -5, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, -8, 5, -52), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 10, 5, 2), TowerType.FIVE_BY_FIVE));
+        towerSlots.add(new TowerSlot(new Location(w, 11, 5, -3), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 10, 5, -15), TowerType.FIVE_BY_FIVE));
+        towerSlots.add(new TowerSlot(new Location(w, 11, 5, -20), TowerType.THREE_BY_THREE));
+        towerSlots.add(new TowerSlot(new Location(w, 10, 5, -32), TowerType.FIVE_BY_FIVE));
+        towerSlots.add(new TowerSlot(new Location(w, 11, 5, -37), TowerType.THREE_BY_THREE));
     }
 }
