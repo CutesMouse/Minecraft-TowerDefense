@@ -15,6 +15,13 @@ import org.bukkit.util.Vector;
 
 public class ZombieMob extends CraftMob {
 
+    private Zombie zombie;
+
+    @Override
+    public Entity getEntity() {
+        return zombie;
+    }
+
     @Override
     public String getMobName() {
         return "Zombie";
@@ -33,21 +40,44 @@ public class ZombieMob extends CraftMob {
     @Override
     public void spawn(Location loc) {
         Zombie entity = loc.getWorld().spawn(loc, Zombie.class);
+        this.zombie = entity;
         entity.setAI(false);
-        move(entity);
+        setFacingDegree(0);
+        move();
     }
 
-    private void move(Entity entity) {
+    private void move() {
         new BukkitRunnable() {
-            int times = 0;
+            Location p1 = new Location(zombie.getWorld(), -46, 5 , -10.5);
+            Location p2 = new Location(zombie.getWorld(), -26,5,-10.234);
+            Location p3 = new Location(zombie.getWorld(), -25.903,5,1.5);
+            int sec = 0;
             @Override
             public void run() {
-                if (times == 80) {
+                if (getEntity().isDead()) {
                     this.cancel();
                     return;
                 }
-                entity.teleport(entity.getLocation().clone().add(0,0,0.1));
-                times++;
+                moveMob(0.2);
+                if (p1.distance(getEntity().getLocation()) < 1) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        p.sendMessage("set!");
+                    }
+                    setFacingDegree(-85.8);
+                }
+                if (p2.distance(getEntity().getLocation()) < 1) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        p.sendMessage("set!");
+                    }
+                    setFacingDegree(0);
+                }
+                if (p3.distance(getEntity().getLocation()) < 1) {
+                    for (Player p : Bukkit.getOnlinePlayers()) {
+                        p.sendMessage("set!");
+                    }
+                    setFacingDegree(79.8);
+                }
+                sec++;
             }
         }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,1L);
     }
