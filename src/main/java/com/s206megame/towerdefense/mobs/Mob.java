@@ -4,6 +4,8 @@ import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
 public interface Mob {
+    boolean isPoisoned = false;
+    boolean isOnFire = false;
     Entity getEntity();
     String getMobName();
     String getMobID();

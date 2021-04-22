@@ -18,14 +18,28 @@ public class FireTower extends Tower {
     }
 
     @Override
-    public double getDamage() {
+    public double getDamage() { return 0; } // unused
+
+    public double getInitialDamage() {
         switch (level) {
             case 1:
-                return 15;
+                return 50;
             case 2:
-                return 20;
+                return 75;
             case 3:
-                return 25;
+                return 100;
+        }
+        return 0;
+    }
+
+    public double getFireDamage() {
+        switch (level) {
+            case 1:
+                return 5;
+            case 2:
+                return 7.5;
+            case 3:
+                return 10;
         }
         return 0;
     }
@@ -63,11 +77,11 @@ public class FireTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "[Lv."+getLevel()+"] 雪球塔";
+        return "[Lv."+getLevel()+"] 烈焰塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "使敵人得到§c減速效果數秒");
+        return Arrays.asList("§f燃燒吧，§c火鳥！", "§f使敵人得到§c火焰球的初始傷害與持續數秒的傷害");
     }
 }

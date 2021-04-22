@@ -21,11 +21,11 @@ public class PotionTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 20;
+                return 10;
             case 2:
-                return 2.5;
+                return 15;
             case 3:
-                return 30;
+                return 20;
         }
         return 0;
     }
@@ -68,7 +68,7 @@ public class PotionTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f巫婆調製的§2劇毒藥水§f會要了你的命！","§f給予敵人§c持續數秒的連續傷害");
+        return Arrays.asList("§f巫婆調製的§2劇毒藥水§f會要了你的命！","§f給予敵人§c持續數秒的傷害");
     }
 
 
