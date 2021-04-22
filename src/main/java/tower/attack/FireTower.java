@@ -1,29 +1,31 @@
-package tower;
+package tower.attack;
 
 import org.bukkit.Material;
+import tower.Tower;
+import tower.TowerCategory;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ArcherTower extends Tower {
+public class FireTower extends Tower {
 
     private int level;
-    private TowerCategory category = TowerCategory.Range;
+    private TowerCategory category = TowerCategory.Attack;
 
     @Override
     public Material getDisplayItem() {
-        return Material.BOW;
+        return Material.FIRE_CHARGE;
     }
 
     @Override
     public double getDamage() {
         switch (level) {
             case 1:
-                return 5;
+                return 15;
             case 2:
-                return 7;
+                return 20;
             case 3:
-                return 10;
+                return 25;
         }
         return 0;
     }
@@ -32,11 +34,11 @@ public class ArcherTower extends Tower {
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 10;
+                return 70;
             case 2:
-                return 8;
+                return 60;
             case 3:
-                return 5;
+                return 50;
         }
         return 0;
     }
@@ -45,11 +47,11 @@ public class ArcherTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 10;
+                return 5;
             case 2:
-                return 12;
+                return 6;
             case 3:
-                return 15;
+                return 8;
         }
         return 0;
     }
@@ -61,13 +63,11 @@ public class ArcherTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "[Lv."+getLevel()+"] 弓箭手塔";
+        return "[Lv."+getLevel()+"] 雪球塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f冷血的弓箭手躲在§9堅固§f的堡壘中，","§f準確§c射殺§f迎面而來的§c敵人");
+        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "使敵人得到§c減速效果數秒");
     }
-
-
 }

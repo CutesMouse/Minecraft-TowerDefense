@@ -1,28 +1,31 @@
-package tower;
+package tower.attack;
 
 import org.bukkit.Material;
+import tower.Tower;
+import tower.TowerCategory;
 
+import java.util.Arrays;
 import java.util.List;
 
-public class SnowballTower extends Tower {
+public class PotionTower extends Tower {
 
     private int level;
-    private TowerCategory category = TowerCategory.Speed;
+    private TowerCategory category = TowerCategory.Attack;
 
     @Override
     public Material getDisplayItem() {
-        return Material.SNOWBALL;
+        return Material.POTION;
     }
 
     @Override
     public double getDamage() {
         switch (level) {
             case 1:
-                return 3;
+                return 20;
             case 2:
-                return 5;
+                return 2.5;
             case 3:
-                return 7;
+                return 30;
         }
         return 0;
     }
@@ -31,11 +34,11 @@ public class SnowballTower extends Tower {
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 5;
+                return 100;
             case 2:
-                return 3;
+                return 80;
             case 3:
-                return 2;
+                return 60;
         }
         return 0;
     }
@@ -46,9 +49,9 @@ public class SnowballTower extends Tower {
             case 1:
                 return 5;
             case 2:
-                return 7;
+                return 6;
             case 3:
-                return 10;
+                return 8;
         }
         return 0;
     }
@@ -60,11 +63,13 @@ public class SnowballTower extends Tower {
 
     @Override
     public String getTitle() {
-        return null;
+        return "[Lv."+getLevel()+"] 藥水塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return null;
+        return Arrays.asList("§f巫婆調製的§2劇毒藥水§f會要了你的命！","§f給予敵人§c持續數秒的連續傷害");
     }
+
+
 }
