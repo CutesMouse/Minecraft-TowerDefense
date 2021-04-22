@@ -9,5 +9,6 @@ public interface Map {
     ArrayList<TowerSlot> getTowerSlots();
     TowerSlot identifyTower(Location loc);
     ArrayList<Mob> getMobList();
+    ArrayList<CheckPoint> getCheckpoints();
     Location getMobSpawnLocation();
 }

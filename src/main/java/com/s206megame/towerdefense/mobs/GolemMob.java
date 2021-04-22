@@ -2,31 +2,30 @@ package com.s206megame.towerdefense.mobs;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.Golem;
+import org.bukkit.entity.IronGolem;
 
-public class ZombieMob extends CraftMob {
-
-    private Zombie zombie;
-
+public class GolemMob extends CraftMob {
+    private IronGolem golem;
     @Override
     public Entity getEntity() {
-        return zombie;
+        return golem;
     }
 
     @Override
     public String getMobName() {
-        return "Zombie";
+        return "Golem";
     }
 
     @Override
     public String getMobID() {
-        return "zombie";
+        return "golem";
     }
 
     @Override
     public void spawn(Location loc) {
-        Zombie entity = loc.getWorld().spawn(loc, Zombie.class);
-        this.zombie = entity;
+        IronGolem entity = loc.getWorld().spawn(loc, IronGolem.class);
+        this.golem = entity;
         entity.setAI(false);
         setFacingDegree(0);
     }

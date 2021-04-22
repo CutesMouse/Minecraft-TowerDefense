@@ -13,4 +13,5 @@ public interface Mob {
     void spawn(Location loc);
     void moveMob(double distance);
     void setFacingDegree(double yaw);
+    double getTickPerBlock();
 }

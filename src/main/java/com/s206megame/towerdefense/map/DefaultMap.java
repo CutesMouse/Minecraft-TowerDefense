@@ -1,5 +1,7 @@
 package com.s206megame.towerdefense.map;
 
+import com.s206megame.towerdefense.Main;
+import com.s206megame.towerdefense.api.CheckPoint;
 import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.api.TowerType;
@@ -7,6 +9,7 @@ import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 
@@ -20,8 +23,20 @@ public class DefaultMap implements Map {
         WORLD = Bukkit.getWorlds().get(0);
         // init towerslots
         initTowers(WORLD);
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                tickEvent();
+            }
+        }.runTaskTimer(Main.getPlugin(Main.class),0L,1L);
+    }
 
-
+    public void tickEvent() {
+        if (moblist.size() > 0) {
+            for (Mob mob : moblist) {
+                mob.onEntityMove();
+            }
+        }
     }
 
     @Override
@@ -37,6 +52,21 @@ public class DefaultMap implements Map {
     @Override
     public ArrayList<Mob> getMobList() {
         return moblist;
+    }
+
+    @Override
+    public ArrayList<CheckPoint> getCheckpoints() {
+        ArrayList<CheckPoint> cps = new ArrayList<>();
+        cps.add(new CheckPoint(-46.0,5,-13.0,-78.7));
+        cps.add(new CheckPoint(-26.0,5,-9.0,4.8));
+        cps.add(new CheckPoint(-27.0,5,3.0,86.8));
+        cps.add(new CheckPoint(-45.0,5,4.0,0));
+        cps.add(new CheckPoint(-45.0,5,17.0,-90));
+        cps.add(new CheckPoint(16.0,5,17.0,-168.7));
+        cps.add(new CheckPoint(17.0,5,12.0,-180.0));
+        cps.add(new CheckPoint(17.0,5,-46.5,90));
+        cps.add(new CheckPoint(-12.5,5,-46.5,0));
+        return cps;
     }
 
     @Override

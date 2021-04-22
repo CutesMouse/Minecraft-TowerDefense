@@ -2,6 +2,8 @@ package com.s206megame.towerdefense;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 import org.bukkit.event.player.PlayerItemMendEvent;
 import org.bukkit.event.player.PlayerLoginEvent;
@@ -26,5 +28,16 @@ public class ListenerHandler implements Listener {
     @EventHandler
     public void onPlayerSwapHandItem(PlayerItemHeldEvent e) {
         PWHIES.forEach(i -> i.accept(e));
+    }
+    @EventHandler
+    public void onEntityFired(EntityDamageEvent e) {
+        if (e.getCause().equals(EntityDamageEvent.DamageCause.FIRE) || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK)) {
+            e.getEntity().setFireTicks(0);
+            e.setCancelled(true);
+        }
+    }
+    @EventHandler
+    public void disableTNT(EntityExplodeEvent e) {
+        e.setCancelled(true);
     }
 }

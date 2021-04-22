@@ -23,6 +23,16 @@ public abstract class CraftMob implements Mob {
         getEntity().teleport(new Location(c.getWorld(),newX,newY,newZ,(float) yaw,0));
     }
 
+    @Override
+    public void onEntityMove() {
+        if (getEntity().isDead()) {
+            Main.map.getMobList().remove(this);
+            return;
+        }
+        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(),getTickPerBlock()*1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
+        moveMob(getTickPerBlock());
+    }
+
 
     @Override
     public void setFacingDegree(double yaw) {
