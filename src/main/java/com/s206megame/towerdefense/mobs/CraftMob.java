@@ -13,9 +13,9 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void moveMob(double distance) {
-        double pi = (yaw - 90) * Math.PI / 180.0;
-        double dx = -Math.cos(pi) * distance;
-        double dz = -Math.sin(pi) * distance;
+        double pi = (yaw + 90) * Math.PI / 180.0;
+        double dx = Math.cos(pi) * distance;
+        double dz = Math.sin(pi) * distance;
         Location c = getEntity().getLocation();
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
