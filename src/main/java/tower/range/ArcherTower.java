@@ -57,6 +57,19 @@ public class ArcherTower extends Tower {
     }
 
     @Override
+    public int getPrice() {
+        switch (level) {
+            case 1:
+                return 50;
+            case 2:
+                return 110;
+            case 3:
+                return 300;
+        }
+        return 0;
+    }
+
+    @Override
     public int getLevel() {
         return level;
     }

@@ -57,6 +57,19 @@ public class PotionTower extends Tower {
     }
 
     @Override
+    public int getPrice() {
+        switch (level) {
+            case 1:
+                return 150;
+            case 2:
+                return 330;
+            case 3:
+                return 810;
+        }
+        return 0;
+    }
+
+    @Override
     public int getLevel() {
         return level;
     }

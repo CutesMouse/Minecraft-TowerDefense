@@ -1,5 +1,6 @@
-package tower.speed;
+package tower.range;
 
+import com.s206megame.towerdefense.TowerDefense;
 import org.bukkit.Material;
 import tower.Tower;
 import tower.TowerCategory;
@@ -7,25 +8,24 @@ import tower.TowerCategory;
 import java.util.Arrays;
 import java.util.List;
 
-public class SnowballTower extends Tower {
+public class SniperTower extends Tower {
 
     private int level;
-    private TowerCategory category = TowerCategory.Speed;
-
+    private TowerCategory category = TowerCategory.Range;
     @Override
     public Material getDisplayItem() {
-        return Material.SNOWBALL;
+        return Material.OBSERVER;
     }
 
     @Override
     public double getDamage() {
         switch (level) {
             case 1:
-                return 3;
+                return 100;
             case 2:
-                return 5;
+                return 150;
             case 3:
-                return 7;
+                return 200;
         }
         return 0;
     }
@@ -34,11 +34,11 @@ public class SnowballTower extends Tower {
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 5;
+                return 100;
             case 2:
-                return 3;
+                return 90;
             case 3:
-                return 2;
+                return 80;
         }
         return 0;
     }
@@ -47,11 +47,11 @@ public class SnowballTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 5;
+                return 40;
             case 2:
-                return 7;
+                return 45;
             case 3:
-                return 10;
+                return 50;
         }
         return 0;
     }
@@ -60,11 +60,11 @@ public class SnowballTower extends Tower {
     public int getPrice() {
         switch (level) {
             case 1:
-                return 20;
+                return 400;
             case 2:
-                return 80;
+                return 750;
             case 3:
-                return 250;
+                return 1250;
         }
         return 0;
     }
@@ -76,11 +76,11 @@ public class SnowballTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "[Lv."+getLevel()+"] 雪球塔";
+        return "[Lv."+getLevel()+"] 狙擊手塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "使敵人得到§c減速效果數秒");
+        return Arrays.asList("§f無情的狙擊手隨時都將奪去戰場上敵人的性命！", "§f給予敵人§c致命傷害");
     }
 }

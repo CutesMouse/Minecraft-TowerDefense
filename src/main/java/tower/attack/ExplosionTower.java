@@ -57,6 +57,19 @@ public class ExplosionTower extends Tower {
     }
 
     @Override
+    public int getPrice() {
+        switch (level) {
+            case 1:
+                return 240;
+            case 2:
+                return 450;
+            case 3:
+                return 1200;
+        }
+        return 0;
+    }
+
+    @Override
     public int getLevel() {
         return level;
     }

@@ -11,6 +11,7 @@ public abstract class Tower {
     public abstract double getDamage();
     public abstract double getHitDelay();
     public abstract double getRange();
+    public abstract int getPrice();
     public abstract int getLevel();
     public abstract String getTitle();
     public abstract List<String> getDescription();
