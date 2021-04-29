@@ -7,6 +7,8 @@ import org.bukkit.entity.Zombie;
 public class ZombieMob extends CraftMob {
 
     private Zombie zombie;
+    private static final double MAX_HEALTH = 200.0;
+    private double health = 200.0;
 
     @Override
     public Entity getEntity() {
@@ -34,5 +36,21 @@ public class ZombieMob extends CraftMob {
     @Override
     public double getTickPerBlock() {
         return 0.05;
+    }
+
+    @Override
+    public double getMaxHealth() {
+        return MAX_HEALTH;
+    }
+
+    @Override
+    public double getHealth() {
+        return health;
+    }
+
+    @Override
+    public void damage(double point) {
+        health -= point;
+        if (health <= 0) kill();
     }
 }
