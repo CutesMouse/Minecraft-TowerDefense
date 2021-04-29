@@ -37,6 +37,7 @@ public class DefaultMap implements Map {
                 if (mob == null) continue;
                 mob.onEntityMove();
                 mob.updateDisplayName();
+                mob.effectUpdate();
             }
         }
     }

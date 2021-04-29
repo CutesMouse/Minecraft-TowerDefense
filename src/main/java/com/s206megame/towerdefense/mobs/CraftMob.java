@@ -2,7 +2,10 @@ package com.s206megame.towerdefense.mobs;
 
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.Map;
+import com.s206megame.towerdefense.effect.MobEffect;
 import org.bukkit.Location;
+
+import java.util.ArrayList;
 
 public abstract class CraftMob implements Mob {
     private static Map getMap() {
@@ -10,7 +13,9 @@ public abstract class CraftMob implements Mob {
     }
 
     private int nameupdateDelay = 0;
+    private boolean onFire = false;
     private double yaw;
+    private ArrayList<MobEffect> me = new ArrayList<>();
 
     @Override
     public void moveMob(double distance) {
@@ -71,5 +76,52 @@ public abstract class CraftMob implements Mob {
     @Override
     public void setFacingDegree(double yaw) {
         this.yaw = yaw;
+    }
+
+    @Override
+    public void effectUpdate() {
+        System.out.println("k: "+getEffects().size());
+        for (MobEffect e : getEffects()) {
+            System.out.println("Do update");
+            e.tickEvent(this);
+        }
+        getEffects().removeIf(p -> p.getDuration() <= 0);
+    }
+
+    @Override
+    public ArrayList<MobEffect> getEffects() {
+        return me;
+    }
+
+    @Override
+    public void addEffect(MobEffect ef) {
+        // 成功移除 -> 不加
+        // 不成功移除 -> 原本有
+        //          -> 原本沒有
+        me.add(ef);
+        System.out.println(me.size());
+        System.out.println("Add");
+        /*if (!me.removeIf(ef::canOverwrite)) {
+            boolean app = true;
+            for (MobEffect m : me) {
+                if (m.getType().equals(ef.getType())) app = false;
+            }
+            if (app) me.add(ef);
+        }*/
+    }
+
+    @Override
+    public boolean isOnFire() {
+        return onFire;
+    }
+
+    @Override
+    public void setOnFire(boolean t) {
+        onFire = t;
+        if (t) {
+            getEntity().setFireTicks(Integer.MAX_VALUE);
+        } else {
+            getEntity().setFireTicks(0);
+        }
     }
 }

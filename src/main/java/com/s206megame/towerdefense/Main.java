@@ -1,18 +1,10 @@
 package com.s206megame.towerdefense;
 
-import com.cutesmouse.mgui.guis.StaticGUI;
 import com.s206megame.towerdefense.api.ScoreboardManager;
 import com.s206megame.towerdefense.appearance.PlaceParticle;
 import com.s206megame.towerdefense.commands.*;
 import com.s206megame.towerdefense.map.DefaultMap;
-import com.s206megame.towerdefense.utils.ParticleManager;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.java.JavaPlugin;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Main extends JavaPlugin {
     private TDCommandManager CMD_MANAGER;
@@ -26,6 +18,8 @@ public class Main extends JavaPlugin {
         CMD_MANAGER.registerArg(new TDSetMap());
         CMD_MANAGER.registerArg(new TDEco());
         CMD_MANAGER.registerArg(new TDMobTest());
+        CMD_MANAGER.registerArg(new TDRemoveMobs());
+        CMD_MANAGER.registerArg(new TDMobEffect());
         getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
         PlaceParticle.init(this);
         ScoreboardManager.init(this);

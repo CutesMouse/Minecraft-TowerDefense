@@ -1,11 +1,14 @@
 package com.s206megame.towerdefense.mobs;
 
+import com.s206megame.towerdefense.effect.MobEffect;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 
+import java.util.ArrayList;
+
 public interface Mob {
-    boolean isPoisoned = false;
-    boolean isOnFire = false;
+    boolean isOnFire();
+    void setOnFire(boolean t);
     Entity getEntity();
     String getMobName();
     String getMobID();
@@ -19,4 +22,7 @@ public interface Mob {
     double getHealth();
     void kill();
     void damage(double point);
+    ArrayList<MobEffect> getEffects();
+    void addEffect(MobEffect ef);
+    void effectUpdate();
 }
