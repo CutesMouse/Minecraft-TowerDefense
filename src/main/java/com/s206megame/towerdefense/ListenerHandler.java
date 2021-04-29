@@ -31,15 +31,20 @@ public class ListenerHandler implements Listener {
     }
     @EventHandler
     public void onEntityFired(EntityDamageEvent e) {
-        if (e.getCause().equals(EntityDamageEvent.DamageCause.FIRE) || e.getCause().equals(EntityDamageEvent.DamageCause.FIRE_TICK)) {
+        if (isFire(e.getCause()) && e.getEntity().getFireTicks() < 1000) {
             e.getEntity().setFireTicks(0);
             e.setCancelled(true);
         }
-        // for tests only
-        Main.map.getMobList().stream().filter(p -> p.getEntity().equals(e.getEntity())).findFirst().ifPresent(p -> {
-            p.damage(e.getDamage());
+        Main.map.getMobList().stream().filter(p -> p.getEntity().equals(e.getEntity())).findFirst().ifPresent(mob -> {
+            if (isFire(e.getCause())) {
+                e.setDamage(0);
+            }
+            mob.damage(e.getDamage());
             e.setDamage(0);
         });
+    }
+    private boolean isFire(EntityDamageEvent.DamageCause cause) {
+        return cause.equals(EntityDamageEvent.DamageCause.FIRE) || cause.equals(EntityDamageEvent.DamageCause.FIRE_TICK);
     }
     @EventHandler
     public void disableTNT(EntityExplodeEvent e) {
