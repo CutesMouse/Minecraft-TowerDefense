@@ -34,7 +34,9 @@ public class DefaultMap implements Map {
     public void tickEvent() {
         if (moblist.size() > 0) {
             for (Mob mob : moblist) {
+                if (mob == null) continue;
                 mob.onEntityMove();
+                mob.updateDisplayName();
             }
         }
     }

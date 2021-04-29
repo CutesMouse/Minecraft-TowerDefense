@@ -14,4 +14,9 @@ public interface Mob {
     void moveMob(double distance);
     void setFacingDegree(double yaw);
     double getTickPerBlock();
+    void updateDisplayName();
+    double getMaxHealth();
+    double getHealth();
+    void kill();
+    void damage(double point);
 }

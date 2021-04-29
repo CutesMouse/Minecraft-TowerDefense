@@ -35,6 +35,11 @@ public class ListenerHandler implements Listener {
             e.getEntity().setFireTicks(0);
             e.setCancelled(true);
         }
+        // for tests only
+        Main.map.getMobList().stream().filter(p -> p.getEntity().equals(e.getEntity())).findFirst().ifPresent(p -> {
+            p.damage(e.getDamage());
+            e.setDamage(0);
+        });
     }
     @EventHandler
     public void disableTNT(EntityExplodeEvent e) {

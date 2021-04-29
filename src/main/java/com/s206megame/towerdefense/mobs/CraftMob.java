@@ -9,6 +9,7 @@ public abstract class CraftMob implements Mob {
         return Main.map;
     }
 
+    private int nameupdateDelay = 0;
     private double yaw;
 
     @Override
@@ -19,8 +20,8 @@ public abstract class CraftMob implements Mob {
         Location c = getEntity().getLocation();
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
-        double newY = c.getWorld().getHighestBlockAt((int) newX,(int) newZ).getLocation().getBlockY()+1;
-        getEntity().teleport(new Location(c.getWorld(),newX,newY,newZ,(float) yaw,0));
+        double newY = c.getWorld().getHighestBlockAt((int) newX, (int) newZ).getLocation().getBlockY() + 1;
+        getEntity().teleport(new Location(c.getWorld(), newX, newY, newZ, (float) yaw, 0));
     }
 
     @Override
@@ -29,10 +30,43 @@ public abstract class CraftMob implements Mob {
             Main.map.getMobList().remove(this);
             return;
         }
-        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(),getTickPerBlock()*1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
+        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getTickPerBlock() * 1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
         moveMob(getTickPerBlock());
     }
 
+    @Override
+    public void updateDisplayName() {
+        nameupdateDelay++;
+        if (nameupdateDelay < 20) {
+            return;
+        }
+        getEntity().setCustomNameVisible(true);
+        double health = getHealth();
+        double max = getMaxHealth();
+        double rate = health / max;
+        rate *= 25;
+        int ri = (int) rate;
+        ri = 25 - ri;
+        StringBuilder sb = new StringBuilder();
+        sb.append("§f[§7");
+        for (int i = 0; i <= 25; i++) {
+            if (i == ri) {
+                sb.append("§a");
+            }
+            if (i == 25) {
+                break;
+            }
+            sb.append("|");
+        }
+        sb.append("§f]");
+        getEntity().setCustomName(sb.toString());
+        nameupdateDelay = 0;
+    }
+
+    @Override
+    public void kill() {
+        getEntity().remove();
+    }
 
     @Override
     public void setFacingDegree(double yaw) {
