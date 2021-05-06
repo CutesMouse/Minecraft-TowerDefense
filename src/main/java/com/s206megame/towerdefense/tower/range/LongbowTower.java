@@ -1,8 +1,8 @@
-package tower.range;
+package com.s206megame.towerdefense.tower.range;
 
 import org.bukkit.Material;
-import tower.Tower;
-import tower.TowerCategory;
+import com.s206megame.towerdefense.tower.Tower;
+import com.s206megame.towerdefense.tower.TowerCategory;
 
 import java.util.Arrays;
 import java.util.List;

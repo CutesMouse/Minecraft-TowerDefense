@@ -1,19 +1,20 @@
-package tower.speed;
+package com.s206megame.towerdefense.tower.speed;
 
 import org.bukkit.Material;
-import tower.Tower;
-import tower.TowerCategory;
+import com.s206megame.towerdefense.tower.Tower;
+import com.s206megame.towerdefense.tower.TowerCategory;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class CrossbowTower extends Tower {
+public class MinigunTower extends Tower {
+
 
     private int level;
-    private TowerCategory category = TowerCategory.Speed;
+    TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
-        return Material.CROSSBOW;
+        return Material.DISPENSER;
     }
 
     @Override
@@ -22,9 +23,9 @@ public class CrossbowTower extends Tower {
             case 1:
                 return 4;
             case 2:
-                return 7;
+                return 6;
             case 3:
-                return 10;
+                return 8;
         }
         return 0;
     }
@@ -33,11 +34,11 @@ public class CrossbowTower extends Tower {
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 7;
-            case 2:
-                return 5;
-            case 3:
                 return 3;
+            case 2:
+                return 2;
+            case 3:
+                return 1;
         }
         return 0;
     }
@@ -46,11 +47,11 @@ public class CrossbowTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 10;
+                return 5;
             case 2:
-                return 12;
+                return 7;
             case 3:
-                return 14;
+                return 10;
         }
         return 0;
     }
@@ -59,11 +60,11 @@ public class CrossbowTower extends Tower {
     public int getPrice() {
         switch (level) {
             case 1:
-                return 60;
+                return 70;
             case 2:
-                return 170;
+                return 210;
             case 3:
-                return 470;
+                return 800;
         }
         return 0;
     }
@@ -75,11 +76,11 @@ public class CrossbowTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "[Lv."+getLevel()+"] 十字弓手塔";
+        return "[Lv."+getLevel()+"] 機關槍塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f十字弓射出的快速弓箭將讓敵人無從應對！", "§f快速射出能造成§c中等傷害的弓箭");
+        return Arrays.asList("§f機關槍將會掃射來自四面八方的敵人，","§f再強大的怪物軍隊都將輝飛煙滅！", "快速發射大量的§c小子彈§f造成驚人的傷害");
     }
 }
