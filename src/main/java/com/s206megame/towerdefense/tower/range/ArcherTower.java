@@ -1,9 +1,14 @@
 package com.s206megame.towerdefense.tower.range;
 
+import com.s206megame.towerdefense.StairsBlockElement;
+import com.s206megame.towerdefense.tower.DirectionalBlockElement;
 import com.s206megame.towerdefense.tower.SolidBlockElement;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.Bisected;
+import org.bukkit.block.data.type.Stairs;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,12 +61,12 @@ public class ArcherTower extends Tower {
         structure.register(new SolidBlockElement(-1,3,0,Material.COBBLESTONE_SLAB));
         structure.register(new SolidBlockElement(-1,3,1,Material.COBBLESTONE_SLAB));
         structure.register(new SolidBlockElement(-1,4,-1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(-1,4,0,Material.OAK_STAIRS));
+        structure.register(new StairsBlockElement(-1,4,0,Material.OAK_STAIRS,BlockFace.EAST,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
         structure.register(new SolidBlockElement(-1,4,1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(-1,5,-1,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(-1,5,0,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(-1,5,1,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(-1,6,0,Material.OAK_STAIRS));
+        structure.register(new StairsBlockElement(-1,5,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.TOP,Stairs.Shape.OUTER_LEFT));
+        structure.register(new StairsBlockElement(-1,5,0,Material.OAK_STAIRS,BlockFace.EAST,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
+        structure.register(new StairsBlockElement(-1,5,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.TOP,Stairs.Shape.OUTER_RIGHT));
+        structure.register(new StairsBlockElement(-1,6,0,Material.OAK_STAIRS,BlockFace.EAST,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
         structure.register(new SolidBlockElement(0,1,-1,Material.PETRIFIED_OAK_SLAB));
         structure.register(new SolidBlockElement(0,1,0,Material.PETRIFIED_OAK_SLAB));
         structure.register(new SolidBlockElement(0,1,1,Material.PETRIFIED_OAK_SLAB));
@@ -69,14 +74,14 @@ public class ArcherTower extends Tower {
         structure.register(new SolidBlockElement(0,2,1,Material.OAK_FENCE));
         structure.register(new SolidBlockElement(0,3,-1,Material.COBBLESTONE_SLAB));
         structure.register(new SolidBlockElement(0,3,1,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(0,4,-1,Material.OAK_STAIRS));
+        structure.register(new StairsBlockElement(0,4,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
         structure.register(new SolidBlockElement(0,4,0,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(0,4,1,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(0,5,-1,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(0,5,1,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(0,6,-1,Material.OAK_STAIRS));
+        structure.register(new StairsBlockElement(0,4,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
+        structure.register(new StairsBlockElement(0,5,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
+        structure.register(new StairsBlockElement(0,5,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
+        structure.register(new StairsBlockElement(0,6,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
         structure.register(new SolidBlockElement(0,6,0,Material.OAK_PLANKS));
-        structure.register(new SolidBlockElement(0,6,1,Material.OAK_STAIRS));
+        structure.register(new StairsBlockElement(0,6,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
         structure.register(new SolidBlockElement(1,1,-1,Material.OAK_LOG));
         structure.register(new SolidBlockElement(1,1,0,Material.PETRIFIED_OAK_SLAB));
         structure.register(new SolidBlockElement(1,1,1,Material.OAK_LOG));
@@ -87,13 +92,12 @@ public class ArcherTower extends Tower {
         structure.register(new SolidBlockElement(1,3,0,Material.COBBLESTONE_SLAB));
         structure.register(new SolidBlockElement(1,3,1,Material.COBBLESTONE_SLAB));
         structure.register(new SolidBlockElement(1,4,-1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(1,4,0,Material.OAK_STAIRS));
+        structure.register(new StairsBlockElement(1,4,0,Material.OAK_STAIRS,BlockFace.WEST,Bisected.Half.BOTTOM, Stairs.Shape.STRAIGHT));
         structure.register(new SolidBlockElement(1,4,1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(1,5,-1,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(1,5,0,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(1,5,1,Material.OAK_STAIRS));
-        structure.register(new SolidBlockElement(1,6,0,Material.OAK_STAIRS));
-
+        structure.register(new StairsBlockElement(1,5,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.TOP,Stairs.Shape.OUTER_RIGHT));
+        structure.register(new StairsBlockElement(1,5,0,Material.OAK_STAIRS,BlockFace.WEST,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
+        structure.register(new StairsBlockElement(1,5,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.TOP,Stairs.Shape.OUTER_LEFT));
+        structure.register(new StairsBlockElement(1,6,0,Material.OAK_STAIRS,BlockFace.WEST,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
     }
 
     @Override

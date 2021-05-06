@@ -27,7 +27,7 @@ public abstract class Tower {
     public abstract List<String> getDescription();
     protected abstract void initStructure();
     public void build(Location loc, Direction direct) {
-        structure.build(loc,Direction.NORTH);
+        structure.build(loc,direct);
     }
 
     public String getDescriptionTitle() {

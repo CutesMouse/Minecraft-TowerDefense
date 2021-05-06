@@ -19,10 +19,11 @@ public class DirectionalBlockElement extends SolidBlockElement {
     @Override
     public void build(Location center, Direction dir) {
         super.build(center, dir);
-        int direct = (int) (dir.getDegree() - Direction.NORTH.getDegree());
-        Directional state = ((Directional) center.getBlock().getState());
-        state.setFacing(rotate(face,direct));
-
+        int direct = (int) Math.round(dir.getDegree() - Direction.NORTH.getDegree());
+        Directional state = ((Directional) build.getBlock().getBlockData());
+        BlockFace newFace = rotate(face, direct);
+        state.setFacing(newFace);
+        build.getBlock().setBlockData(state);
     }
     private BlockFace rotate(BlockFace face, int deg) {
         if (deg < 0) {

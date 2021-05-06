@@ -8,6 +8,7 @@ import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Directional;
+import org.bukkit.block.data.type.Stairs;
 import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
@@ -55,8 +56,15 @@ public class TDTowerTools implements TDCommandBase {
                     int dx = x - middlex;
                     int dz = z - middlez;
                     int dy = y - middley;
-                    if (block.getState() instanceof Directional) {
-                        System.out.println("structure.register(new DirectionalBlockElement("+dx+","+dy+","+dz+",Material."+block.getType().name().toUpperCase()+",BlockFace."+((Directional) block.getState()).getFacing().name().toUpperCase()+"));");
+                    if (block.getBlockData() instanceof Stairs) {
+                        System.out.println("structure.register(new StairsBlockElement("+dx+","+dy+","+dz+"," +
+                                "Material."+block.getType().name().toUpperCase()+",BlockFace."+((Directional)
+                                block.getBlockData()).getFacing().name().toUpperCase()+",Bisected.Half."+
+                                ((Stairs) block.getBlockData()).getHalf().name().toUpperCase()+",Stairs.Shape."
+                                +((Stairs) block.getBlockData()).getShape().name().toUpperCase()+"));");
+                    }
+                    else if (block.getBlockData() instanceof Directional) {
+                        System.out.println("structure.register(new DirectionalBlockElement("+dx+","+dy+","+dz+",Material."+block.getType().name().toUpperCase()+",BlockFace."+((Directional) block.getBlockData()).getFacing().name().toUpperCase()+"));");
                     } else
                     System.out.println("structure.register(new SolidBlockElement("+dx+","+dy+","+dz+",Material."+block.getType().name().toUpperCase()+"));");
                     /*

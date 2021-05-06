@@ -35,4 +35,20 @@ public class TowerSlot {
         }
         return locs;
     }
+
+    public ArrayList<Location> getOutline() {
+        int blockDiff = type.equals(TowerType.THREE_BY_THREE) ? 1 : 2;
+        ArrayList<Location> locs = new ArrayList<>();
+        int x = loc.getBlockX();
+        int y = loc.getBlockY();
+        int z = loc.getBlockZ();
+
+        for (int dx = -blockDiff; dx <= blockDiff; dx++) {
+            for (int dz = -blockDiff; dz <= blockDiff; dz++) {
+                if (dx == -blockDiff || dz == -blockDiff || dx == blockDiff || dz == blockDiff)
+                locs.add(new Location(loc.getWorld(), x + dx, y, z + dz));
+            }
+        }
+        return locs;
+    }
 }

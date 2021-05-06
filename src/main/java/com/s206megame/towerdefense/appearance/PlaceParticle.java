@@ -24,9 +24,9 @@ public class PlaceParticle {
                     TowerSlot tower = Main.map.identifyTower(tb.getLocation());
                     if (tower == null) continue;
                     ParticleManager.playParticle(p.getEyeLocation(),
-                            p.getEyeLocation().getDirection(),tb.getLocation().distance(p.getEyeLocation()),0.5, Particle.FLAME);
-                    for (Location loc : tower.getBlockList()) {
-                        TempBlock.sendTempBlock(p,Material.GOLD_BLOCK,10,loc);
+                            p.getEyeLocation().getDirection(),tb.getLocation().distance(p.getEyeLocation()),0.5, Particle.SPELL_WITCH);
+                    for (Location loc : tower.getOutline()) {
+                        TempBlock.sendTempBlock(p,Material.SEA_LANTERN,10,loc);
                     }
                 }
             }

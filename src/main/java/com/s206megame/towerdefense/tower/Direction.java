@@ -1,7 +1,7 @@
 package com.s206megame.towerdefense.tower;
 
 public enum Direction {
-    NORTH(-Math.PI / 2),SOUTH(Math.PI / 2),EAST(0),WEST(Math.PI);
+    NORTH(Math.PI),SOUTH(0),EAST(- Math.PI / 2),WEST(Math.PI / 2);
     private double rad;
     Direction(double rad) {
         this.rad = rad;
