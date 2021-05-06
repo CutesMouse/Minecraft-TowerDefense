@@ -34,7 +34,7 @@ public class MiniSlimeMob extends CraftMob {
 
     @Override
     public double getTickPerBlock() {
-        return 0.0125;
+        return 0.2;
     }
 
     @Override

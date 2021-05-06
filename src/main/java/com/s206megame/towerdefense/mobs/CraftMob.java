@@ -75,7 +75,7 @@ public abstract class CraftMob implements Mob {
         sb.append("§f[§7");
         for (int i = 0; i <= 25; i++) {
             if (i == ri) {
-                sb.append("§a");
+                sb.append(rate>0.5? "§a" : (rate>0.2? "§e" : "§4"));
             }
             if (i == 25) {
                 break;

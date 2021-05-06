@@ -33,7 +33,7 @@ public class VindicatorMob extends CraftMob {
 
     @Override
     public double getTickPerBlock() {
-        return 0.025;
+        return 0.1;
     }
 
     @Override

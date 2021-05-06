@@ -35,7 +35,7 @@ public class BabyZombieMob extends CraftMob {
 
     @Override
     public double getTickPerBlock() {
-        return 1/60.0;
+        return 0.15;
     }
 
     @Override

@@ -35,7 +35,7 @@ public class SkeletonMob extends CraftMob {
 
     @Override
     public double getTickPerBlock() {
-        return 0.05;
+        return 0.1;
     }
 
     @Override
