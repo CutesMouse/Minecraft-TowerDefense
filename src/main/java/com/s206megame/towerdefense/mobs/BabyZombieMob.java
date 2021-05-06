@@ -16,12 +16,12 @@ public class BabyZombieMob extends CraftMob {
 
     @Override
     public String getMobName() {
-        return "MiniSlime";
+        return "Baby Zombie";
     }
 
     @Override
     public String getMobID() {
-        return "minislime";
+        return "babyzombie";
     }
 
     @Override
@@ -35,7 +35,7 @@ public class BabyZombieMob extends CraftMob {
 
     @Override
     public double getTickPerBlock() {
-        return 1/60;
+        return 1/60.0;
     }
 
     @Override

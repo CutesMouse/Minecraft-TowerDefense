@@ -7,7 +7,6 @@ import org.bukkit.entity.Vindicator;
 public class VindicatorMob extends CraftMob {
     private Vindicator vindicator;
     private static final double MAX_HEALTH = 250.0;
-    private double health = MAX_HEALTH;
 
     @Override
     public Entity getEntity() {
@@ -47,9 +46,4 @@ public class VindicatorMob extends CraftMob {
         return health;
     }
 
-    @Override
-    public void damage(double point) {
-        health -= point;
-        if (health <= 0) kill();
-    }
 }

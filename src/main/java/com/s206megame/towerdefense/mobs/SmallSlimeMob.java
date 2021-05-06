@@ -8,7 +8,6 @@ import org.bukkit.entity.Slime;
 public class SmallSlimeMob extends CraftMob {
     private Slime smallslime;
     private static final double MAX_HEALTH = 250.0;
-    private double health = MAX_HEALTH;
 
     @Override
     public Entity getEntity() {
@@ -17,7 +16,7 @@ public class SmallSlimeMob extends CraftMob {
 
     @Override
     public String getMobName() {
-        return "SmallSlime";
+        return "Small Slime";
     }
 
     @Override
@@ -49,9 +48,4 @@ public class SmallSlimeMob extends CraftMob {
         return health;
     }
 
-    @Override
-    public void damage(double point) {
-        health -= point;
-        if (health <= 0) kill();
-    }
 }

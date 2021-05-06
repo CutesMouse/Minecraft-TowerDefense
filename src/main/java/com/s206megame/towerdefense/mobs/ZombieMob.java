@@ -8,7 +8,6 @@ public class ZombieMob extends CraftMob {
 
     private Zombie zombie;
     private static final double MAX_HEALTH = 200.0;
-    private double health = MAX_HEALTH;
 
     @Override
     public Entity getEntity() {
@@ -48,9 +47,4 @@ public class ZombieMob extends CraftMob {
         return health;
     }
 
-    @Override
-    public void damage(double point) {
-        health -= point;
-        if (health <= 0) kill();
-    }
 }

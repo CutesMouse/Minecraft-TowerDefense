@@ -9,7 +9,6 @@ public class SkeletonMob extends CraftMob {
 
     private Skeleton skeleton;
     private static final double MAX_HEALTH = 100.0;
-    private double health = MAX_HEALTH;
 
     @Override
     public Entity getEntity() {
@@ -49,9 +48,4 @@ public class SkeletonMob extends CraftMob {
         return health;
     }
 
-    @Override
-    public void damage(double point) {
-        health -= point;
-        if (health <= 0) kill();
-    }
 }

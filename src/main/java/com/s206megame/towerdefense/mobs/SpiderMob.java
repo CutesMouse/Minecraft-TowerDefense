@@ -7,7 +7,6 @@ import org.bukkit.entity.Spider;
 public class SpiderMob extends CraftMob {
     private Spider spider;
     private static final double MAX_HEALTH = 150.0;
-    private double health = MAX_HEALTH;
 
     @Override
     public Entity getEntity() {
@@ -47,9 +46,4 @@ public class SpiderMob extends CraftMob {
         return health;
     }
 
-    @Override
-    public void damage(double point) {
-        health -= point;
-        if (health <= 0) kill();
-    }
 }
