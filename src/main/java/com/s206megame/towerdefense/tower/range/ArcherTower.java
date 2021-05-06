@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.range;
 
+import com.cutesmouse.mgui.items.StaticGUIItem;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
@@ -8,6 +9,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ArcherTower extends Tower {
+
+
 
     private int level;
     private TowerCategory category = TowerCategory.Range;

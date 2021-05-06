@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower;
 
+import com.cutesmouse.mgui.items.StaticGUIItem;
 import org.bukkit.Location;
 import org.bukkit.Material;
 
@@ -7,6 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Tower {
+
+    public StaticGUIItem getGUIItem() {
+        return new StaticGUIItem(getDisplayItem(), getDescriptionTitle(), getDescriptionLore(), 1);
+    }
     protected TowerStructure structure;
     public abstract Material getDisplayItem();
     public abstract double getDamage();
@@ -31,4 +36,5 @@ public abstract class Tower {
         re.add("攻擊頻率： " + getHitDelay());
         return re;
     }
+
 }
