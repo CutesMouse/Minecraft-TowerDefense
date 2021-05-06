@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Tower {
+    protected TowerStructure structure;
     public abstract Material getDisplayItem();
     public abstract double getDamage();
     public abstract double getHitDelay();
@@ -15,7 +16,9 @@ public abstract class Tower {
     public abstract int getLevel();
     public abstract String getTitle();
     public abstract List<String> getDescription();
-    public abstract void build(Location loc);
+    public void build(Location loc) {
+        structure.build(loc,Direction.NORTH);
+    }
 
     public String getDescriptionTitle() {
         return "§f"+getTitle();

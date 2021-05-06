@@ -28,19 +28,26 @@ public class ChickenJockeyMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
-        Chicken entity1 = loc.getWorld().spawn(loc, Chicken.class);
-        Zombie entity2 = loc.getWorld().spawn(loc, Zombie.class);
+        chicken = loc.getWorld().spawn(loc, Chicken.class);
+        zombie = loc.getWorld().spawn(loc, Zombie.class);
         zombie.setBaby();
-        this.chicken = entity1;
-        this.zombie = entity2;
-        entity1.addPassenger(zombie);
-        entity1.setAI(false);
+        chicken.addPassenger(zombie);
+        zombie.setAI(false);
+        chicken.setAI(false);
         setFacingDegree(0);
+    }
+
+    public Zombie getZombie() {
+        return zombie;
+    }
+
+    public Chicken getChicken() {
+        return chicken;
     }
 
     @Override
     public double getTickPerBlock() {
-        return 0.01;
+        return 0.25;
     }
 
     @Override
@@ -55,6 +62,7 @@ public class ChickenJockeyMob extends CraftMob {
 
     @Override
     public void kill() {
-        super.kill();
+        zombie.remove();
+        chicken.remove();
     }
 }

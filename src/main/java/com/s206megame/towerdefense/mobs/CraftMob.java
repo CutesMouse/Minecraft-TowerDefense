@@ -4,6 +4,7 @@ import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.effect.MobEffect;
 import org.bukkit.Location;
+import org.bukkit.entity.Entity;
 
 import java.util.ArrayList;
 
@@ -32,7 +33,15 @@ public abstract class CraftMob implements Mob {
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
         double newY = c.getWorld().getHighestBlockAt((int) newX, (int) newZ).getLocation().getBlockY() + 1;
-        getEntity().teleport(new Location(c.getWorld(), newX, newY, newZ, (float) yaw, 0));
+        Location tpto = new Location(c.getWorld(), newX, newY, newZ, (float) yaw, 0);
+        if (getEntity().getPassengers().size() != 0) {
+            Entity pas = getEntity().getPassengers().get(0);
+            pas.teleport(tpto);
+            getEntity().teleport(tpto);
+            getEntity().addPassenger(pas);
+            return;
+        }
+        getEntity().teleport(tpto);
     }
 
     @Override
@@ -51,7 +60,11 @@ public abstract class CraftMob implements Mob {
         if (nameupdateDelay < 20) {
             return;
         }
-        getEntity().setCustomNameVisible(true);
+        Entity entity = getEntity();
+        if (this.getClass().getSimpleName().equals("ChickenJockeyMob")) {
+            entity = ((ChickenJockeyMob) this).getZombie();
+        }
+        entity.setCustomNameVisible(true);
         double health = getHealth();
         double max = getMaxHealth();
         double rate = health / max;
@@ -70,7 +83,7 @@ public abstract class CraftMob implements Mob {
             sb.append("|");
         }
         sb.append("§f]");
-        getEntity().setCustomName(sb.toString());
+        entity.setCustomName(sb.toString());
         nameupdateDelay = 0;
     }
 
@@ -86,9 +99,7 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void effectUpdate() {
-        System.out.println("k: "+getEffects().size());
         for (MobEffect e : getEffects()) {
-            System.out.println("Do update");
             e.tickEvent(this);
         }
         getEffects().removeIf(p -> p.getDuration() <= 0);

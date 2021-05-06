@@ -14,7 +14,7 @@ public class TowerStructure {
     }
     public void build(Location center, Direction dir) {
         for (BlockElement block : BLOCKS) {
-            block.build();
+            block.build(center,dir);
         }
     }
 }
