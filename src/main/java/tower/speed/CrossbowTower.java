@@ -1,50 +1,43 @@
-package com.s206megame.towerdefense.tower.attack;
+package tower.speed;
 
 import org.bukkit.Material;
-import com.s206megame.towerdefense.tower.Tower;
-import com.s206megame.towerdefense.tower.TowerCategory;
+import tower.Tower;
+import tower.TowerCategory;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class FireTower extends Tower {
+public class CrossbowTower extends Tower {
 
     private int level;
-    private TowerCategory category = TowerCategory.Attack;
-
+    private TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
-        return Material.FIRE_CHARGE;
+        return Material.CROSSBOW;
     }
 
     @Override
-    public double getDamage() { return 0; } // unused
-
-    public double getInitialDamage() {
+    public double getDamage() {
         switch (level) {
             case 1:
-                return 50;
+                return 4;
             case 2:
-                return 75;
+                return 7;
             case 3:
-                return 100;
+                return 10;
         }
         return 0;
-    }
-
-    public double getFireDamage() {
-        return getInitialDamage()*0.1;
     }
 
     @Override
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 70;
+                return 7;
             case 2:
-                return 60;
+                return 5;
             case 3:
-                return 50;
+                return 3;
         }
         return 0;
     }
@@ -53,11 +46,11 @@ public class FireTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 5;
+                return 10;
             case 2:
-                return 6;
+                return 12;
             case 3:
-                return 8;
+                return 14;
         }
         return 0;
     }
@@ -66,11 +59,11 @@ public class FireTower extends Tower {
     public int getPrice() {
         switch (level) {
             case 1:
-                return 160;
+                return 60;
             case 2:
-                return 320;
+                return 170;
             case 3:
-                return 640;
+                return 470;
         }
         return 0;
     }
@@ -82,11 +75,11 @@ public class FireTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "[Lv."+getLevel()+"] 烈焰塔";
+        return "[Lv."+getLevel()+"] 十字弓手塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f燃燒吧，§c火鳥！", "§f使敵人得到§c火焰球的初始傷害與持續數秒的傷害");
+        return Arrays.asList("§f十字弓射出的快速弓箭將讓敵人無從應對！", "§f快速射出能造成§c中等傷害的弓箭");
     }
 }

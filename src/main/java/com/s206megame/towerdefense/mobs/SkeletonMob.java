@@ -2,33 +2,34 @@ package com.s206megame.towerdefense.mobs;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Zombie;
+import org.bukkit.entity.Skeleton;
 
-public class ZombieMob extends CraftMob {
 
-    private Zombie zombie;
-    private static final double MAX_HEALTH = 200.0;
+public class SkeletonMob extends CraftMob {
+
+    private Skeleton skeleton;
+    private static final double MAX_HEALTH = 100.0;
     private double health = MAX_HEALTH;
 
     @Override
     public Entity getEntity() {
-        return zombie;
+        return skeleton;
     }
 
     @Override
     public String getMobName() {
-        return "Zombie";
+        return "Skeleton";
     }
 
     @Override
     public String getMobID() {
-        return "zombie";
+        return "skeleton";
     }
 
     @Override
     public void spawn(Location loc) {
-        Zombie entity = loc.getWorld().spawn(loc, Zombie.class);
-        this.zombie = entity;
+        Skeleton entity = loc.getWorld().spawn(loc, Skeleton.class);
+        this.skeleton = entity;
         entity.setAI(false);
         setFacingDegree(0);
     }
