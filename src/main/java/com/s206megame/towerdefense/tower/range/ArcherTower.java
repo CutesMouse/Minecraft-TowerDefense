@@ -1,31 +1,31 @@
-package tower.attack;
+package com.s206megame.towerdefense.tower.range;
 
 import org.bukkit.Material;
-import tower.Tower;
-import tower.TowerCategory;
+import com.s206megame.towerdefense.tower.Tower;
+import com.s206megame.towerdefense.tower.TowerCategory;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ExplosionTower extends Tower {
+public class ArcherTower extends Tower {
 
     private int level;
-    private TowerCategory category = TowerCategory.Attack;
+    private TowerCategory category = TowerCategory.Range;
 
     @Override
     public Material getDisplayItem() {
-        return Material.TNT;
+        return Material.BOW;
     }
 
     @Override
     public double getDamage() {
         switch (level) {
             case 1:
-                return 75;
+                return 5;
             case 2:
-                return 100;
+                return 7;
             case 3:
-                return 150;
+                return 10;
         }
         return 0;
     }
@@ -34,11 +34,11 @@ public class ExplosionTower extends Tower {
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 50;
+                return 10;
             case 2:
-                return 40;
+                return 8;
             case 3:
-                return 30;
+                return 5;
         }
         return 0;
     }
@@ -47,11 +47,11 @@ public class ExplosionTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 5;
+                return 10;
             case 2:
-                return 6;
+                return 12;
             case 3:
-                return 8;
+                return 15;
         }
         return 0;
     }
@@ -60,11 +60,11 @@ public class ExplosionTower extends Tower {
     public int getPrice() {
         switch (level) {
             case 1:
-                return 240;
+                return 50;
             case 2:
-                return 450;
+                return 110;
             case 3:
-                return 1200;
+                return 300;
         }
         return 0;
     }
@@ -76,12 +76,12 @@ public class ExplosionTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "[Lv."+getLevel()+"] 炸藥塔";
+        return "[Lv."+getLevel()+"] 弓箭手塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f用§c炸藥§f讓敵人粉身碎骨！","§f短時間內給予敵人§c大量傷害");
+        return Arrays.asList("§f冷血的弓箭手躲在堅固的堡壘中，§f準確§c射殺§f迎面而來的§c敵人！", "§f無特殊效果");
     }
 
 

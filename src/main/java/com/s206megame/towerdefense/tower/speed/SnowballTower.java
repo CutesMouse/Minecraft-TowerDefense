@@ -1,24 +1,50 @@
-package tower.range;
+package com.s206megame.towerdefense.tower.speed;
 
 import org.bukkit.Material;
-import tower.Tower;
-import tower.TowerCategory;
+import com.s206megame.towerdefense.tower.Tower;
+import com.s206megame.towerdefense.tower.TowerCategory;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class ArcherTower extends Tower {
+public class SnowballTower extends Tower {
 
     private int level;
-    private TowerCategory category = TowerCategory.Range;
+    private TowerCategory category = TowerCategory.Speed;
 
     @Override
     public Material getDisplayItem() {
-        return Material.BOW;
+        return Material.SNOWBALL;
     }
 
     @Override
     public double getDamage() {
+        switch (level) {
+            case 1:
+                return 3;
+            case 2:
+                return 5;
+            case 3:
+                return 7;
+        }
+        return 0;
+    }
+
+    @Override
+    public double getHitDelay() {
+        switch (level) {
+            case 1:
+                return 5;
+            case 2:
+                return 3;
+            case 3:
+                return 2;
+        }
+        return 0;
+    }
+
+    @Override
+    public double getRange() {
         switch (level) {
             case 1:
                 return 5;
@@ -31,40 +57,14 @@ public class ArcherTower extends Tower {
     }
 
     @Override
-    public double getHitDelay() {
-        switch (level) {
-            case 1:
-                return 10;
-            case 2:
-                return 8;
-            case 3:
-                return 5;
-        }
-        return 0;
-    }
-
-    @Override
-    public double getRange() {
-        switch (level) {
-            case 1:
-                return 10;
-            case 2:
-                return 12;
-            case 3:
-                return 15;
-        }
-        return 0;
-    }
-
-    @Override
     public int getPrice() {
         switch (level) {
             case 1:
-                return 50;
+                return 20;
             case 2:
-                return 110;
+                return 80;
             case 3:
-                return 300;
+                return 250;
         }
         return 0;
     }
@@ -76,13 +76,11 @@ public class ArcherTower extends Tower {
 
     @Override
     public String getTitle() {
-        return "[Lv."+getLevel()+"] 弓箭手塔";
+        return "[Lv."+getLevel()+"] 雪球塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f冷血的弓箭手躲在堅固的堡壘中，§f準確§c射殺§f迎面而來的§c敵人！", "§f無特殊效果");
+        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "使敵人得到§c減速效果數秒");
     }
-
-
 }

@@ -1,4 +1,4 @@
-package tower;
+package com.s206megame.towerdefense.tower;
 
 public enum TowerCategory {
     Range("§b"),Attack("§c"),Speed("§2");

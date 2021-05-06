@@ -3,12 +3,9 @@ package com.s206megame.towerdefense.commands;
 import com.cutesmouse.mgui.guis.StaticGUI;
 import com.cutesmouse.mgui.items.GUIItem;
 import com.cutesmouse.mgui.items.StaticGUIItem;
-import com.s206megame.towerdefense.utils.ParticleManager;
-import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.Particle;
 import org.bukkit.entity.Player;
-import tower.Tower;
+import com.s206megame.towerdefense.tower.Tower;
 
 import java.util.Arrays;
 import java.util.List;
