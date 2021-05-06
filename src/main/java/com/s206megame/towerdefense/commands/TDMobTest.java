@@ -1,6 +1,7 @@
 package com.s206megame.towerdefense.commands;
 
 import com.s206megame.towerdefense.Main;
+import com.s206megame.towerdefense.mobs.ChickenJockeyMob;
 import com.s206megame.towerdefense.mobs.GolemMob;
 import com.s206megame.towerdefense.mobs.ZombieMob;
 import org.bukkit.entity.Player;
@@ -21,6 +22,6 @@ public class TDMobTest implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        Main.map.spawnMob(ZombieMob.class);
+        Main.map.spawnMob(ChickenJockeyMob.class);
     }
 }
