@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ public abstract class Tower {
     public abstract int getLevel();
     public abstract String getTitle();
     public abstract List<String> getDescription();
+    public abstract void build(Location loc);
 
     public String getDescriptionTitle() {
         return "§f"+getTitle();

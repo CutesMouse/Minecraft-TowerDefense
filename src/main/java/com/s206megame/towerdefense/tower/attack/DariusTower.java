@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
@@ -48,6 +49,11 @@ public class DariusTower extends Tower {
     @Override
     public List<String> getDescription() {
         return Arrays.asList("§c巨錘瑞斯，開剁！","§f給予敵人§c致命的最後一擊，保證擊殺");
+    }
+
+    @Override
+    public void build(Location center) {
+
     }
 
 
