@@ -1,0 +1,51 @@
+package com.s206megame.towerdefense.mobs;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Ravager;
+import org.bukkit.entity.Silverfish;
+
+public class SilverfishMob extends CraftMob {
+
+    private Silverfish silverfish;
+    private static final double MAX_HEALTH = 30.0;
+
+    @Override
+    public Entity getEntity() {
+        return silverfish;
+    }
+
+    @Override
+    public String getMobName() {
+        return "Silverfish";
+    }
+
+    @Override
+    public String getMobID() {
+        return "silverfish";
+    }
+
+    @Override
+    public void spawn(Location loc) {
+        Silverfish entity = loc.getWorld().spawn(loc, Silverfish.class);
+        this.silverfish = entity;
+        entity.setAI(false);
+        setFacingDegree(0);
+    }
+
+    @Override
+    public double getTickPerBlock() {
+        return 0.25;
+    }
+
+    @Override
+    public double getMaxHealth() {
+        return MAX_HEALTH;
+    }
+
+    @Override
+    public double getHealth() {
+        return health;
+    }
+
+}
