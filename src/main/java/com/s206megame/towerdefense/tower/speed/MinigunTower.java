@@ -83,4 +83,9 @@ public class MinigunTower extends Tower {
     public List<String> getDescription() {
         return Arrays.asList("§f機關槍將會掃射來自四面八方的敵人，","§f再強大的怪物軍隊都將輝飛煙滅！", "快速發射大量的§c小子彈§f造成驚人的傷害");
     }
+
+    @Override
+    protected void initStructure() {
+
+    }
 }

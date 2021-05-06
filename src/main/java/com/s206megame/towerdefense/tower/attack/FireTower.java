@@ -89,4 +89,9 @@ public class FireTower extends Tower {
     public List<String> getDescription() {
         return Arrays.asList("§f燃燒吧，§c火鳥！", "§f使敵人得到§c火焰球的初始傷害與持續數秒的傷害");
     }
+
+    @Override
+    protected void initStructure() {
+
+    }
 }

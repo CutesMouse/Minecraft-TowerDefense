@@ -52,7 +52,7 @@ public class DariusTower extends Tower {
     }
 
     @Override
-    public void build(Location center) {
+    protected void initStructure() {
 
     }
 

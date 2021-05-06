@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class TowerStructure {
     private ArrayList<BlockElement> BLOCKS;
-    public void TowerStructure() {
+    public TowerStructure() {
         BLOCKS = new ArrayList<>();
     }
     public void register(BlockElement blockElement) {

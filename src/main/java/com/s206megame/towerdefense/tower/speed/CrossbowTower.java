@@ -82,4 +82,9 @@ public class CrossbowTower extends Tower {
     public List<String> getDescription() {
         return Arrays.asList("§f十字弓射出的快速弓箭將讓敵人無從應對！", "§f快速射出能造成§c中等傷害的弓箭");
     }
+
+    @Override
+    protected void initStructure() {
+
+    }
 }

@@ -84,5 +84,10 @@ public class ExplosionTower extends Tower {
         return Arrays.asList("§f用§c炸藥§f讓敵人粉身碎骨！","§f短時間內給予敵人§c大量傷害");
     }
 
+    @Override
+    protected void initStructure() {
+
+    }
+
 
 }

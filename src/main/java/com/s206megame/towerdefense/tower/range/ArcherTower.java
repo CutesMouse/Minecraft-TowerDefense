@@ -1,6 +1,6 @@
 package com.s206megame.towerdefense.tower.range;
 
-import com.cutesmouse.mgui.items.StaticGUIItem;
+import com.s206megame.towerdefense.tower.SolidBlockElement;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
@@ -9,8 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ArcherTower extends Tower {
-
-
 
     private int level;
     private TowerCategory category = TowerCategory.Range;
@@ -44,6 +42,58 @@ public class ArcherTower extends Tower {
                 return 5;
         }
         return 0;
+    }
+
+    @Override
+    protected void initStructure() {
+        structure.register(new SolidBlockElement(-1,1,-1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(-1,1,0,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(-1,1,1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(-1,2,-1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(-1,2,0,Material.OAK_FENCE));
+        structure.register(new SolidBlockElement(-1,2,1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(-1,3,-1,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(-1,3,0,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(-1,3,1,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(-1,4,-1,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(-1,4,0,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(-1,4,1,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(-1,5,-1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(-1,5,0,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(-1,5,1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(-1,6,0,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(0,1,-1,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(0,1,0,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(0,1,1,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(0,2,-1,Material.OAK_FENCE));
+        structure.register(new SolidBlockElement(0,2,1,Material.OAK_FENCE));
+        structure.register(new SolidBlockElement(0,3,-1,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(0,3,1,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(0,4,-1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(0,4,0,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(0,4,1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(0,5,-1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(0,5,1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(0,6,-1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(0,6,0,Material.OAK_PLANKS));
+        structure.register(new SolidBlockElement(0,6,1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(1,1,-1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(1,1,0,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(1,1,1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(1,2,-1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(1,2,0,Material.OAK_FENCE));
+        structure.register(new SolidBlockElement(1,2,1,Material.OAK_LOG));
+        structure.register(new SolidBlockElement(1,3,-1,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(1,3,0,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(1,3,1,Material.COBBLESTONE_SLAB));
+        structure.register(new SolidBlockElement(1,4,-1,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(1,4,0,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(1,4,1,Material.PETRIFIED_OAK_SLAB));
+        structure.register(new SolidBlockElement(1,5,-1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(1,5,0,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(1,5,1,Material.OAK_STAIRS));
+        structure.register(new SolidBlockElement(1,6,0,Material.OAK_STAIRS));
+
     }
 
     @Override

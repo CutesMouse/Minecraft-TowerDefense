@@ -20,6 +20,7 @@ public class Main extends JavaPlugin {
         CMD_MANAGER.registerArg(new TDMobTest());
         CMD_MANAGER.registerArg(new TDRemoveMobs());
         CMD_MANAGER.registerArg(new TDMobEffect());
+        CMD_MANAGER.registerArg(new TDTowerTools());
         getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
         PlaceParticle.init(this);
         ScoreboardManager.init(this);

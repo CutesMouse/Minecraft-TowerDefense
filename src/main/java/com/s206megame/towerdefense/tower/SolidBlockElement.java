@@ -13,9 +13,9 @@ public class SolidBlockElement extends BlockElement {
     @Override
     public void build(Location center, Direction dir) {
         // [ cos -sin ][ x ]
-        // [ sin  cos ][ y ]
-        double dx = this.x * Math.cos(dir.getRad()) - Math.sin(dir.getRad());
-        double dz = this.z * Math.sin(dir.getRad()) + Math.cos(dir.getRad());
+        // [ sin  cos ][ z ]
+        double dx = this.x * Math.cos(dir.getRad()) - this.z * Math.sin(dir.getRad());
+        double dz = this.x * Math.sin(dir.getRad()) + this.z * Math.cos(dir.getRad());
         World w = center.getWorld();
         if (w == null) return;
         w.getBlockAt(center.getBlockX()+(int) dx,center.getBlockY()+y,center.getBlockZ() + (int) dz).setType(mat);

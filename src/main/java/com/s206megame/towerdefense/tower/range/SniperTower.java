@@ -82,4 +82,9 @@ public class SniperTower extends Tower {
     public List<String> getDescription() {
         return Arrays.asList("§f無情的狙擊手隨時都將奪去戰場上敵人的性命！", "§f給予敵人§c致命傷害");
     }
+
+    @Override
+    protected void initStructure() {
+
+    }
 }

@@ -116,15 +116,13 @@ public abstract class CraftMob implements Mob {
         // 不成功移除 -> 原本有
         //          -> 原本沒有
         me.add(ef);
-        System.out.println(me.size());
-        System.out.println("Add");
-        /*if (!me.removeIf(ef::canOverwrite)) {
+        if (!me.removeIf(ef::canOverwrite)) {
             boolean app = true;
             for (MobEffect m : me) {
                 if (m.getType().equals(ef.getType())) app = false;
             }
             if (app) me.add(ef);
-        }*/
+        }
     }
 
     @Override

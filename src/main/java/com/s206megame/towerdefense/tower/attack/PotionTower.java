@@ -84,5 +84,10 @@ public class PotionTower extends Tower {
         return Arrays.asList("§f巫婆調製的§2劇毒藥水§f會要了你的命！","§f給予敵人§c持續數秒的傷害");
     }
 
+    @Override
+    protected void initStructure() {
+
+    }
+
 
 }

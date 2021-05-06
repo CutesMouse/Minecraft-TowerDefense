@@ -13,6 +13,10 @@ public abstract class Tower {
         return new StaticGUIItem(getDisplayItem(), getDescriptionTitle(), getDescriptionLore(), 1);
     }
     protected TowerStructure structure;
+    public Tower() {
+        structure = new TowerStructure();
+        initStructure();
+    }
     public abstract Material getDisplayItem();
     public abstract double getDamage();
     public abstract double getHitDelay();
@@ -21,7 +25,8 @@ public abstract class Tower {
     public abstract int getLevel();
     public abstract String getTitle();
     public abstract List<String> getDescription();
-    public void build(Location loc) {
+    protected abstract void initStructure();
+    public void build(Location loc, Direction direct) {
         structure.build(loc,Direction.NORTH);
     }
 
