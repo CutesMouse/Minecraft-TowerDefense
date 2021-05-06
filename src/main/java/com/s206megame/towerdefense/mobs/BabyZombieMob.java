@@ -8,7 +8,6 @@ import org.bukkit.entity.Zombie;
 public class BabyZombieMob extends CraftMob {
     private Zombie babyzombie;
     private static final double MAX_HEALTH = 50.0;
-    private double health = MAX_HEALTH;
 
     @Override
     public Entity getEntity() {
@@ -47,11 +46,5 @@ public class BabyZombieMob extends CraftMob {
     @Override
     public double getHealth() {
         return health;
-    }
-
-    @Override
-    public void damage(double point) {
-        health -= point;
-        if (health <= 0) kill();
     }
 }

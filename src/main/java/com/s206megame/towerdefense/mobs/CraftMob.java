@@ -12,10 +12,16 @@ public abstract class CraftMob implements Mob {
         return Main.map;
     }
 
+
+    protected double health;
     private int nameupdateDelay = 0;
     private boolean onFire = false;
     private double yaw;
     private ArrayList<MobEffect> me = new ArrayList<>();
+
+    public CraftMob() {
+        this.health = getMaxHealth();
+    }
 
     @Override
     public void moveMob(double distance) {
@@ -123,5 +129,11 @@ public abstract class CraftMob implements Mob {
         } else {
             getEntity().setFireTicks(0);
         }
+    }
+
+    @Override
+    public void damage(double point) {
+        health -= point;
+        if (health <= 0) kill();
     }
 }

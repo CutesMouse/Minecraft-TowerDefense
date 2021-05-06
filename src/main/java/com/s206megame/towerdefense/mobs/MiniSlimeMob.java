@@ -48,10 +48,4 @@ public class MiniSlimeMob extends CraftMob {
         return health;
     }
 
-    @Override
-    public void damage(double point) {
-        health -= point;
-        if (health <= 0) kill();
-    }
-
 }
