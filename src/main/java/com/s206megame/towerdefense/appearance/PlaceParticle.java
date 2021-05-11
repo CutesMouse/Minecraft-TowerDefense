@@ -3,6 +3,7 @@ package com.s206megame.towerdefense.appearance;
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.TempBlock;
 import com.s206megame.towerdefense.api.TowerSlot;
+import com.s206megame.towerdefense.player.PlayerDataManager;
 import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -18,16 +19,26 @@ public class PlaceParticle {
             @Override
             public void run() {
                 for (Player p : Bukkit.getOnlinePlayers()) {
-                    if (!p.getInventory().getItemInMainHand().getType().equals(Material.ARMOR_STAND)) continue;
+                    if (!p.getInventory().getItemInMainHand().getType().equals(Material.ARMOR_STAND)) {
+                        PlayerDataManager.getPlayerData(p).setSlot(null);
+                        continue;
+                    }
                     Block tb = p.getTargetBlockExact(100);
-                    if (tb == null) continue;
+                    if (tb == null) {
+                        PlayerDataManager.getPlayerData(p).setSlot(null);
+                        continue;
+                    }
                     TowerSlot tower = Main.map.identifyTower(tb.getLocation());
-                    if (tower == null) continue;
+                    if (tower == null) {
+                        PlayerDataManager.getPlayerData(p).setSlot(null);
+                        continue;
+                    }
                     ParticleManager.playParticle(p.getEyeLocation(),
                             p.getEyeLocation().getDirection(),tb.getLocation().distance(p.getEyeLocation()),0.5, Particle.SPELL_WITCH);
                     for (Location loc : tower.getOutline()) {
-                        TempBlock.sendTempBlock(p,Material.SEA_LANTERN,10,loc);
+                        TempBlock.sendTempBlock(p,Material.GLOWSTONE,10,loc);
                     }
+                    PlayerDataManager.getPlayerData(p).setSlot(tower);
                 }
             }
         }.runTaskTimer(m,20L,10L);

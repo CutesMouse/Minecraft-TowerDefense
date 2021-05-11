@@ -1,6 +1,10 @@
 package com.s206megame.towerdefense.commands;
 
+import com.s206megame.towerdefense.api.TowerSlot;
+import com.s206megame.towerdefense.player.PlayerDataManager;
 import com.s206megame.towerdefense.tower.Direction;
+import com.s206megame.towerdefense.tower.TowerStructure;
+import com.s206megame.towerdefense.tower.TowerStructureBank;
 import com.s206megame.towerdefense.tower.range.ArcherTower;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -29,7 +33,26 @@ public class TDTowerTools implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        if (arg.length == 4) {
+        if (arg.length ==0) {
+            player.sendMessage("請輸入tower的classname");
+            return;
+        }
+        int level = 1;
+        if (arg.length == 2) {
+            level = Integer.parseInt(arg[1]);
+        }
+        TowerStructure st = TowerStructureBank.getStructure(level,arg[0]);
+        if (st == null) {
+            player.sendMessage("不存在的Tower!");
+            return;
+        }
+        TowerSlot slot = PlayerDataManager.getPlayerData(player).getSlot();
+        if (slot == null) {
+            player.sendMessage("請選擇Slot!");
+            return;
+        }
+        st.build(slot.getCenter(),slot.getOutDirection());
+        /*if (arg.length == 4) {
             int x = Integer.parseInt(arg[0]);
             int y = Integer.parseInt(arg[1]);
             int z = Integer.parseInt(arg[2]);
@@ -67,12 +90,7 @@ public class TDTowerTools implements TDCommandBase {
                         System.out.println("structure.register(new DirectionalBlockElement("+dx+","+dy+","+dz+",Material."+block.getType().name().toUpperCase()+",BlockFace."+((Directional) block.getBlockData()).getFacing().name().toUpperCase()+"));");
                     } else
                     System.out.println("structure.register(new SolidBlockElement("+dx+","+dy+","+dz+",Material."+block.getType().name().toUpperCase()+"));");
-                    /*
-                    structure.register(new SolidBlockElement(x,y,z,mat));
-                    structure.register(new DirectionalBlockElement(x,y,z,mat,face));
-                     */
                 }
-            }
-        }
+            }*/
     }
 }

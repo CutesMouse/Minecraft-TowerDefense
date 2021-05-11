@@ -9,6 +9,12 @@ public class TowerStructure {
     public TowerStructure() {
         BLOCKS = new ArrayList<>();
     }
+    /*
+    已知問題:
+        1. 玻璃不會延伸
+        2. 藤蔓位置出錯
+        3. 樹葉會自然掉落
+     */
     public void register(BlockElement blockElement) {
         BLOCKS.add(blockElement);
     }
