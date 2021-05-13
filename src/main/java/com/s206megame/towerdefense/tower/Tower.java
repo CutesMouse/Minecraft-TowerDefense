@@ -56,7 +56,7 @@ public abstract class Tower {
 
     public abstract double getRange();
 
-    public abstract int getPrice();
+    public abstract int getPrice(int level);
 
     public int getLevel() {
         return level;

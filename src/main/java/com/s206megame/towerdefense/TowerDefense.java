@@ -15,6 +15,23 @@ public class TowerDefense {
     public static TowerDefense getInstance() {
         return new TowerDefense();
     }
+    private int money;
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void addMoney(int money) {
+        this.money += money;
+    }
+
+    public void removeMoney(int money) {
+        this.money -= money;
+    }
+
     public void Start()
     {
         for (Player p : Bukkit.getOnlinePlayers()) {

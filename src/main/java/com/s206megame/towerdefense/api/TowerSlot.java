@@ -1,6 +1,7 @@
 package com.s206megame.towerdefense.api;
 
 import com.s206megame.towerdefense.tower.Direction;
+import com.s206megame.towerdefense.tower.Tower;
 import org.bukkit.Location;
 
 import java.util.ArrayList;
@@ -9,11 +10,27 @@ public class TowerSlot {
     private Location loc;
     private TowerType type;
     private Direction outDirection;
+    private Tower tower;
 
     public TowerSlot(Location loc, TowerType type, Direction outDirection) {
         this.loc = loc;
         this.type = type;
         this.outDirection = outDirection;
+    }
+
+    public void link(Tower tower) {
+        this.tower = tower;
+    }
+
+    public void buildTower(Tower tower) {
+        tower.build(this);
+        link(tower);
+
+    }
+
+    public void removeTower() {
+        if (tower == null) return;
+        tower.remove();
     }
 
     public boolean isInside(Location loc) {
