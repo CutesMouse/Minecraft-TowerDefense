@@ -54,11 +54,12 @@ public class ListenerHandler implements Listener {
         e.setCancelled(true);
     }
 
-    /*private Location p1;
+    private Location p1;
     @EventHandler
     public void onTest(PlayerInteractEvent e) {
+        if (!e.getPlayer().getName().equals("CutesMouse")) return;
         if (e.getClickedBlock() == null) return;
-        /*if (e.getItem() == null) {
+        if (e.getItem() == null) {
             e.setCancelled(true);
             if (p1 == null) {
                 p1 = e.getClickedBlock().getLocation();
@@ -69,10 +70,11 @@ public class ListenerHandler implements Listener {
             if (e.getAction().equals(Action.LEFT_CLICK_BLOCK)) e.getClickedBlock().setType(Material.AIR);
             e.getPlayer().sendMessage("Printed!");
             System.out.println("====");
-            e.getPlayer().performCommand(String.format("td tower %d %d %d %d %d %d",p1.getBlockX(),p1.getBlockY(),p1.getBlockZ(),p2.getBlockX(),p2.getBlockY(),p2.getBlockZ()));
+            e.getPlayer().performCommand(String.format("td tower %d %d %d %d %d %d", p1.getBlockX(), p1.getBlockY(), p1.getBlockZ(), p2.getBlockX(), p2.getBlockY(), p2.getBlockZ()));
             System.out.println("====");
             p1 = null;
-        }*/
+        }
+    }
     /*
         TowerType type = TowerType.THREE_BY_THREE;
         if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {

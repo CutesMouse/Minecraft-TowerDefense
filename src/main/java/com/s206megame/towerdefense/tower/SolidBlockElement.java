@@ -4,9 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
+import org.bukkit.block.data.BlockData;
+import org.bukkit.block.data.type.Leaves;
 
 public class SolidBlockElement extends BlockElement {
-    private Material mat;
+    protected Material mat;
     protected Location build;
     public SolidBlockElement(int x, int y, int z, Material mat) {
         super(x, y, z);
@@ -24,5 +26,9 @@ public class SolidBlockElement extends BlockElement {
         Block block = w.getBlockAt(center.getBlockX() + (int) Math.round(dx), center.getBlockY() + y, center.getBlockZ() + (int) Math.round(dz));
         this.build = block.getLocation();
         block.setType(mat);
+        BlockData data = block.getBlockData();
+        if (data instanceof Leaves) {
+            ((Leaves) data).setPersistent(true);
+        }
     }
 }

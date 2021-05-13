@@ -7,8 +7,8 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 
 public class ArmoredZombieMob extends CraftMob {
-    private Zombie armoredzombie;
     private static final double MAX_HEALTH = 300.0;
+    private Zombie armoredzombie;
 
     @Override
     public Entity getEntity() {
@@ -38,7 +38,7 @@ public class ArmoredZombieMob extends CraftMob {
     }
 
     @Override
-    public double getTickPerBlock() {
+    public double getBlockPerTick() {
         return 0.1;
     }
 

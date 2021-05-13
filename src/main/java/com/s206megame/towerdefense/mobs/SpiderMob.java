@@ -32,7 +32,7 @@ public class SpiderMob extends CraftMob {
     }
 
     @Override
-    public double getTickPerBlock() {
+    public double getBlockPerTick() {
         return 0.075;
     }
 

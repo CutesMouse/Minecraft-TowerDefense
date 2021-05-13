@@ -46,7 +46,7 @@ public class ChickenJockeyMob extends CraftMob {
     }
 
     @Override
-    public double getTickPerBlock() {
+    public double getBlockPerTick() {
         return 0.25;
     }
 

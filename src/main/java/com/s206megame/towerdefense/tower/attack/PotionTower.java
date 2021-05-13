@@ -1,8 +1,10 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
+import org.bukkit.Particle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -85,8 +87,13 @@ public class PotionTower extends Tower {
     }
 
     @Override
-    protected void initStructure() {
+    protected Location getParticleStartPoint() {
+        return null;
+    }
 
+    @Override
+    protected Particle getParticle() {
+        return null;
     }
 
 

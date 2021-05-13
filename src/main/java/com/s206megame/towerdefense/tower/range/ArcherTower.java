@@ -3,9 +3,11 @@ package com.s206megame.towerdefense.tower.range;
 import com.s206megame.towerdefense.StairsBlockElement;
 import com.s206megame.towerdefense.tower.DirectionalBlockElement;
 import com.s206megame.towerdefense.tower.SolidBlockElement;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
+import org.bukkit.Particle;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Bisected;
 import org.bukkit.block.data.type.Stairs;
@@ -15,7 +17,6 @@ import java.util.List;
 
 public class ArcherTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Range;
 
     @Override
@@ -50,57 +51,6 @@ public class ArcherTower extends Tower {
     }
 
     @Override
-    protected void initStructure() {
-        structure.register(new SolidBlockElement(-1,1,-1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(-1,1,0,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(-1,1,1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(-1,2,-1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(-1,2,0,Material.OAK_FENCE));
-        structure.register(new SolidBlockElement(-1,2,1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(-1,3,-1,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(-1,3,0,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(-1,3,1,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(-1,4,-1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new StairsBlockElement(-1,4,0,Material.OAK_STAIRS,BlockFace.EAST,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
-        structure.register(new SolidBlockElement(-1,4,1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new StairsBlockElement(-1,5,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.TOP,Stairs.Shape.OUTER_LEFT));
-        structure.register(new StairsBlockElement(-1,5,0,Material.OAK_STAIRS,BlockFace.EAST,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
-        structure.register(new StairsBlockElement(-1,5,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.TOP,Stairs.Shape.OUTER_RIGHT));
-        structure.register(new StairsBlockElement(-1,6,0,Material.OAK_STAIRS,BlockFace.EAST,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
-        structure.register(new SolidBlockElement(0,1,-1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(0,1,0,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(0,1,1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(0,2,-1,Material.OAK_FENCE));
-        structure.register(new SolidBlockElement(0,2,1,Material.OAK_FENCE));
-        structure.register(new SolidBlockElement(0,3,-1,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(0,3,1,Material.COBBLESTONE_SLAB));
-        structure.register(new StairsBlockElement(0,4,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
-        structure.register(new SolidBlockElement(0,4,0,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new StairsBlockElement(0,4,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
-        structure.register(new StairsBlockElement(0,5,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
-        structure.register(new StairsBlockElement(0,5,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
-        structure.register(new StairsBlockElement(0,6,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
-        structure.register(new SolidBlockElement(0,6,0,Material.OAK_PLANKS));
-        structure.register(new StairsBlockElement(0,6,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
-        structure.register(new SolidBlockElement(1,1,-1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(1,1,0,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new SolidBlockElement(1,1,1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(1,2,-1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(1,2,0,Material.OAK_FENCE));
-        structure.register(new SolidBlockElement(1,2,1,Material.OAK_LOG));
-        structure.register(new SolidBlockElement(1,3,-1,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(1,3,0,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(1,3,1,Material.COBBLESTONE_SLAB));
-        structure.register(new SolidBlockElement(1,4,-1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new StairsBlockElement(1,4,0,Material.OAK_STAIRS,BlockFace.WEST,Bisected.Half.BOTTOM, Stairs.Shape.STRAIGHT));
-        structure.register(new SolidBlockElement(1,4,1,Material.PETRIFIED_OAK_SLAB));
-        structure.register(new StairsBlockElement(1,5,-1,Material.OAK_STAIRS,BlockFace.SOUTH,Bisected.Half.TOP,Stairs.Shape.OUTER_RIGHT));
-        structure.register(new StairsBlockElement(1,5,0,Material.OAK_STAIRS,BlockFace.WEST,Bisected.Half.TOP,Stairs.Shape.STRAIGHT));
-        structure.register(new StairsBlockElement(1,5,1,Material.OAK_STAIRS,BlockFace.NORTH,Bisected.Half.TOP,Stairs.Shape.OUTER_LEFT));
-        structure.register(new StairsBlockElement(1,6,0,Material.OAK_STAIRS,BlockFace.WEST,Bisected.Half.BOTTOM,Stairs.Shape.STRAIGHT));
-    }
-
-    @Override
     public double getRange() {
         switch (level) {
             case 1:
@@ -127,11 +77,6 @@ public class ArcherTower extends Tower {
     }
 
     @Override
-    public int getLevel() {
-        return level;
-    }
-
-    @Override
     public String getTitle() {
         return "[Lv."+getLevel()+"] 弓箭手塔";
     }
@@ -139,6 +84,16 @@ public class ArcherTower extends Tower {
     @Override
     public List<String> getDescription() {
         return Arrays.asList("§f冷血的弓箭手躲在堅固的堡壘中，§f準確§c射殺§f迎面而來的§c敵人！", "§f無特殊效果");
+    }
+
+    @Override
+    protected Location getParticleStartPoint() {
+        return new Location(null,0.5,6,0.5);
+    }
+
+    @Override
+    protected Particle getParticle() {
+        return Particle.ASH;
     }
 
 

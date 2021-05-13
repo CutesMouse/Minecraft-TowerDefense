@@ -1,9 +1,12 @@
 package com.s206megame.towerdefense.mobs;
 
 import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Wither;
 import org.bukkit.entity.WitherSkeleton;
+
+import java.util.Objects;
 
 public class WitherMob extends CraftMob {
 
@@ -34,7 +37,7 @@ public class WitherMob extends CraftMob {
     }
 
     @Override
-    public double getTickPerBlock() {
+    public double getBlockPerTick() {
         return 0.075;
     }
 
@@ -48,4 +51,10 @@ public class WitherMob extends CraftMob {
         return health;
     }
 
+    @Override
+    public void damage(double point) {
+        super.damage(point);
+        double ratio = getHealth() / getMaxHealth();
+        wither.setHealth(Objects.requireNonNull(wither.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getBaseValue() * ratio);
+    }
 }

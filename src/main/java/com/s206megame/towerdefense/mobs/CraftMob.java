@@ -32,7 +32,7 @@ public abstract class CraftMob implements Mob {
         Location c = getEntity().getLocation();
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
-        double newY = c.getWorld().getHighestBlockAt((int) newX, (int) newZ).getLocation().getBlockY() + 1;
+        double newY = c.getWorld().getHighestBlockAt((int) newX, (int) newZ).getLocation().getBlockY() + 1 + getYoffset();
         Location tpto = new Location(c.getWorld(), newX, newY, newZ, (float) yaw, 0);
         if (getEntity().getPassengers().size() != 0) {
             Entity pas = getEntity().getPassengers().get(0);
@@ -50,8 +50,8 @@ public abstract class CraftMob implements Mob {
             Main.map.getMobList().remove(this);
             return;
         }
-        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getTickPerBlock() * 1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
-        moveMob(getTickPerBlock());
+        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getBlockPerTick() * 1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
+        moveMob(getBlockPerTick());
     }
 
     @Override
@@ -144,5 +144,15 @@ public abstract class CraftMob implements Mob {
     public void damage(double point) {
         health -= point;
         if (health <= 0) kill();
+    }
+
+    @Override
+    public double getAward() {
+        return getMaxHealth() * getBlockPerTick() * 2;
+    }
+
+    @Override
+    public double getYoffset() {
+        return 0;
     }
 }

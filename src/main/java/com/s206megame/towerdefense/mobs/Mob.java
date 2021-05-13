@@ -16,7 +16,7 @@ public interface Mob {
     void spawn(Location loc);
     void moveMob(double distance);
     void setFacingDegree(double yaw);
-    double getTickPerBlock();
+    double getBlockPerTick();
     void updateDisplayName();
     double getMaxHealth();
     double getHealth();
@@ -25,4 +25,6 @@ public interface Mob {
     ArrayList<MobEffect> getEffects();
     void addEffect(MobEffect ef);
     void effectUpdate();
+    double getAward();
+    double getYoffset();
 }
