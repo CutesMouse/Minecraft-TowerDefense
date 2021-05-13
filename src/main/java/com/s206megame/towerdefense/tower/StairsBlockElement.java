@@ -1,4 +1,4 @@
-package com.s206megame.towerdefense;
+package com.s206megame.towerdefense.tower;
 
 import com.s206megame.towerdefense.tower.Direction;
 import com.s206megame.towerdefense.tower.DirectionalBlockElement;

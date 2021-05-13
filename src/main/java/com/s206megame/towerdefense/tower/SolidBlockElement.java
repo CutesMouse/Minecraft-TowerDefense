@@ -31,4 +31,15 @@ public class SolidBlockElement extends BlockElement {
             ((Leaves) data).setPersistent(true);
         }
     }
+
+    @Override
+    public void remove(Location center, Direction dir) {
+        double theta = dir.getRad() - Direction.NORTH.getRad();
+        double dx = this.x * Math.cos(theta) - this.z * Math.sin(theta);
+        double dz = this.x * Math.sin(theta) + this.z * Math.cos(theta);
+        World w = center.getWorld();
+        if (w == null) return;
+        Block block = w.getBlockAt(center.getBlockX() + (int) Math.round(dx), center.getBlockY() + y, center.getBlockZ() + (int) Math.round(dz));
+        block.setType(Material.AIR);
+    }
 }

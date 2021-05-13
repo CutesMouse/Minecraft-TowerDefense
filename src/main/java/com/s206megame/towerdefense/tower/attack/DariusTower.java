@@ -1,10 +1,13 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.mobs.Mob;
+import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
 import org.bukkit.Particle;
+import org.bukkit.util.Vector;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,8 +59,15 @@ public class DariusTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.BLOCK_CRACK;
     }
 
-
+    @Override
+    public void playParticle(Mob target) {
+        double vx = target.getEntity().getLocation().getX() - getParticleStartPoint().getX();
+        double vy = target.getEntity().getLocation().getY() - getParticleStartPoint().getY();
+        double vz = target.getEntity().getLocation().getZ() - getParticleStartPoint().getZ();
+        Vector vec = new Vector(vx,vy,vz);
+        ParticleManager.playParticle(getParticleStartPoint(),vec,Math.sqrt(vx*vx+vy*vy+vz*vz),0.5,getParticle(),Material.REDSTONE_BLOCK.createBlockData());
+    }
 }

@@ -1,16 +1,10 @@
 package com.s206megame.towerdefense.tower.range;
 
-import com.s206megame.towerdefense.StairsBlockElement;
-import com.s206megame.towerdefense.tower.DirectionalBlockElement;
-import com.s206megame.towerdefense.tower.SolidBlockElement;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.TowerCategory;
 import org.bukkit.Particle;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.data.Bisected;
-import org.bukkit.block.data.type.Stairs;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,6 +1,8 @@
 package com.s206megame.towerdefense.tower;
 
 import com.cutesmouse.mgui.items.StaticGUIItem;
+import com.s206megame.towerdefense.Main;
+import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Location;
@@ -16,6 +18,9 @@ public abstract class Tower {
     protected TowerCategory category;
     protected int level;
     protected long lastAttack;
+    protected TowerSlot location;
+    private Location converted;
+    protected TowerAI ai;
 
     public TowerCategory getCategory() {
         return category;
@@ -29,6 +34,14 @@ public abstract class Tower {
     public Tower() {
         structure = new TowerStructure();
         level = 1;
+        ai = new BaseTargetAI(this);
+    }
+
+    public void update() {
+        if (isInCooldown()) return;
+        for (Mob mob : ai.getTarget(Main.map)) {
+            attackMob(mob);
+        }
     }
 
     protected TowerStructure getStructure() {
@@ -53,8 +66,9 @@ public abstract class Tower {
 
     public abstract List<String> getDescription();
 
-    public void build(Location loc, Direction direct) {
-        structure.build(loc,direct);
+    public void build(TowerSlot slot) {
+        structure.build(slot.getCenter(),slot.getOutDirection());
+        this.location = slot;
     }
 
     public String getDescriptionTitle() {
@@ -82,6 +96,7 @@ public abstract class Tower {
         if (isInCooldown()) return;
         lastAttack = System.currentTimeMillis();
         target.damage(getDamage());
+        playParticle(target);
     }
 
     public void playParticle(Mob target) {
@@ -89,7 +104,36 @@ public abstract class Tower {
         double vy = target.getEntity().getLocation().getY() - getParticleStartPoint().getY();
         double vz = target.getEntity().getLocation().getZ() - getParticleStartPoint().getZ();
         Vector vec = new Vector(vx,vy,vz);
-        ParticleManager.playParticle(getParticleStartPoint(),vec,Math.sqrt(vx*vx+vy*vy+vz*vz),0.5,getParticle());
+        ParticleManager.playParticle(getConvertedParticleStart(),vec,Math.sqrt(vx*vx+vy*vy+vz*vz),0.5,getParticle());
     }
 
+    public boolean isPlaced() {
+        return location == null;
+    }
+
+    public void remove() {
+        if (location == null) return;
+        getStructure().remove(location.getCenter(),location.getOutDirection());
+    }
+
+    public Location getConvertedParticleStart() {
+        if (converted != null) return converted;
+        Location sp = getParticleStartPoint();
+        Location center = location.getCenter();
+        double vx = sp.getX() - center.getX();
+        double vz = sp.getZ() - center.getZ();
+        double theta = location.getOutDirection().getRad() - Direction.NORTH.getRad();
+        double dx = vx * Math.cos(theta) - vz * Math.sin(theta);
+        double dz = vx * Math.sin(theta) + vz * Math.cos(theta);
+        converted = new Location(center.getWorld(), center.getX() + dx, sp.getY(), center.getZ() + dz);
+        return converted;
+    }
+
+    public TowerSlot getSlot() {
+        return location;
+    }
+
+    public int getMaxTargetAmount() {
+        return 1;
+    }
 }

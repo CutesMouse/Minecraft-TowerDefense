@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -87,8 +88,12 @@ public class ExplosionTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.EXPLOSION_HUGE;
     }
 
+    @Override
+    public void attackMob(Mob target) {
+        if (isInCooldown()) return;
 
+    }
 }
