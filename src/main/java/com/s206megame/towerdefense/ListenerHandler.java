@@ -1,6 +1,8 @@
 package com.s206megame.towerdefense;
 
 import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.player.PlayerData;
+import com.s206megame.towerdefense.player.PlayerDataManager;
 import com.s206megame.towerdefense.tower.Direction;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -56,8 +58,12 @@ public class ListenerHandler implements Listener {
 
     private Location p1;
     @EventHandler
-    public void onTest(PlayerInteractEvent e) {
-        if (!e.getPlayer().getName().equals("CutesMouse")) return;
+    public void onTowerPlacing(PlayerInteractEvent e) {
+        PlayerData pd = PlayerDataManager.getPlayerData(e.getPlayer());
+        if (pd.getSlot() == null) return;
+
+    }
+        /*if (!e.getPlayer().getName().equals("CutesMouse")) return;
         if (e.getClickedBlock() == null) return;
         if (e.getItem() == null) {
             e.setCancelled(true);
@@ -73,7 +79,7 @@ public class ListenerHandler implements Listener {
             e.getPlayer().performCommand(String.format("td tower %d %d %d %d %d %d", p1.getBlockX(), p1.getBlockY(), p1.getBlockZ(), p2.getBlockX(), p2.getBlockY(), p2.getBlockZ()));
             System.out.println("====");
             p1 = null;
-        }
+        }/*
     }
     /*
         TowerType type = TowerType.THREE_BY_THREE;
