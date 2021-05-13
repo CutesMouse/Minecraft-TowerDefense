@@ -11,7 +11,6 @@ import java.util.List;
 
 public class FireTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Attack;
 
     @Override
@@ -75,11 +74,6 @@ public class FireTower extends Tower {
                 return 640;
         }
         return 0;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
     }
 
     @Override

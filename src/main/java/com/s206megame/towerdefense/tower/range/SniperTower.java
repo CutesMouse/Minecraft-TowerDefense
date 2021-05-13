@@ -11,7 +11,6 @@ import java.util.List;
 
 public class SniperTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Range;
     @Override
     public Material getDisplayItem() {
@@ -68,11 +67,6 @@ public class SniperTower extends Tower {
                 return 1250;
         }
         return 0;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
     }
 
     @Override

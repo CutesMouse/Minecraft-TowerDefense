@@ -12,7 +12,6 @@ import java.util.List;
 public class MinigunTower extends Tower {
 
 
-    private int level;
     TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
@@ -71,10 +70,6 @@ public class MinigunTower extends Tower {
         return 0;
     }
 
-    @Override
-    public int getLevel() {
-        return level;
-    }
 
     @Override
     public String getTitle() {

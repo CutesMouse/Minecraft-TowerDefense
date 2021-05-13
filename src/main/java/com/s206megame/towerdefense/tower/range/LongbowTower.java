@@ -11,7 +11,6 @@ import java.util.List;
 
 public class LongbowTower extends Tower {
 
-    private int level;
     TowerCategory category = TowerCategory.Range;
     @Override
     public Material getDisplayItem() {
@@ -68,11 +67,6 @@ public class LongbowTower extends Tower {
                 return 720;
         }
         return 0;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
     }
 
     @Override

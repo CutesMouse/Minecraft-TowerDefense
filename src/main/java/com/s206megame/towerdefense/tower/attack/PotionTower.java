@@ -11,7 +11,6 @@ import java.util.List;
 
 public class PotionTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Attack;
 
     @Override
@@ -69,11 +68,6 @@ public class PotionTower extends Tower {
                 return 810;
         }
         return 0;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
     }
 
     @Override

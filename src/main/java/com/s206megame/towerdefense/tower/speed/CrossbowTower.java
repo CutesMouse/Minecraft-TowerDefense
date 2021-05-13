@@ -11,7 +11,6 @@ import java.util.List;
 
 public class CrossbowTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
@@ -68,11 +67,6 @@ public class CrossbowTower extends Tower {
                 return 470;
         }
         return 0;
-    }
-
-    @Override
-    public int getLevel() {
-        return level;
     }
 
     @Override

@@ -39,9 +39,6 @@ public class DariusTower extends Tower {
     }
 
     @Override
-    public int getLevel() { return 0; }
-
-    @Override
     public String getTitle() {
         return "[Lv."+99999+"] 巨錘瑞斯";
     }
