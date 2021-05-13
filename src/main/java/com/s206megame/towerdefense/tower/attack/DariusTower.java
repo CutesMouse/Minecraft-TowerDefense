@@ -37,7 +37,7 @@ public class DariusTower extends Tower {
     }
 
     @Override
-    public int getPrice() {
+    public int getPrice(int level) {
         return 5000;
     }
 

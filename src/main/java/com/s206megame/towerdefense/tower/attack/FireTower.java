@@ -64,7 +64,7 @@ public class FireTower extends Tower {
     }
 
     @Override
-    public int getPrice() {
+    public int getPrice(int level) {
         switch (level) {
             case 1:
                 return 160;
