@@ -78,7 +78,7 @@ public class SnowballTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "使敵人得到§c減速效果數秒");
+        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "§f使敵人得到§c減速效果數秒");
     }
 
     @Override
