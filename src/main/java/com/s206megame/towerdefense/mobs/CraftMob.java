@@ -155,4 +155,6 @@ public abstract class CraftMob implements Mob {
     public double getYoffset() {
         return 0;
     }
+
+
 }

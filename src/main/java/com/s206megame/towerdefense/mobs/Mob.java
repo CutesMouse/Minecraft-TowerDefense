@@ -27,4 +27,5 @@ public interface Mob {
     void effectUpdate();
     double getAward();
     double getYoffset();
+    void waveEffect(int wave);
 }
