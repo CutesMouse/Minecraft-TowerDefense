@@ -11,7 +11,6 @@ import java.util.List;
 
 public class LongbowTower extends Tower {
 
-    private int level;
     TowerCategory category = TowerCategory.Range;
     @Override
     public Material getDisplayItem() {
@@ -71,18 +70,13 @@ public class LongbowTower extends Tower {
     }
 
     @Override
-    public int getLevel() {
-        return level;
-    }
-
-    @Override
     public String getTitle() {
         return "[Lv."+getLevel()+"] 長弓手塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f長弓手以其精準的預判能力，","§f遠程射殺敵人！", "§f給予敵人§c高傷害");
+        return Arrays.asList("§c長弓手§f以其精準的預判能力，","§f遠程射殺敵人！", "§f給予敵人§c高傷害");
     }
 
     @Override

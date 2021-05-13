@@ -12,7 +12,6 @@ import java.util.List;
 public class MinigunTower extends Tower {
 
 
-    private int level;
     TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
@@ -71,10 +70,6 @@ public class MinigunTower extends Tower {
         return 0;
     }
 
-    @Override
-    public int getLevel() {
-        return level;
-    }
 
     @Override
     public String getTitle() {
@@ -83,7 +78,7 @@ public class MinigunTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f機關槍將會掃射來自四面八方的敵人，","§f再強大的怪物軍隊都將輝飛煙滅！", "快速發射大量的§c小子彈§f造成驚人的傷害");
+        return Arrays.asList("§c機關槍§f將會掃射來自四面八方的敵人，","§f再強大的怪物軍隊都將輝飛煙滅！", "§a快速發射§f大量的§c小子彈§f造成驚人的傷害");
     }
 
     @Override

@@ -11,7 +11,6 @@ import java.util.List;
 
 public class SniperTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Range;
     @Override
     public Material getDisplayItem() {
@@ -71,18 +70,13 @@ public class SniperTower extends Tower {
     }
 
     @Override
-    public int getLevel() {
-        return level;
-    }
-
-    @Override
     public String getTitle() {
         return "[Lv."+getLevel()+"] 狙擊手塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f無情的狙擊手隨時都將奪去戰場上敵人的性命！", "§f給予敵人§c致命傷害");
+        return Arrays.asList("§f無情的§c狙擊手§f隨時都將奪去戰場上敵人的性命！", "§f給予敵人§c致命傷害");
     }
 
     @Override

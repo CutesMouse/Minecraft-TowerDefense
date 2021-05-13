@@ -11,7 +11,6 @@ import java.util.List;
 
 public class CrossbowTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
@@ -71,18 +70,13 @@ public class CrossbowTower extends Tower {
     }
 
     @Override
-    public int getLevel() {
-        return level;
-    }
-
-    @Override
     public String getTitle() {
         return "[Lv."+getLevel()+"] 十字弓手塔";
     }
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f十字弓射出的快速弓箭將讓敵人無從應對！", "§f快速射出能造成§c中等傷害的弓箭");
+        return Arrays.asList("§c十字弓§f射出的快速弓箭將讓敵人無從應對！", "§a快速§f射出能造成§c中等傷害的弓箭");
     }
 
     @Override

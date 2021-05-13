@@ -1,7 +1,32 @@
 package com.s206megame.towerdefense;
 
+import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
+import org.bukkit.Location;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Player;
+
+import java.util.List;
+import java.util.Set;
+
 public class TowerDefense {
     public static TowerDefense getInstance() {
         return new TowerDefense();
     }
+    public void Start()
+    {
+        for (Player p : Bukkit.getOnlinePlayers())
+        {
+            p.teleport(new Location(p.getWorld(), -23.5, 6, -27.5));
+            p.sendTitle("§f歡迎來到§aTOWER DEFENSE！","§f遊戲將在不久後開始", 10, 100, 10);
+            p.setGameMode(GameMode.ADVENTURE);
+            p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            p.setFoodLevel(20);
+            p.closeInventory();
+        }
+
+
+
+    }
+
 }

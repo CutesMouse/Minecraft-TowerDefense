@@ -11,7 +11,6 @@ import java.util.List;
 
 public class SnowballTower extends Tower {
 
-    private int level;
     private TowerCategory category = TowerCategory.Speed;
 
     @Override
@@ -71,10 +70,6 @@ public class SnowballTower extends Tower {
         return 0;
     }
 
-    @Override
-    public int getLevel() {
-        return level;
-    }
 
     @Override
     public String getTitle() {
@@ -83,7 +78,7 @@ public class SnowballTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "使敵人得到§c減速效果數秒");
+        return Arrays.asList("§f來自雪人的祝福，在戰場上開啟一場§a雪球大戰！", "§f使敵人得到§c減速效果數秒");
     }
 
     @Override
