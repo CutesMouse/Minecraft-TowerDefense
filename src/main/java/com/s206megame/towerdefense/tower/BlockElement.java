@@ -13,4 +13,5 @@ public abstract class BlockElement {
         this.z = z;
     }
     public abstract void build(Location center, Direction dir);
+    public abstract void remove(Location center, Direction dir);
 }

@@ -1,6 +1,5 @@
 package com.s206megame.towerdefense.tower;
 
-import com.s206megame.towerdefense.StairsBlockElement;
 import org.bukkit.Material;
 import org.bukkit.block.BlockFace;
 import org.bukkit.block.data.Bisected;

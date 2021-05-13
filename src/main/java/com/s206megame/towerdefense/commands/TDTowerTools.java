@@ -50,14 +50,6 @@ public class TDTowerTools implements TDCommandBase {
             }
             st.build(slot.getCenter(),slot.getOutDirection());
         }
-        if (arg.length == 4) {
-            int x = Integer.parseInt(arg[0]);
-            int y = Integer.parseInt(arg[1]);
-            int z = Integer.parseInt(arg[2]);
-            Direction dir = Direction.valueOf(arg[3].toUpperCase(Locale.ROOT));
-            new ArcherTower().build(new Location(player.getWorld(), x, y, z), dir);
-            return;
-        }
         if (arg.length != 6) return;
         int mx = Integer.parseInt(arg[0]);
         int my = Integer.parseInt(arg[1]);
