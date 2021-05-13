@@ -46,7 +46,7 @@ public class TowerDefense {
         for (int wave = 1 ; wave <= 2; wave++)
         {
             waveMobList.getWave(wave).spawnWave();
-            T
+
         }
 
     }
