@@ -1,12 +1,19 @@
 package com.s206megame.towerdefense;
 
+import com.google.common.base.Stopwatch;
+import com.s206megame.towerdefense.appearance.WaveBar;
 import com.s206megame.towerdefense.mobs.ChickenJockeyMob;
 import com.s206megame.towerdefense.mobs.WaveMobList;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.boss.BarColor;
+import org.bukkit.boss.BarFlag;
+import org.bukkit.boss.BarStyle;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 import java.util.Set;
@@ -43,9 +50,21 @@ public class TowerDefense {
             p.closeInventory();
         }
         WaveMobList waveMobList = new WaveMobList();
-        for (int wave = 1 ; wave <= 2; wave++)
+        for (int wave = 1 ; wave <= 3; wave++)
         {
+            WaveBar bar = new WaveBar(wave);
+            // half time skip wave
+            // skip wave when no mob
             waveMobList.getWave(wave).spawnWave();
+            for (int sec = 120; sec>=120; sec--)
+            {
+                bar.updateBar((double) sec);
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
         }
 
