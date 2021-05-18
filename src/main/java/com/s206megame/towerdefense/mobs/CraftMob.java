@@ -17,18 +17,20 @@ public abstract class CraftMob implements Mob {
     protected double health;
     private int nameupdateDelay = 0;
     private boolean onFire = false;
+    protected double snowless;
     private double yaw;
     private ArrayList<MobEffect> me = new ArrayList<>();
 
     public CraftMob() {
         this.health = getMaxHealth();
+        this.snowless = 1.0;
     }
 
     @Override
     public void moveMob(double distance) {
         double pi = (yaw + 90) * Math.PI / 180.0;
-        double dx = Math.cos(pi) * distance;
-        double dz = Math.sin(pi) * distance;
+        double dx = Math.cos(pi) * distance * snowless;
+        double dz = Math.sin(pi) * distance * snowless;
         Location c = getEntity().getLocation();
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
@@ -75,7 +77,7 @@ public abstract class CraftMob implements Mob {
         sb.append("§f[§7");
         for (int i = 0; i <= 25; i++) {
             if (i == ri) {
-                sb.append(rate>0.5? "§a" : (rate>0.2? "§e" : "§4"));
+                sb.append(rate>12.5? "§a" : (rate>5? "§e" : "§4"));
             }
             if (i == 25) {
                 break;
@@ -156,5 +158,8 @@ public abstract class CraftMob implements Mob {
         return 0;
     }
 
-
+    @Override
+    public void setSnowness(double ratio) {
+        this.snowless = ratio;
+    }
 }

@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense;
 
+import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.mobs.ChickenJockeyMob;
 import com.s206megame.towerdefense.mobs.WaveMobList;
 import org.bukkit.Bukkit;
@@ -7,6 +8,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 import java.util.Set;
@@ -53,6 +55,19 @@ public class TowerDefense {
 
         }
 
+    }
+
+    public void MainLoop(Main m) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                for (TowerSlot slot : Main.map.getTowerSlots()) {
+                    if (slot.getTower() != null) {
+                        slot.getTower().update();
+                    }
+                }
+            }
+        }.runTaskTimer(m,0L,1L);
     }
 
 }

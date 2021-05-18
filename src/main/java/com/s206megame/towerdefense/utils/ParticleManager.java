@@ -6,6 +6,7 @@ import org.bukkit.util.Vector;
 
 public class ParticleManager {
     public static void playParticle(Location standardLoc, Vector eyeLoc, double blocks, double distance, Particle part) {
+        System.out.println("PLAY from " + standardLoc.getBlockX() + ", " + standardLoc.getBlockY());
         Vector vec = eyeLoc;
         for (double i = distance; i <= blocks; i+= distance) {
             Location nl = standardLoc.clone().add(vec.normalize().multiply(i));

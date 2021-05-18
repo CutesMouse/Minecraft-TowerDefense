@@ -11,8 +11,6 @@ import java.util.List;
 
 public class MinigunTower extends Tower {
 
-
-    TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
         return Material.DISPENSER;
@@ -83,11 +81,11 @@ public class MinigunTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,7,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.BLOCK_DUST;
     }
 }

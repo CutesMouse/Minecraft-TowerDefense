@@ -11,7 +11,6 @@ import java.util.List;
 
 public class LongbowTower extends Tower {
 
-    TowerCategory category = TowerCategory.Range;
     @Override
     public Material getDisplayItem() {
         return Material.ARROW;
@@ -81,11 +80,11 @@ public class LongbowTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,6,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.ASH;
     }
 }

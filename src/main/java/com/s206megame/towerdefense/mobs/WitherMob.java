@@ -55,6 +55,6 @@ public class WitherMob extends CraftMob {
     public void damage(double point) {
         super.damage(point);
         double ratio = getHealth() / getMaxHealth();
-        wither.setHealth(Objects.requireNonNull(wither.getAttribute(Attribute.GENERIC_MAX_HEALTH)).getBaseValue() * ratio);
+        wither.setHealth(300.0 * ratio);
     }
 }

@@ -12,8 +12,6 @@ import java.util.List;
 
 public class ExplosionTower extends Tower {
 
-    private TowerCategory category = TowerCategory.Attack;
-
     @Override
     public Material getDisplayItem() {
         return Material.TNT;
@@ -83,7 +81,7 @@ public class ExplosionTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,7,0);
     }
 
     @Override

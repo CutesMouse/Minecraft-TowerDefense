@@ -17,6 +17,7 @@ public interface Mob {
     void moveMob(double distance);
     void setFacingDegree(double yaw);
     double getBlockPerTick();
+    void setSnowness(double ratio);
     void updateDisplayName();
     double getMaxHealth();
     double getHealth();
@@ -27,5 +28,4 @@ public interface Mob {
     void effectUpdate();
     double getAward();
     double getYoffset();
-    void waveEffect(int wave);
 }

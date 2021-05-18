@@ -21,8 +21,10 @@ public class Main extends JavaPlugin {
         CMD_MANAGER.registerArg(new TDRemoveMobs());
         CMD_MANAGER.registerArg(new TDMobEffect());
         CMD_MANAGER.registerArg(new TDTowerTools());
+        CMD_MANAGER.registerArg(new TDRemove());
         getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
         PlaceParticle.init(this);
         ScoreboardManager.init(this);
+        new TowerDefense().MainLoop(this);
     }
 }

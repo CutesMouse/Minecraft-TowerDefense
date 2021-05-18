@@ -11,8 +11,6 @@ import java.util.List;
 
 public class ArcherTower extends Tower {
 
-    private TowerCategory category = TowerCategory.Range;
-
     @Override
     public Material getDisplayItem() {
         return Material.BOW;

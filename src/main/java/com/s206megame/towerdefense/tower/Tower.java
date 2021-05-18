@@ -8,6 +8,7 @@ import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Particle;
+import org.bukkit.World;
 import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
@@ -29,10 +30,8 @@ public abstract class Tower {
     public StaticGUIItem getGUIItem() {
         return new StaticGUIItem(getDisplayItem(), getDescriptionTitle(), getDescriptionLore(), 1);
     }
-    protected TowerStructure structure;
 
     public Tower() {
-        structure = new TowerStructure();
         level = 1;
         ai = new BaseTargetAI(this);
     }
@@ -67,7 +66,8 @@ public abstract class Tower {
     public abstract List<String> getDescription();
 
     public void build(TowerSlot slot) {
-        structure.build(slot.getCenter(),slot.getOutDirection());
+        if (isPlaced()) slot.removeTower();
+        TowerStructureBank.getStructure(getLevel(),this.getClass()).build(slot.getCenter(),slot.getOutDirection());
         this.location = slot;
     }
 
@@ -93,7 +93,6 @@ public abstract class Tower {
     }
 
     public void attackMob(Mob target) {
-        if (isInCooldown()) return;
         lastAttack = System.currentTimeMillis();
         target.damage(getDamage());
         playParticle(target);
@@ -107,8 +106,12 @@ public abstract class Tower {
         ParticleManager.playParticle(getConvertedParticleStart(),vec,Math.sqrt(vx*vx+vy*vy+vz*vz),0.5,getParticle());
     }
 
+    protected World getWorld() {
+        return getSlot().getCenter().getWorld();
+    }
+
     public boolean isPlaced() {
-        return location == null;
+        return location != null;
     }
 
     public void remove() {

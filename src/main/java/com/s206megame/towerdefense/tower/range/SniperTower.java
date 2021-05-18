@@ -11,7 +11,6 @@ import java.util.List;
 
 public class SniperTower extends Tower {
 
-    private TowerCategory category = TowerCategory.Range;
     @Override
     public Material getDisplayItem() {
         return Material.OBSERVER;
@@ -81,11 +80,11 @@ public class SniperTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,10,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.CRIT_MAGIC;
     }
 }

@@ -11,7 +11,6 @@ import java.util.List;
 
 public class CrossbowTower extends Tower {
 
-    private TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
         return Material.CROSSBOW;
@@ -81,11 +80,11 @@ public class CrossbowTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,8,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.CRIT;
     }
 }

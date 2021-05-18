@@ -48,7 +48,7 @@ public class TDTowerTools implements TDCommandBase {
                 player.sendMessage("請選擇Slot!");
                 return;
             }
-            st.build(slot.getCenter(),slot.getOutDirection());
+            slot.buildTower(new ArcherTower());
         }
         if (arg.length != 6) return;
         int mx = Integer.parseInt(arg[0]);

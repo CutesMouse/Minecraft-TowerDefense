@@ -14,8 +14,6 @@ import java.util.List;
 
 public class DariusTower extends Tower {
 
-    private TowerCategory category = TowerCategory.Attack;
-
     @Override
     public Material getDisplayItem() {
         return Material.ANVIL;

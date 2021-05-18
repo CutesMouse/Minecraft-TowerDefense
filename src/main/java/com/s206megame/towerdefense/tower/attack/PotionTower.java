@@ -11,8 +11,6 @@ import java.util.List;
 
 public class PotionTower extends Tower {
 
-    private TowerCategory category = TowerCategory.Attack;
-
     @Override
     public Material getDisplayItem() {
         return Material.POTION;
@@ -82,12 +80,12 @@ public class PotionTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,7,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.CRIT_MAGIC;
     }
 
 
