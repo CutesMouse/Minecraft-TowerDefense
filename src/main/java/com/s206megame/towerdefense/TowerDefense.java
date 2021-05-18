@@ -39,6 +39,10 @@ public class TowerDefense {
         this.money -= money;
     }
 
+    public boolean canAfford(int money) {
+        return this.money >= money;
+    }
+
     public void Start()
     {
         for (Player p : Bukkit.getOnlinePlayers()) {

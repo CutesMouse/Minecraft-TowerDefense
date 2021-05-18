@@ -25,7 +25,6 @@ public class TowerSlot {
     public void buildTower(Tower tower) {
         tower.build(this);
         link(tower);
-
     }
 
     public void removeTower() {
