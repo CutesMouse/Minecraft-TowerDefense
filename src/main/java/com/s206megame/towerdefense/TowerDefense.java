@@ -45,9 +45,9 @@ public class TowerDefense {
             p.setFoodLevel(20);
             p.getInventory().clear();
         }
-
+        // wait 10 secs
         WaveMobList waveMobList = new WaveMobList();
-        // WaveBar bar = new WaveBar(1):
+        final WaveBar[] bar = {new WaveBar(1)};
         new BukkitRunnable()
         {
             @Override
@@ -56,11 +56,11 @@ public class TowerDefense {
                 int timer=1, wave=1;
                 if (timer%120 == 0) {
                     wave++;
-                    //bar = new WaveBar(wave);
-                    //bar.updateBar(1);
+                    bar[0] = new WaveBar(wave);
+                    bar[0].updateBar(1);
                 }
                 if (timer%120 == 1) waveMobList.getWave(wave).spawnWave();
-                // bar.updateBar(120-timer);
+                bar[0].updateBar(120-timer);
                 timer++;
             }
 

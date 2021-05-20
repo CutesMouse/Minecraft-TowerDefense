@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.speed;
 
+import com.s206megame.towerdefense.api.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -11,7 +12,6 @@ import java.util.List;
 
 public class CrossbowTower extends Tower {
 
-    private TowerCategory category = TowerCategory.Speed;
     @Override
     public Material getDisplayItem() {
         return Material.CROSSBOW;
@@ -81,11 +81,16 @@ public class CrossbowTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,8,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.CRIT;
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
     }
 }

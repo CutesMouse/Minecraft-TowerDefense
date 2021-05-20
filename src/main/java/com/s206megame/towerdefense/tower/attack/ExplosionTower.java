@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -11,8 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExplosionTower extends Tower {
-
-    private TowerCategory category = TowerCategory.Attack;
 
     @Override
     public Material getDisplayItem() {
@@ -83,7 +82,7 @@ public class ExplosionTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,7,0);
     }
 
     @Override
@@ -95,5 +94,10 @@ public class ExplosionTower extends Tower {
     public void attackMob(Mob target) {
         if (isInCooldown()) return;
 
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.FIVE_BY_FIVE;
     }
 }

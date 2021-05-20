@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.range;
 
+import com.s206megame.towerdefense.api.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -10,8 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ArcherTower extends Tower {
-
-    private TowerCategory category = TowerCategory.Range;
 
     @Override
     public Material getDisplayItem() {
@@ -82,12 +81,17 @@ public class ArcherTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return new Location(null,0.5,6,0.5);
+        return new Location(getWorld(),0.5,6,0.5);
     }
 
     @Override
     protected Particle getParticle() {
-        return Particle.ASH;
+        return Particle.HEART;
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
     }
 
 

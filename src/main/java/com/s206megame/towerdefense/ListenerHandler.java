@@ -4,6 +4,7 @@ import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.player.PlayerData;
 import com.s206megame.towerdefense.player.PlayerDataManager;
 import com.s206megame.towerdefense.tower.Direction;
+import com.s206megame.towerdefense.utils.TowerPlacingGUI;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -61,7 +62,8 @@ public class ListenerHandler implements Listener {
     public void onTowerPlacing(PlayerInteractEvent e) {
         PlayerData pd = PlayerDataManager.getPlayerData(e.getPlayer());
         if (pd.getSlot() == null) return;
-
+        TowerPlacingGUI.open(e.getPlayer(),pd.getSlot());
+        e.setCancelled(true);
     }
         /*if (!e.getPlayer().getName().equals("CutesMouse")) return;
         if (e.getClickedBlock() == null) return;

@@ -1,5 +1,7 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -10,8 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FireTower extends Tower {
-
-    private TowerCategory category = TowerCategory.Attack;
 
     @Override
     public Material getDisplayItem() {
@@ -88,11 +88,21 @@ public class FireTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,5,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.FLAME;
+    }
+
+    @Override
+    public void attackMob(Mob target) {
+        super.attackMob(target);
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
     }
 }

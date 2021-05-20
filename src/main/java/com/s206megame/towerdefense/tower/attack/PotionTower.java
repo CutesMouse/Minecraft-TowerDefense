@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.api.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -10,8 +11,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PotionTower extends Tower {
-
-    private TowerCategory category = TowerCategory.Attack;
 
     @Override
     public Material getDisplayItem() {
@@ -82,13 +81,16 @@ public class PotionTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return null;
+        return new Location(getWorld(),0,7,0);
     }
 
     @Override
     protected Particle getParticle() {
-        return null;
+        return Particle.CRIT_MAGIC;
     }
 
-
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
+    }
 }

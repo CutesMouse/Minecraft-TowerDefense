@@ -52,6 +52,8 @@ public class TDPart implements TDCommandBase {
         gui.put(31, new MinigunTower().getGUIItem().setAction(e -> e.setCancelled(true)));
         gui.put(33, new CrossbowTower().getGUIItem().setAction(e -> e.setCancelled(true)));
         gui.open(player);
+        gui.setOwner(player);
+    }
     }
 
 }

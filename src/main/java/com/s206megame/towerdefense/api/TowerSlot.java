@@ -78,4 +78,12 @@ public class TowerSlot {
     public Location getCenter() {
         return loc;
     }
+
+    public Tower getTower() {
+        return tower;
+    }
+
+    public TowerType getType() {
+        return type;
+    }
 }

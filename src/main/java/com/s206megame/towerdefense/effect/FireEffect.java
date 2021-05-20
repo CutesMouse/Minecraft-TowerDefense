@@ -18,14 +18,12 @@ public class FireEffect extends MobEffect {
     public void tickEvent(Mob target) {
         target.setOnFire(true);
         if (firstApply) {
-            System.out.println("First");
             target.damage(getBaseDamage());
             firstApply = false;
             return;
         }
         if (duration % 20 == 0) {
             target.damage(getBaseDamage() * 0.1);
-            System.out.println("Damage");
         }
         duration--;
         if (duration == 0) {
@@ -40,6 +38,6 @@ public class FireEffect extends MobEffect {
 
     @Override
     public String getType() {
-        return null;
+        return "FireEffect";
     }
 }

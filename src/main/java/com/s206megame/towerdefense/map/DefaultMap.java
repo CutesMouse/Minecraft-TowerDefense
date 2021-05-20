@@ -7,6 +7,7 @@ import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.tower.Direction;
+import com.s206megame.towerdefense.tower.Tower;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -17,11 +18,13 @@ import java.util.ArrayList;
 public class DefaultMap implements Map {
     private static ArrayList<TowerSlot> towerSlots;
     private static ArrayList<Mob> moblist;
+    private static ArrayList<Tower> towers;
     private static World WORLD;
 
     public DefaultMap() {
         moblist = new ArrayList<>();
         WORLD = Bukkit.getWorlds().get(0);
+        towers = new ArrayList<>();
         // init towerslots
         initTowers(WORLD);
         new BukkitRunnable() {
@@ -41,6 +44,10 @@ public class DefaultMap implements Map {
                 mob.effectUpdate();
             }
         }
+    }
+
+    public static ArrayList<Tower> getTowers() {
+        return towers;
     }
 
     @Override
