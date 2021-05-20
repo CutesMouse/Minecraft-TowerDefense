@@ -14,12 +14,8 @@ public class Wave {
     {
         for (Class<? extends Mob> mobtype : content.keySet()) {
             Main.map.spawnMob(mobtype);
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
         }
+
     }
 
     public void addMob(Class<? extends Mob> mobtype, int amount) {
