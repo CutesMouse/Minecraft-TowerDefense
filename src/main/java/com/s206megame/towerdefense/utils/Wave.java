@@ -9,18 +9,18 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Wave {
-    private HashMap<Class<? extends Mob>, Integer> content;
+    private HashMap<Class<? extends Mob>, Integer> content; //整波怪物的完整資料
     public Wave() {
         content = new HashMap<>();
         maxMob = 0;
     }
 
-    private int process;
-    private int maxMob;
-    private boolean started;
-    private boolean thread_end;
-    private ArrayList<Mob> spawnedMobs;
-    private LinkedList<Class<? extends Mob>> QUEUE;
+    private int process; //目前召喚了幾隻怪物
+    private int maxMob; //最多有幾隻怪物
+    private boolean started; //是否開始召喚了
+    private boolean thread_end; //是否召喚完成
+    private ArrayList<Mob> spawnedMobs; //已經召喚的怪物列表 ((可以方便我們知道怪物死了沒
+    private LinkedList<Class<? extends Mob>> QUEUE; //召喚序列
 
 
     public void spawnWave() {
@@ -28,7 +28,11 @@ public class Wave {
         thread_end = false;
         process = 0;
         spawnedMobs = new ArrayList<>();
-        QUEUE = new LinkedList<>(content.keySet());
+        QUEUE = new LinkedList<>();
+        for (Class<? extends Mob> mobType : content.keySet()) {
+            int amount = content.get(mobType);
+            for (int i = 0; i < amount ; i++) QUEUE.add(mobType);
+        } //建立怪物召喚序列
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -37,8 +41,8 @@ public class Wave {
                     this.cancel();
                     return;
                 }
-                Class<? extends Mob> first = QUEUE.poll();
-                spawnedMobs.add(Main.map.spawnMob(first));
+                Class<? extends Mob> first = QUEUE.poll();//每次往序列的下個元素前進
+                spawnedMobs.add(Main.map.spawnMob(first));//召喚怪物
                 process++;
             }
         }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,10L);
