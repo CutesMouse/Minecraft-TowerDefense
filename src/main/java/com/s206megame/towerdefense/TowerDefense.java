@@ -1,22 +1,14 @@
 package com.s206megame.towerdefense;
 
-import com.google.common.base.Stopwatch;
 import com.s206megame.towerdefense.appearance.WaveBar;
-import com.s206megame.towerdefense.mobs.ChickenJockeyMob;
 import com.s206megame.towerdefense.mobs.WaveMobList;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
-import org.bukkit.boss.BarColor;
-import org.bukkit.boss.BarFlag;
-import org.bukkit.boss.BarStyle;
-import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.List;
-import java.util.Set;
 
 public class TowerDefense {
     public static TowerDefense getInstance() {
@@ -48,7 +40,7 @@ public class TowerDefense {
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.teleport(new Location(p.getWorld(), -23.5, 6, -27.5));
             p.sendTitle("§f歡迎來到§aTOWER DEFENSE！", "§f遊戲將在不久後開始", 10, 100, 10);
-            p.setGameMode(GameMode.ADVENTURE);
+            p.setGameMode(GameMode.CREATIVE);
             p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
             p.setFoodLevel(20);
             p.getInventory().clear();
@@ -56,7 +48,6 @@ public class TowerDefense {
         // wait 10 secs
         WaveMobList waveMobList = new WaveMobList();
         final WaveBar[] bar = {new WaveBar(1)};
-        Main m;
         new BukkitRunnable()
         {
             @Override
@@ -69,7 +60,7 @@ public class TowerDefense {
                     bar[0].updateBar(1);
                 }
                 if (timer%120 == 1) waveMobList.getWave(wave).spawnWave();
-                bar[0].updateBar((120-timer%120)/120);
+                bar[0].updateBar(120-timer);
                 timer++;
             }
 
