@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Location;
@@ -67,5 +68,10 @@ public class DariusTower extends Tower {
         double vz = target.getEntity().getLocation().getZ() - getParticleStartPoint().getZ();
         Vector vec = new Vector(vx,vy,vz);
         ParticleManager.playParticle(getParticleStartPoint(),vec,Math.sqrt(vx*vx+vy*vy+vz*vz),0.5,getParticle(),Material.REDSTONE_BLOCK.createBlockData());
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
     }
 }

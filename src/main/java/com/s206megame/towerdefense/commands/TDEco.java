@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.commands;
 
+import com.s206megame.towerdefense.TowerDefense;
 import com.s206megame.towerdefense.player.PlayerData;
 import com.s206megame.towerdefense.player.PlayerDataManager;
 import org.bukkit.Bukkit;
@@ -25,7 +26,7 @@ public class TDEco implements TDCommandBase {
             sender.sendMessage("§c沒有權限!");
         }
         if (arg.length == 0) {
-            sender.sendMessage("§6用法: §f/td eco <玩家> [set | add | remove]");
+            sender.sendMessage("§6用法: §f/td eco <玩家> <set | add | remove>");
             return;
         }
         String playerName = arg[0];
@@ -35,12 +36,11 @@ public class TDEco implements TDCommandBase {
             return;
         }
         PlayerData data = PlayerDataManager.getPlayerData(player);
-        if (arg.length == 1) { // 查詢玩家剩餘經濟
-            sender.sendMessage("§6該名玩家持有金額: "+ data.getBalance());
+        if (arg.length == 1) {
             return;
         }
         if (arg.length != 3) {
-            sender.sendMessage("§6用法: /td eco <玩家> [set | add | remove] <金額>");
+            sender.sendMessage("§6用法: /td eco <玩家> <set | add | remove> <金額>");
             return;
         }
         if (!arg[2].matches("-\\d+\\.\\d+|\\d+\\.\\d+|\\d+")) {
@@ -62,6 +62,6 @@ public class TDEco implements TDCommandBase {
                 sender.sendMessage("§c不存在的引數!");
                 return;
         }
-        sender.sendMessage("§a已更新玩家經濟! "+player.getName()+" 現在有 " + data.getBalance() + "元!");
+        sender.sendMessage("§a已更新經濟! 現在有 " + TowerDefense.getInstance().getMoney() + " 元!");
     }
 }

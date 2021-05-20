@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -93,5 +94,10 @@ public class ExplosionTower extends Tower {
     public void attackMob(Mob target) {
         if (isInCooldown()) return;
 
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.FIVE_BY_FIVE;
     }
 }

@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.range;
 
+import com.s206megame.towerdefense.api.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -86,5 +87,10 @@ public class LongbowTower extends Tower {
     @Override
     protected Particle getParticle() {
         return Particle.ASH;
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
     }
 }

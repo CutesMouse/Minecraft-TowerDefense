@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.api.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -88,5 +89,8 @@ public class PotionTower extends Tower {
         return Particle.CRIT_MAGIC;
     }
 
-
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
+    }
 }

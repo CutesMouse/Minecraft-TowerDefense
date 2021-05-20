@@ -1,5 +1,7 @@
 package com.s206megame.towerdefense;
 
+import com.s206megame.towerdefense.api.TowerSlot;
+import com.s206megame.towerdefense.appearance.WaveBar;
 import com.s206megame.towerdefense.mobs.ChickenJockeyMob;
 import com.s206megame.towerdefense.mobs.WaveMobList;
 import org.bukkit.Bukkit;
@@ -7,6 +9,7 @@ import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
+import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.List;
 import java.util.Set;
@@ -15,24 +18,24 @@ public class TowerDefense {
     public static TowerDefense getInstance() {
         return new TowerDefense();
     }
-    private int money;
-    public int getMoney() {
+    private double money;
+    public double getMoney() {
         return money;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
-    public void addMoney(int money) {
+    public void addMoney(double money) {
         this.money += money;
     }
 
-    public void removeMoney(int money) {
+    public void removeMoney(double money) {
         this.money -= money;
     }
 
-    public boolean canAfford(int money) {
+    public boolean canAfford(double money) {
         return this.money >= money;
     }
 

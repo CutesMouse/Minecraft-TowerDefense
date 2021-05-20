@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -98,6 +99,10 @@ public class FireTower extends Tower {
     @Override
     public void attackMob(Mob target) {
         super.attackMob(target);
+    }
 
+    @Override
+    public TowerType getType() {
+        return TowerType.THREE_BY_THREE;
     }
 }

@@ -23,6 +23,6 @@ public class TDMobTest implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        Main.map.spawnMob(WitherMob.class);
+        Main.map.spawnMob(GolemMob.class);
     }
 }

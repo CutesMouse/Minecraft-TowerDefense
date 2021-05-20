@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.speed;
 
+import com.s206megame.towerdefense.api.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -87,5 +88,10 @@ public class MinigunTower extends Tower {
     @Override
     protected Particle getParticle() {
         return Particle.BLOCK_DUST;
+    }
+
+    @Override
+    public TowerType getType() {
+        return TowerType.FIVE_BY_FIVE;
     }
 }
