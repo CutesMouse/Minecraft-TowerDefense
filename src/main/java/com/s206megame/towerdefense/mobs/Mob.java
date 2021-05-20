@@ -28,4 +28,5 @@ public interface Mob {
     void effectUpdate();
     double getAward();
     double getYoffset();
+    boolean isAlive();
 }

@@ -30,6 +30,7 @@ public class TowerSlot {
     public void removeTower() {
         if (tower == null) return;
         tower.remove();
+        tower = null;
     }
 
     public boolean isInside(Location loc) {

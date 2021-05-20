@@ -1,12 +1,36 @@
-package com.s206megame.towerdefense.mobs;
+package com.s206megame.towerdefense.utils;
+
+import com.s206megame.towerdefense.mobs.*;
+import com.s206megame.towerdefense.utils.Wave;
 
 import java.util.ArrayList;
 
 
-public class WaveMobList {
+public class WaveManager {
+    public static Wave getWaveData(int w) {
+        int strengthen = w / 10;
+        int baseWave = w % 10;
 
+    }
+    private static Wave getBaseWaveData(int w) { // 1 <= w <= 10
+        Wave wave = new Wave();
+        switch (w) {
+            case 1:
+            {
+                wave.addMob(...);
+                return wave;
+            }
+            case 2:
+            {
+                wave.addMob(...);
+                return wave;
+            }
+            ...
+        }
+    }
+/*
     ArrayList<Wave> wavelist = new ArrayList<>();
-    public WaveMobList()
+    public WaveManager()
     {
 
         Wave wave1 = new Wave();
@@ -31,7 +55,5 @@ public class WaveMobList {
     {
         return wavelist.get(value-1);
     }
-
-
-
+*/
 }

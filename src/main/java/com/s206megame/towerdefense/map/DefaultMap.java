@@ -85,14 +85,16 @@ public class DefaultMap implements Map {
         return new Location(WORLD, -46, 5, -48.5);
     }
 
-    public void spawnMob(Class<? extends Mob> mob) {
+    public Mob spawnMob(Class<? extends Mob> mob) {
         try {
             Mob mobEntity = mob.newInstance();
             mobEntity.spawn(getMobSpawnLocation());
             moblist.add(mobEntity);
+            return mobEntity;
         } catch (InstantiationException | IllegalAccessException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
     private void initTowers(World w) {

@@ -29,12 +29,23 @@ public abstract class Tower {
     }
 
     public StaticGUIItem getGUIItem() {
-        return new StaticGUIItem(getDisplayItem(), getDescriptionTitle(), getDescriptionLore(), 1);
+        StaticGUIItem item = new StaticGUIItem(getDisplayItem());
+        item.setItemName(getDescriptionTitle());
+        item.setItemLore(getDescriptionLore());
+        return item;
     }
 
     public Tower() {
         level = 1;
         ai = new BaseTargetAI(this);
+    }
+
+    public void upgrade() {
+        if (level +1 > getMaxLevel()) return;
+        remove();
+        TowerStructureBank.getStructure(level+1,this.getClass())
+                .build(getSlot().getCenter(),getSlot().getOutDirection());
+        level++;
     }
 
     public Tower setLevel(int level) {
@@ -84,9 +95,11 @@ public abstract class Tower {
     public ArrayList<String> getDescriptionLore() {
         ArrayList<String> re = new ArrayList<>();
         re.addAll(getDescription());
-        re.add("射程： " + getRange());
-        re.add("單次攻擊力： " +getDamage());
-        re.add("攻擊頻率： " + getHitDelay());
+        re.add("§a射程： §e" + getRange());
+        re.add("§a單次攻擊力： §e" +getDamage());
+        re.add("§a攻擊頻率： §e" + getHitDelay());
+        re.add("");
+        re.add("§a費用: §e" + getPrice(level));
         return re;
     }
 
@@ -149,4 +162,8 @@ public abstract class Tower {
     }
 
     public abstract TowerType getType();
+
+    public int getMaxLevel() {
+        return 3;
+    }
 }

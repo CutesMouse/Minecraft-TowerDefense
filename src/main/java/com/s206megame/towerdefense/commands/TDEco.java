@@ -35,7 +35,6 @@ public class TDEco implements TDCommandBase {
             sender.sendMessage("§4找不到目標玩家!");
             return;
         }
-        PlayerData data = PlayerDataManager.getPlayerData(player);
         if (arg.length == 1) {
             return;
         }
@@ -50,13 +49,13 @@ public class TDEco implements TDCommandBase {
         double amount = Double.parseDouble(arg[2]);
         switch (arg[1].toLowerCase()) {
             case "set":
-                data.setBalance(amount);
+                TowerDefense.getInstance().setMoney(amount);
                 break;
             case "add":
-                data.deposit(amount);
+                TowerDefense.getInstance().addMoney(amount);
                 break;
             case "remove":
-                data.withdraw(amount);
+                TowerDefense.getInstance().removeMoney(amount);
                 break;
             default:
                 sender.sendMessage("§c不存在的引數!");

@@ -71,6 +71,11 @@ public class DariusTower extends Tower {
     }
 
     @Override
+    public int getMaxLevel() {
+        return 1;
+    }
+
+    @Override
     public TowerType getType() {
         return TowerType.THREE_BY_THREE;
     }

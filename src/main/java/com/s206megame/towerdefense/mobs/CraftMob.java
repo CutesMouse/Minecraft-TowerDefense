@@ -5,6 +5,7 @@ import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.effect.MobEffect;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.LivingEntity;
 
 import java.util.ArrayList;
 
@@ -13,7 +14,7 @@ public abstract class CraftMob implements Mob {
         return Main.map;
     }
 
-
+    protected boolean alive;
     protected double health;
     private int nameupdateDelay = 0;
     private boolean onFire = false;
@@ -24,6 +25,7 @@ public abstract class CraftMob implements Mob {
     public CraftMob() {
         this.health = getMaxHealth();
         this.snowless = 1.0;
+        alive = true;
     }
 
     @Override
@@ -54,6 +56,11 @@ public abstract class CraftMob implements Mob {
         }
         Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getBlockPerTick() * 1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
         moveMob(getBlockPerTick());
+    }
+
+    @Override
+    public boolean isAlive() {
+        return alive;
     }
 
     @Override
@@ -91,7 +98,11 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void kill() {
-        getEntity().remove();
+        if (!(getEntity() instanceof LivingEntity)) {
+            getEntity().remove();
+            return;
+        }
+        ((LivingEntity) getEntity()).setHealth(0);
     }
 
     @Override
