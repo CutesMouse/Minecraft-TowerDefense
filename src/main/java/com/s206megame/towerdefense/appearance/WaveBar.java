@@ -1,14 +1,17 @@
 package com.s206megame.towerdefense.appearance;
 
+import com.s206megame.towerdefense.utils.WaveManager;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BossBar;
 
 public class WaveBar {
     BossBar bar;
     public WaveBar(int wave) {
-        bar.setTitle("Wave " + wave);
-        bar.setColor(BarColor.PINK);
+        int maxMob = WaveManager.getWaveData(wave).getMaxMob();
+        bar.setTitle("Wave " + wave + "(Total: " + maxMob + " Entities");
+        bar.setColor(BarColor.RED);
         bar.setProgress(1);
+        bar.setVisible(true);
     }
 
     public void updateBar(double timeleft)

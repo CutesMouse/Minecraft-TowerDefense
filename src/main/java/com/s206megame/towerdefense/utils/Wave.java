@@ -32,7 +32,7 @@ public class Wave {
         for (Class<? extends Mob> mobType : content.keySet()) {
             int amount = content.get(mobType);
             for (int i = 0; i < amount ; i++) QUEUE.add(mobType);
-        } //建立怪物召喚序列
+        } // 建立怪物召喚序列
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -41,8 +41,8 @@ public class Wave {
                     this.cancel();
                     return;
                 }
-                Class<? extends Mob> first = QUEUE.poll();//每次往序列的下個元素前進
-                spawnedMobs.add(Main.map.spawnMob(first));//召喚怪物
+                Class<? extends Mob> first = QUEUE.poll();// 每次往序列的下個元素前進
+                spawnedMobs.add(Main.map.spawnMob(first));// 召喚怪物
                 process++;
             }
         }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,10L);

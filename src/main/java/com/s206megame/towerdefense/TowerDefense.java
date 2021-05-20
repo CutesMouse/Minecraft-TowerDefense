@@ -1,6 +1,9 @@
 package com.s206megame.towerdefense;
 
 import com.s206megame.towerdefense.api.TowerSlot;
+import com.s206megame.towerdefense.appearance.WaveBar;
+import com.s206megame.towerdefense.utils.Wave;
+import com.s206megame.towerdefense.utils.WaveManager;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Location;
@@ -46,6 +49,28 @@ public class TowerDefense {
             p.setFoodLevel(20);
             p.getInventory().clear();
         }
+        new BukkitRunnable() {
+            int waveVal=0, timer=-1;
+            Wave currentWave;
+            WaveBar currentBar;
+            @Override
+            public void run() {
+                timer++;
+                if (currentWave.hasEnded() || waveVal == 0 || timer%120 == 0) {
+                    // next wave when:
+                        // 1. all the mob has died
+                        // 2. timer reached 120 seconds for each wave
+                        // 3. first wave spawning
+                        // This is checked every second.
+                    currentBar = new WaveBar(++waveVal);
+                    currentWave = WaveManager.getWaveData(waveVal);
+                    currentWave.spawnWave(); // Spawn the new wave
+                }
+                currentBar.updateBar(120-timer);
+            }
+        }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,20L);
+
+
 
     }
 

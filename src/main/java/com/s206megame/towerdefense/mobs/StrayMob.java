@@ -5,7 +5,7 @@ import org.bukkit.entity.Entity;
 import org.bukkit.entity.Stray;
 import org.bukkit.entity.WitherSkeleton;
 
-public class StaryMob extends CraftMob {
+public class StrayMob extends CraftMob {
 
     private Stray stray;
     private static final double MAX_HEALTH = 50.0;
