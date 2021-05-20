@@ -54,4 +54,6 @@ public class TDPart implements TDCommandBase {
         gui.open(player);
         gui.setOwner(player);
     }
+    }
+
 }
