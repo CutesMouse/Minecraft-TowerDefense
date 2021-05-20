@@ -51,26 +51,31 @@ public class TowerDefense {
             p.setGameMode(GameMode.ADVENTURE);
             p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
             p.setFoodLevel(20);
-            p.closeInventory();
+            p.getInventory().clear();
         }
+        // wait 10 secs
         WaveMobList waveMobList = new WaveMobList();
-        for (int wave = 1 ; wave <= 3; wave++)
+        final WaveBar[] bar = {new WaveBar(1)};
+        Main m;
+        new BukkitRunnable()
         {
-            WaveBar bar = new WaveBar(wave);
-            // half time skip wave
-            // skip wave when no mob
-            waveMobList.getWave(wave).spawnWave();
-            for (int sec = 120; sec>=120; sec--)
+            @Override
+            public void run()
             {
-                bar.updateBar((double) sec);
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                int timer=1, wave=1;
+                if (timer%120 == 0) {
+                    wave++;
+                    bar[0] = new WaveBar(wave);
+                    bar[0].updateBar(1);
                 }
+                if (timer%120 == 1) waveMobList.getWave(wave).spawnWave();
+                bar[0].updateBar((120-timer%120)/120);
+                timer++;
             }
 
-        }
+        }.runTaskTimer(Main.getPlugin(Main.class), 0L, 20L);
+
+
 
     }
 
