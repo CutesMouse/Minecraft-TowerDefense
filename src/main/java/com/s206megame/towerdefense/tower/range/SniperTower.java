@@ -60,11 +60,11 @@ public class SniperTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 400;
+                return 800;
             case 2:
-                return 750;
+                return 1500;
             case 3:
-                return 1250;
+                return 2500;
         }
         return 0;
     }

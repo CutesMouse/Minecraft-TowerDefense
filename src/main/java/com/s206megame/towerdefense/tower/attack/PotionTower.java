@@ -60,11 +60,11 @@ public class PotionTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 150;
+                return 300;
             case 2:
-                return 330;
+                return 660;
             case 3:
-                return 810;
+                return 1620;
         }
         return 0;
     }

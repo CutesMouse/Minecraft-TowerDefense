@@ -60,11 +60,11 @@ public class LongbowTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 190;
+                return 380;
             case 2:
-                return 350;
+                return 700;
             case 3:
-                return 720;
+                return 1440;
         }
         return 0;
     }

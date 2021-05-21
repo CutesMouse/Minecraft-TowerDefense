@@ -68,11 +68,11 @@ public class FireTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 160;
-            case 2:
                 return 320;
-            case 3:
+            case 2:
                 return 640;
+            case 3:
+                return 1280;
         }
         return 0;
     }

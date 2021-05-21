@@ -63,11 +63,11 @@ public class ExplosionTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 240;
+                return 480;
             case 2:
-                return 450;
+                return 900;
             case 3:
-                return 1200;
+                return 2400;
         }
         return 0;
     }

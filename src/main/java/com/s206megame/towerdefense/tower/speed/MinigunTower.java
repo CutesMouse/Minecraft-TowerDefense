@@ -60,11 +60,11 @@ public class MinigunTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 70;
+                return 140;
             case 2:
-                return 210;
+                return 420;
             case 3:
-                return 800;
+                return 1600;
         }
         return 0;
     }

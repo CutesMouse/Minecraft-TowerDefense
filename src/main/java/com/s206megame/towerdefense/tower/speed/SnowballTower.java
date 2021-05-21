@@ -62,11 +62,11 @@ public class SnowballTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 20;
+                return 40;
             case 2:
-                return 80;
+                return 160;
             case 3:
-                return 250;
+                return 500;
         }
         return 0;
     }

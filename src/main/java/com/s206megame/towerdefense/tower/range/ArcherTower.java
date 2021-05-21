@@ -60,11 +60,11 @@ public class ArcherTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 50;
+                return 100;
             case 2:
-                return 110;
+                return 220;
             case 3:
-                return 300;
+                return 600;
         }
         return 0;
     }

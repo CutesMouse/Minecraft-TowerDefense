@@ -60,11 +60,11 @@ public class CrossbowTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 60;
+                return 120;
             case 2:
-                return 170;
+                return 340;
             case 3:
-                return 470;
+                return 940;
         }
         return 0;
     }
