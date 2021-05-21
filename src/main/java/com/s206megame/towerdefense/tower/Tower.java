@@ -95,9 +95,9 @@ public abstract class Tower {
     public ArrayList<String> getDescriptionLore() {
         ArrayList<String> re = new ArrayList<>();
         re.addAll(getDescription());
-        re.add("§a射程： §e" + getRange());
-        re.add("§a單次攻擊力： §e" +getDamage());
-        re.add("§a攻擊頻率： §e" + getHitDelay());
+        re.add("§a射程： §e半徑 " + getRange()+ " 格");
+        re.add("§a單次攻擊力： §e每次 " +getDamage() + " 點傷害");
+        re.add("§a攻擊頻率： §e每 " + getHitDelay() + " tick一次");
         re.add("");
         re.add("§a費用: §e" + getPrice(level));
         return re;

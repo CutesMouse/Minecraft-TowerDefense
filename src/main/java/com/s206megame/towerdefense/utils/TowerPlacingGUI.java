@@ -38,11 +38,14 @@ public class TowerPlacingGUI {
         }
         boolean printItem = true;
         if (slot.getTower() != null) {
-            if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) {
+            if (slot.getTower().getLevel() != 0) {
                 Tower tower = slot.getTower();
-                ArrayList<String> descriptionLore = tower.getDescriptionLore();
-                descriptionLore.add("§a★ 最高等級");
-                gui.put(22, new StaticGUIItem(tower.getDisplayItem(),tower.getTitle(),descriptionLore));
+                if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) {
+                    ArrayList<String> descriptionLore = tower.getDescriptionLore();
+                    descriptionLore.add("§a★ 最高等級");
+                    gui.put(22, new StaticGUIItem(tower.getDisplayItem(),tower.getTitle(),descriptionLore));
+                } else gui.put(22, mergeItem(tower, slot));
+
                 printItem = false;
             }
             gui.put(44, new StaticGUIItem(Material.BEDROCK, "§c拆除此建築", new ArrayList<>(Arrays.asList("§a拆除後將會退還一半的建築費用", "§a此功能無法撤回!")),
@@ -66,7 +69,7 @@ public class TowerPlacingGUI {
             gui.put(18, new StaticGUIItem(Material.RED_STAINED_GLASS_PANE, "§c強力攻擊",
                     Arrays.asList("§f攻擊力較高的塔種"), 1).setAction(e -> e.setCancelled(true)));
             gui.put(20, mergeItem(new PotionTower(), slot));
-            gui.put(22, mergeItem(new FireTower(), slot));
+
             gui.put(24, mergeItem(new ExplosionTower(), slot));
             gui.put(26, mergeItem(new DariusTower(), slot));
             gui.put(27, new StaticGUIItem(Material.GREEN_STAINED_GLASS_PANE, "§2快速攻擊",
