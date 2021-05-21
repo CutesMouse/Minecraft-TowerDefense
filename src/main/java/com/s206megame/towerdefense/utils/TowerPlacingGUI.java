@@ -72,8 +72,9 @@ public class TowerPlacingGUI {
             gui.put(27, new StaticGUIItem(Material.GREEN_STAINED_GLASS_PANE, "§2快速攻擊",
                     Arrays.asList("§f攻擊頻率較高的塔種"), 1).setAction(e -> e.setCancelled(true)));
             gui.put(29, mergeItem(new SnowballTower(), slot));
-            gui.put(31, mergeItem(new MinigunTower(), slot));
-            gui.put(33, mergeItem(new CrossbowTower(), slot));
+            gui.put(31, mergeItem(new CrossbowTower(), slot));
+            gui.put(33, mergeItem(new MinigunTower(), slot));
+
         }
         gui.open(player);
     }
