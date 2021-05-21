@@ -5,14 +5,18 @@ import com.s206megame.towerdefense.player.PlayerData;
 import com.s206megame.towerdefense.player.PlayerDataManager;
 import com.s206megame.towerdefense.tower.Direction;
 import com.s206megame.towerdefense.utils.TowerPlacingGUI;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
+import org.bukkit.event.entity.SlimeSplitEvent;
 import org.bukkit.event.player.*;
 
 import java.util.ArrayList;
@@ -37,20 +41,10 @@ public class ListenerHandler implements Listener {
     }
     @EventHandler
     public void onEntityFired(EntityDamageEvent e) {
-        if (isFire(e.getCause()) && e.getEntity().getFireTicks() < 1000) {
-            e.getEntity().setFireTicks(0);
-            e.setCancelled(true);
-        }
+        if (e.getCause().equals(EntityDamageEvent.DamageCause.CUSTOM)) return;
         Main.map.getMobList().stream().filter(p -> p.getEntity().equals(e.getEntity())).findFirst().ifPresent(mob -> {
-            if (isFire(e.getCause())) {
-                e.setDamage(0);
-            }
-            mob.damage(e.getDamage());
-            e.setDamage(0);
+            e.setCancelled(true);
         });
-    }
-    private boolean isFire(EntityDamageEvent.DamageCause cause) {
-        return cause.equals(EntityDamageEvent.DamageCause.FIRE) || cause.equals(EntityDamageEvent.DamageCause.FIRE_TICK);
     }
     @EventHandler
     public void disableTNT(EntityExplodeEvent e) {
@@ -60,10 +54,20 @@ public class ListenerHandler implements Listener {
     private Location p1;
     @EventHandler
     public void onTowerPlacing(PlayerInteractEvent e) {
+        if (e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.ARMOR_STAND)) e.setCancelled(true);
         PlayerData pd = PlayerDataManager.getPlayerData(e.getPlayer());
         if (pd.getSlot() == null) return;
         TowerPlacingGUI.open(e.getPlayer(),pd.getSlot());
         e.setCancelled(true);
+    }
+    @EventHandler
+    public void onSlimeSpilt(SlimeSplitEvent e) {
+        e.setCancelled(true);
+    }
+    @EventHandler
+    public void onLootDrop(EntityDeathEvent e) {
+        if (e.getEntity().getType().equals(EntityType.PLAYER)) return;
+        e.getDrops().clear();
     }
         /*if (!e.getPlayer().getName().equals("CutesMouse")) return;
         if (e.getClickedBlock() == null) return;

@@ -3,6 +3,8 @@ package com.s206megame.towerdefense.mobs;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Zombie;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 
 public class BabyZombieMob extends CraftMob {
@@ -29,6 +31,8 @@ public class BabyZombieMob extends CraftMob {
         Zombie entity = loc.getWorld().spawn(loc, Zombie.class);
         entity.setBaby();
         this.babyzombie = entity;
+        entity.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE,Integer.MAX_VALUE,0,
+                true,true));
         entity.setAI(false);
         setFacingDegree(0);
     }

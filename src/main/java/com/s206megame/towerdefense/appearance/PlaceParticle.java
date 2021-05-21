@@ -36,11 +36,11 @@ public class PlaceParticle {
                     ParticleManager.playParticle(p.getEyeLocation(),
                             p.getEyeLocation().getDirection(),tb.getLocation().distance(p.getEyeLocation()),0.5, Particle.SPELL_WITCH);
                     for (Location loc : tower.getOutline()) {
-                        TempBlock.sendTempBlock(p,Material.GLOWSTONE,10,loc);
+                        TempBlock.sendTempBlock(p,Material.GLOWSTONE,3,loc);
                     }
                     PlayerDataManager.getPlayerData(p).setSlot(tower);
                 }
             }
-        }.runTaskTimer(m,20L,10L);
+        }.runTaskTimer(m,20L,3L);
     }
 }

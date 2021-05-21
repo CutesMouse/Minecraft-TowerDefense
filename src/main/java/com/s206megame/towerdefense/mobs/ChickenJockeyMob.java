@@ -1,10 +1,15 @@
 package com.s206megame.towerdefense.mobs;
 
+import com.s206megame.towerdefense.utils.HoveringText;
 import org.bukkit.Location;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Zombie;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
+
+import java.util.Random;
 
 public class ChickenJockeyMob extends CraftMob {
     private Chicken chicken;
@@ -30,6 +35,8 @@ public class ChickenJockeyMob extends CraftMob {
     public void spawn(Location loc) {
         chicken = loc.getWorld().spawn(loc, Chicken.class);
         zombie = loc.getWorld().spawn(loc, Zombie.class);
+        zombie.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE,Integer.MAX_VALUE,0,
+                true,true));
         zombie.setBaby();
         chicken.addPassenger(zombie);
         zombie.setAI(false);
@@ -64,5 +71,9 @@ public class ChickenJockeyMob extends CraftMob {
     public void kill() {
         zombie.remove();
         chicken.remove();
+        alive = false;
+        Random r = new Random();
+        new HoveringText("+ " + (Math.round(getAward()*10)/10D),getEntity().getLocation()
+                .add(r.nextDouble()* 2 - 1,r.nextDouble(),r.nextDouble() * 2 - 1),20);
     }
 }

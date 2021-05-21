@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Wave {
+    public enum EndReason {
+        OUT_OF_TIME,MOB_CLEARED
+    }
     private HashMap<Class<? extends Mob>, Integer> content; //整波怪物的完整資料
     private int wave;
     public Wave(int wave) {
@@ -26,6 +29,7 @@ public class Wave {
         return this;
     }
 
+    private EndReason endReason;
     private int process; //目前召喚了幾隻怪物
     private int maxMob; //最多有幾隻怪物
     private boolean started; //是否開始召喚了
@@ -36,7 +40,6 @@ public class Wave {
 
 
     public void spawnWave() {
-        start_time = System.currentTimeMillis();
         started = true;
         thread_end = false;
         process = 0;
@@ -52,6 +55,7 @@ public class Wave {
             @Override
             public void run() {
                 if (QUEUE.size() == 0) {
+                    start_time = System.currentTimeMillis();
                     thread_end = true;
                     this.cancel();
                     return;
@@ -60,7 +64,7 @@ public class Wave {
                 spawnedMobs.add(Main.map.spawnMob(first));// 召喚怪物
                 process++;
             }
-        }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,10L);
+        }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,20L);
 
     }
 
@@ -79,7 +83,19 @@ public class Wave {
 
     public boolean hasEnded() {
         if (!thread_end) return false;
-        return spawnedMobs.stream().noneMatch(Mob::isAlive);
+        if (spawnedMobs.stream().noneMatch(Mob::isAlive)) {
+            endReason = EndReason.MOB_CLEARED;
+            return true;
+        }
+        if (getTimeLeft() < 0) {
+            endReason = EndReason.OUT_OF_TIME;
+            return true;
+        }
+        return false;
+    }
+
+    public EndReason getEndReason() {
+        return endReason;
     }
 
     public int getMobLeft() {

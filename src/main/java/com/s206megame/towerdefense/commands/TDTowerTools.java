@@ -7,8 +7,10 @@ import com.s206megame.towerdefense.tower.MultipleFacingBlockElement;
 import com.s206megame.towerdefense.tower.TowerStructure;
 import com.s206megame.towerdefense.tower.TowerStructureBank;
 import com.s206megame.towerdefense.tower.range.ArcherTower;
+import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockFace;
@@ -17,6 +19,7 @@ import org.bukkit.block.data.Directional;
 import org.bukkit.block.data.MultipleFacing;
 import org.bukkit.block.data.type.Stairs;
 import org.bukkit.entity.Player;
+import org.bukkit.util.Vector;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +39,10 @@ public class TDTowerTools implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        if (arg.length == 2) {
+        //ParticleManager.playParticle(new Location(player.getWorld(),-51,7 ,-42),new Vector(1,0,0),
+         //       6,0.5, Particle.BLOCK_CRACK,Material.REDSTONE_BLOCK.createBlockData());
+        player.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, player.getLocation(),1);
+        /*if (arg.length == 2) {
             int level = Integer.parseInt(arg[1]);
             TowerStructure st = TowerStructureBank.getStructure(level,arg[0]);
             if (st == null) {
@@ -107,6 +113,6 @@ public class TDTowerTools implements TDCommandBase {
                         System.out.println("structure.register(new SolidBlockElement(" + dx + "," + dy + "," + dz + ",Material." + block.getType().name().toUpperCase() + "));");
                 }
             }
-        }
+        }*/
     }
 }

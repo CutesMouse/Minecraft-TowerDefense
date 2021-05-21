@@ -3,11 +3,13 @@ package com.s206megame.towerdefense.mobs;
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.effect.MobEffect;
+import com.s206megame.towerdefense.utils.HoveringText;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public abstract class CraftMob implements Mob {
     private static Map getMap() {
@@ -98,12 +100,15 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void kill() {
+        alive = false;
         if (!(getEntity() instanceof LivingEntity)) {
             getEntity().remove();
             return;
         }
         ((LivingEntity) getEntity()).setHealth(0);
-        alive = false;
+        Random r = new Random();
+        new HoveringText("+ " + (Math.round(getAward()*10)/10D),getEntity().getLocation()
+                .add(r.nextDouble()* 2 - 1,r.nextDouble(),r.nextDouble() * 2 - 1),20);
     }
 
     @Override
@@ -156,6 +161,9 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void damage(double point) {
+        if (getEntity() instanceof LivingEntity) {
+            ((LivingEntity) getEntity()).damage(0);
+        }
         health -= point;
         if (health <= 0) kill();
     }

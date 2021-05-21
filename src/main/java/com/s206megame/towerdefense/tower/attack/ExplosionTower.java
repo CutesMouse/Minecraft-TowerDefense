@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
@@ -10,6 +11,7 @@ import org.bukkit.Particle;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ExplosionTower extends Tower {
 
@@ -92,8 +94,15 @@ public class ExplosionTower extends Tower {
 
     @Override
     public void attackMob(Mob target) {
-        if (isInCooldown()) return;
-
+        lastAttack = System.currentTimeMillis();
+        System.out.println("RUN");
+        List<Mob> attackList = Main.map.getMobList().stream().filter(p -> p.getEntity().getLocation().distance(target.getEntity().getLocation()) < 3)
+                .collect(Collectors.toList());
+        for (Mob mob : attackList) {
+            mob.damage(getDamage());
+            getWorld().spawnParticle(Particle.EXPLOSION_NORMAL,mob.getEntity().getLocation(),1);
+        }
+        getWorld().spawnParticle(Particle.EXPLOSION_HUGE,target.getEntity().getLocation(),1);
     }
 
     @Override

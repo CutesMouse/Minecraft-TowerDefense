@@ -2,13 +2,11 @@ package com.s206megame.towerdefense;
 
 import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.appearance.WaveBar;
+import com.s206megame.towerdefense.items.Items;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.utils.Wave;
 import com.s206megame.towerdefense.utils.WaveManager;
-import org.bukkit.Bukkit;
-import org.bukkit.Difficulty;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
@@ -21,6 +19,8 @@ public class TowerDefense {
         if (INST == null) INST = new TowerDefense();
         return INST;
     }
+
+    private int spawnDelay;
 
     private double money;
 
@@ -45,6 +45,7 @@ public class TowerDefense {
     }
 
     public void Start() {
+        money = 1000;
         MainLoop(Main.getPlugin(Main.class));
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.teleport(new Location(p.getWorld(), -23.5, 6, -27.5));
@@ -53,6 +54,7 @@ public class TowerDefense {
             p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
             p.setFoodLevel(20);
             p.getInventory().clear();
+            p.getInventory().addItem(Items.BUILD_TOOL());
         }
         Bukkit.getWorlds().get(0).setDifficulty(Difficulty.HARD);
         WaveBar.init("◤召喚中◢ 第 1 波 已召喚 0/49", BarColor.RED, BarStyle.SEGMENTED_10);
@@ -62,13 +64,31 @@ public class TowerDefense {
 
     public void MainLoop(Main m) {
         new BukkitRunnable() {
+            boolean cleared = false;
+            int money = 20;
             int waveCheckDelay = 0;
+            int mobSpawnDelay = 400;
             @Override
             public void run() {
+                money --;
+                if (money == 0) {
+                    TowerDefense.getInstance().money += 2;
+                    money = 20;
+                }
                 for (Tower tower : Main.map.getTowers()) {
                     if (tower.getSlot() != null) {
                         tower.update();
                     }
+                }
+                if (mobSpawnDelay >= 0) {
+                    if (mobSpawnDelay == 400) {
+                        announce("首波怪物即將於§c20§e秒後生成!");
+                    }
+                    if (mobSpawnDelay <= 200 && mobSpawnDelay % 20 == 0) {
+                        announce(String.format("首波怪物即將於§c%d§e秒後生成!",mobSpawnDelay / 20));
+                    }
+                    mobSpawnDelay--;
+                    return;
                 }
                 waveCheckDelay++;
                 if (waveCheckDelay % 20 == 0) {
@@ -79,8 +99,30 @@ public class TowerDefense {
                     // 3. first wave spawning
                     // This is checked every second.
                     if (currentWave == null || currentWave.hasEnded()) {
+                        if (cleared && currentWave != null &&
+                                currentWave.getEndReason().equals(Wave.EndReason.MOB_CLEARED)) {
+                            announce("太棒了! 由於你在時間內清除所有怪物，系統將跳過等待時間，於10秒後召喚下一波怪物!");
+                            spawnDelay = 10;
+                            cleared = false;
+                            return;
+                        }
+                        if (spawnDelay > 0) {
+                            if (spawnDelay <= 5) announce(String.format("下一波怪物即將於§c%d§e秒後生成!",spawnDelay));
+                            spawnDelay--;
+                            return;
+                        }
                         currentWave = WaveManager.getWaveData(currentWave == null ? 1 : (currentWave.getWave() + 1));
                         currentWave.spawnWave(); // Spawn the new wave
+                        cleared = true;
+                        announce("============",false);
+                        announce("守住你的村莊!!",false);
+                        announce("第 " + currentWave.getWave() + " 波怪物開始攻擊!!",false);
+                        announce("此波怪物共有 " +currentWave.getMaxMob()+" 隻",false);
+                        announce("祝你好運!",false);
+                        announce("============",false);
+                        for (Player p : Bukkit.getOnlinePlayers()) {
+                            p.playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_AMBIENT,1,1);
+                        }
                     }
                     updateWaveBar();
                 }
@@ -102,9 +144,18 @@ public class TowerDefense {
             int ls = left % 60;
             WaveBar.setTitle(String.format(title,
                     currentWave.getWave(),lm,ls,
-                    currentWave.getProcess(),currentWave.getMaxMob()));
+                    currentWave.getMobLeft(),currentWave.getMaxMob()));
             WaveBar.setMaximum(120);
             WaveBar.setValue(left);
+        }
+    }
+    private void announce(String text) {
+        announce(text,true);
+    }
+    private void announce(String text, boolean sound) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.sendMessage("§a[TowerDefense] §e" + text);
+            if (sound) p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HAT,1,1);
         }
     }
 }

@@ -5,11 +5,20 @@ import org.bukkit.Location;
 import org.bukkit.entity.ArmorStand;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.ArrayList;
+
 public class HoveringText {
+    private static ArrayList<ArmorStand> EXISTED = new ArrayList<>();
     private ArmorStand as;
     private String name;
     private Location loc;
     private int duration; // as ticks
+
+    public static void clear() {
+        for (ArmorStand as : EXISTED) {
+            as.remove();
+        }
+    }
 
     public HoveringText(String text, Location loc, int duration) {
         this.loc = loc;
@@ -23,6 +32,7 @@ public class HoveringText {
         this.name = text;
         this.duration = duration;
         registerDestroyer();
+        EXISTED.add(as);
 
     }
 
@@ -31,6 +41,7 @@ public class HoveringText {
             @Override
             public void run() {
                 as.remove();
+                EXISTED.remove(as);
             }
         }.runTaskLater(Main.getProvidingPlugin(Main.class),duration);
     }
