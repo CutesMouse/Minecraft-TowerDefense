@@ -36,26 +36,18 @@ public class TowerPlacingGUI {
             gui.put(i, new StaticGUIItem(Material.BLACK_STAINED_GLASS_PANE, "§r", null).setAction(e -> e.setCancelled(true)));
             gui.put(i + 36, new StaticGUIItem(Material.BLACK_STAINED_GLASS_PANE, "§r", null).setAction(e -> e.setCancelled(true)));
         }
-        gui.put(9, new StaticGUIItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, "§b遠程攻擊"
-                , Arrays.asList("§f攻擊距離較遠的塔種"), 1).setAction(e -> e.setCancelled(true)));
-        gui.put(11, mergeItem(new ArcherTower(), slot));
-        gui.put(13, mergeItem(new LongbowTower(), slot));
-        gui.put(15, mergeItem(new SniperTower(), slot));
-        gui.put(18, new StaticGUIItem(Material.RED_STAINED_GLASS_PANE, "§c強力攻擊",
-                Arrays.asList("§f攻擊力較高的塔種"), 1).setAction(e -> e.setCancelled(true)));
-        gui.put(20, mergeItem(new PotionTower(), slot));
-        gui.put(22, mergeItem(new FireTower(), slot));
-        gui.put(24, mergeItem(new ExplosionTower(), slot));
-        gui.put(26, mergeItem(new DariusTower(), slot));
-        gui.put(27, new StaticGUIItem(Material.GREEN_STAINED_GLASS_PANE, "§2快速攻擊",
-                Arrays.asList("§f攻擊頻率較高的塔種"), 1).setAction(e -> e.setCancelled(true)));
-        gui.put(29, mergeItem(new SnowballTower(), slot));
-        gui.put(31, mergeItem(new MinigunTower(), slot));
-        gui.put(33, mergeItem(new CrossbowTower(), slot));
+        boolean printItem = true;
         if (slot.getTower() != null) {
+            if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) {
+                Tower tower = slot.getTower();
+                ArrayList<String> descriptionLore = tower.getDescriptionLore();
+                descriptionLore.add("§a★ 最高等級");
+                gui.put(22, new StaticGUIItem(tower.getDisplayItem(),tower.getTitle(),descriptionLore));
+                printItem = false;
+            }
             gui.put(44, new StaticGUIItem(Material.BEDROCK, "§c拆除此建築", new ArrayList<>(Arrays.asList("§a拆除後將會退還一半的建築費用", "§a此功能無法撤回!")),
                     1).setAction(c -> {
-                        player.closeInventory();
+                player.closeInventory();
                 if (slot.getTower() == null) {
                     player.sendMessage("§c塔已被拆除!");
                     return;
@@ -64,6 +56,24 @@ public class TowerPlacingGUI {
                 slot.removeTower();
                 c.setCancelled(true);
             }));
+        }
+        if (printItem) {
+            gui.put(9, new StaticGUIItem(Material.LIGHT_BLUE_STAINED_GLASS_PANE, "§b遠程攻擊"
+                    , Arrays.asList("§f攻擊距離較遠的塔種"), 1).setAction(e -> e.setCancelled(true)));
+            gui.put(11, mergeItem(new ArcherTower(), slot));
+            gui.put(13, mergeItem(new LongbowTower(), slot));
+            gui.put(15, mergeItem(new SniperTower(), slot));
+            gui.put(18, new StaticGUIItem(Material.RED_STAINED_GLASS_PANE, "§c強力攻擊",
+                    Arrays.asList("§f攻擊力較高的塔種"), 1).setAction(e -> e.setCancelled(true)));
+            gui.put(20, mergeItem(new PotionTower(), slot));
+            gui.put(22, mergeItem(new FireTower(), slot));
+            gui.put(24, mergeItem(new ExplosionTower(), slot));
+            gui.put(26, mergeItem(new DariusTower(), slot));
+            gui.put(27, new StaticGUIItem(Material.GREEN_STAINED_GLASS_PANE, "§2快速攻擊",
+                    Arrays.asList("§f攻擊頻率較高的塔種"), 1).setAction(e -> e.setCancelled(true)));
+            gui.put(29, mergeItem(new SnowballTower(), slot));
+            gui.put(31, mergeItem(new MinigunTower(), slot));
+            gui.put(33, mergeItem(new CrossbowTower(), slot));
         }
         gui.open(player);
     }

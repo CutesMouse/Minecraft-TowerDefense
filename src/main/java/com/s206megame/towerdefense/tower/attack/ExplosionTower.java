@@ -50,11 +50,11 @@ public class ExplosionTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 5;
+                return 10;
             case 2:
-                return 6;
+                return 12;
             case 3:
-                return 8;
+                return 16;
         }
         return 0;
     }
@@ -95,7 +95,6 @@ public class ExplosionTower extends Tower {
     @Override
     public void attackMob(Mob target) {
         lastAttack = System.currentTimeMillis();
-        System.out.println("RUN");
         List<Mob> attackList = Main.map.getMobList().stream().filter(p -> p.getEntity().getLocation().distance(target.getEntity().getLocation()) < 3)
                 .collect(Collectors.toList());
         for (Mob mob : attackList) {

@@ -39,9 +39,9 @@ public class TDTowerTools implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        //ParticleManager.playParticle(new Location(player.getWorld(),-51,7 ,-42),new Vector(1,0,0),
-         //       6,0.5, Particle.BLOCK_CRACK,Material.REDSTONE_BLOCK.createBlockData());
-        player.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, player.getLocation(),1);
+        ParticleManager.playParticle(new Location(player.getWorld(),-51,7 ,-42),new Vector(1,0,0),
+                6,0.5, Particle.SNOWBALL);
+        //player.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, player.getLocation(),1);
         /*if (arg.length == 2) {
             int level = Integer.parseInt(arg[1]);
             TowerStructure st = TowerStructureBank.getStructure(level,arg[0]);

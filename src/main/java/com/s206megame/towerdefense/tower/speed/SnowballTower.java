@@ -49,11 +49,11 @@ public class SnowballTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 3;
+                return 6;
             case 2:
-                return 5;
+                return 10;
             case 3:
-                return 7;
+                return 14;
         }
         return 0;
     }
@@ -84,7 +84,7 @@ public class SnowballTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return new Location(getWorld(),-11,6,34);
+        return new Location(getWorld(),0,6,0);
     }
 
     @Override
