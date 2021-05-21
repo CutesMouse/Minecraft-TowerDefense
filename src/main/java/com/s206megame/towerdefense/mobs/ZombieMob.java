@@ -38,12 +38,12 @@ public class ZombieMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.05;
+        return 0.05 * strengthen_offset;
     }
 
     @Override
     public double getMaxHealth() {
-        return MAX_HEALTH;
+        return MAX_HEALTH * strengthen_offset;
     }
 
     @Override

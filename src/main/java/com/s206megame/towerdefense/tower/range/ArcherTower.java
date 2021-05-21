@@ -86,7 +86,7 @@ public class ArcherTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return Particle.HEART;
+        return Particle.CRIT;
     }
 
     @Override

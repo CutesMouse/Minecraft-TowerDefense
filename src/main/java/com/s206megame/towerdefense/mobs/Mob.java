@@ -29,4 +29,5 @@ public interface Mob {
     double getAward();
     double getYoffset();
     boolean isAlive();
+    void strengthen(int l);
 }

@@ -108,9 +108,17 @@ public class TowerPlacingGUI {
             if (slot.getTower() != null) {
                 if (slot.getTower().getClass().getSimpleName().equals(tower.getClass().getSimpleName())) {
                     if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) return;
-                    TowerDefense.getInstance().removeMoney(tower.getPrice(tower.getLevel()+1));
+                    if (!TowerDefense.getInstance().canAfford(tower.getPrice(tower.getLevel()))) {
+                        e.getPlayer().sendMessage("§c你沒有足夠的金錢!");
+                        return;
+                    }
+                    TowerDefense.getInstance().removeMoney(tower.getPrice(tower.getLevel()));
                     slot.getTower().upgrade();
                 }
+                return;
+            }
+            if (!TowerDefense.getInstance().canAfford(tower.getPrice(tower.getLevel()))) {
+                e.getPlayer().sendMessage("§c你沒有足夠的金錢!");
                 return;
             }
             slot.buildTower(tower);

@@ -5,21 +5,21 @@ import com.s206megame.towerdefense.mobs.*;
 
 public class WaveManager {
     public static Wave getWaveData(int w) {
-        int strengthen = w / 10;
-        int baseWave = w % 10;
+        int strengthen = (w-1) / 10;
+        int baseWave = (w-1) % 10;
         return getBaseWaveData(baseWave,w).strengthen(strengthen);
     }
     private static Wave getBaseWaveData(int base, int total) { // 1 <= w <= 10
         Wave wave = new Wave(total);
         switch (base) {
-            case 1:
+            case 0:
             {
                 wave.append(ZombieMob.class, 10);
                 wave.append(SkeletonMob.class, 10);
                 wave.append(SpiderMob.class, 10);
                 return wave;
             }
-            case 2:
+            case 1:
             {
                 wave.append(ZombieMob.class, 5);
                 wave.append(SkeletonMob.class, 5);
@@ -28,7 +28,7 @@ public class WaveManager {
                 wave.append(SlimeMob.class, 5);
                 return wave;
             }
-            case 3:
+            case 2:
             {
                 wave.append(ZombieMob.class, 3);
                 wave.append(SkeletonMob.class, 3);
@@ -38,7 +38,7 @@ public class WaveManager {
                 wave.append(SmallSlimeMob.class, 3);
                 return wave;
             }
-            case 4:
+            case 3:
             {
                 wave.append(SpiderMob.class, 3);
                 wave.append(VindicatorMob.class, 3);
@@ -48,7 +48,7 @@ public class WaveManager {
 
                 return wave;
             }
-            case 5:
+            case 4:
             {
                 wave.append(SlimeMob.class, 3);
                 wave.append(SmallSlimeMob.class, 3);
@@ -58,7 +58,7 @@ public class WaveManager {
                 wave.append(GolemMob.class, 1);
                 return wave;
             }
-            case 6:
+            case 5:
             {
                 wave.append(ChickenJockeyMob.class, 5);
                 wave.append(ArmoredZombieMob.class, 10);
@@ -67,7 +67,7 @@ public class WaveManager {
 
                 return wave;
             }
-            case 7:
+            case 6:
             {
                 wave.append(ArmoredZombieMob.class, 5);
                 wave.append(WitherSkeletonMob.class, 10);
@@ -77,7 +77,7 @@ public class WaveManager {
 
                 return wave;
             }
-            case 8:
+            case 7:
             {
                 wave.append(ArmoredZombieMob.class, 3);
                 wave.append(WitherSkeletonMob.class, 5);
@@ -88,7 +88,7 @@ public class WaveManager {
                 wave.append(EndermiteMob.class, 5);
                 return wave;
             }
-            case 9:
+            case 8:
             {
                 wave.append(WitherSkeletonMob.class, 3);
                 wave.append(StrayMob.class, 5);
@@ -99,7 +99,7 @@ public class WaveManager {
                 wave.append(SilverfishMob.class, 3);
                 return wave;
             }
-            case 10:
+            case 9:
             {
                 wave.append(VindicatorMob.class, 3);
                 wave.append(SlimeMob.class, 3);

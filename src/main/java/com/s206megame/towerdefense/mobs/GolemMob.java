@@ -33,12 +33,12 @@ public class GolemMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.05;
+        return 0.05 * strengthen_offset;
     }
 
     @Override
     public double getMaxHealth() {
-        return 1000;
+        return 1000 * strengthen_offset;
     }
 
     @Override

@@ -13,10 +13,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
-import org.bukkit.event.entity.EntityDamageEvent;
-import org.bukkit.event.entity.EntityDeathEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.entity.SlimeSplitEvent;
+import org.bukkit.event.entity.*;
 import org.bukkit.event.player.*;
 
 import java.util.ArrayList;
@@ -68,6 +65,10 @@ public class ListenerHandler implements Listener {
     public void onLootDrop(EntityDeathEvent e) {
         if (e.getEntity().getType().equals(EntityType.PLAYER)) return;
         e.getDrops().clear();
+    }
+    @EventHandler
+    public void onTeleport(EntityTeleportEvent e) {
+        if (e.getEntityType().equals(EntityType.ENDERMAN)) e.setCancelled(true);
     }
         /*if (!e.getPlayer().getName().equals("CutesMouse")) return;
         if (e.getClickedBlock() == null) return;

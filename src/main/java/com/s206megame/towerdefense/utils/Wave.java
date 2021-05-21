@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Wave {
+    private int strengthen;
     public enum EndReason {
         OUT_OF_TIME,MOB_CLEARED
     }
@@ -19,6 +20,7 @@ public class Wave {
         content = new HashMap<>();
         this.wave = wave;
         maxMob = 0;
+        strengthen = 0;
     }
 
     public int getWave() {
@@ -26,6 +28,7 @@ public class Wave {
     }
 
     public Wave strengthen(int l) {
+        strengthen = l;
         return this;
     }
 
@@ -61,7 +64,9 @@ public class Wave {
                     return;
                 }
                 Class<? extends Mob> first = QUEUE.poll();// 每次往序列的下個元素前進
-                spawnedMobs.add(Main.map.spawnMob(first));// 召喚怪物
+                Mob mob = Main.map.spawnMob(first);
+                mob.strengthen(strengthen);
+                spawnedMobs.add(mob);// 召喚怪物
                 process++;
             }
         }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,20L);

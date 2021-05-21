@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.mobs;
 
+import com.s206megame.towerdefense.TowerDefense;
 import com.s206megame.towerdefense.utils.HoveringText;
 import org.bukkit.Location;
 import org.bukkit.entity.Chicken;
@@ -54,12 +55,12 @@ public class ChickenJockeyMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.25;
+        return 0.25 * strengthen_offset;
     }
 
     @Override
     public double getMaxHealth() {
-        return MAX_HEALTH;
+        return MAX_HEALTH * strengthen_offset;
     }
 
     @Override
@@ -75,5 +76,6 @@ public class ChickenJockeyMob extends CraftMob {
         Random r = new Random();
         new HoveringText("+ " + (Math.round(getAward()*10)/10D),getEntity().getLocation()
                 .add(r.nextDouble()* 2 - 1,r.nextDouble(),r.nextDouble() * 2 - 1),20);
+        TowerDefense.getInstance().addMoney(getAward());
     }
 }

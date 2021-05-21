@@ -5,13 +5,17 @@ import com.s206megame.towerdefense.mobs.Mob;
 public class FireEffect extends MobEffect {
     private int duration = 100;
     private boolean firstApply = true;
+    private double base;
+    public FireEffect(double base) {
+        this.base = base;
+    }
     @Override
     public int getDuration() {
         return duration;
     }
 
     private double getBaseDamage() {
-        return 50;
+        return base;
     }
 
     @Override

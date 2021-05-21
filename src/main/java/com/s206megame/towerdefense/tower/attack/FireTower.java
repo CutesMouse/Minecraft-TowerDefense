@@ -1,6 +1,7 @@
 package com.s206megame.towerdefense.tower.attack;
 
 import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.effect.FireEffect;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -54,11 +55,11 @@ public class FireTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 5;
-            case 2:
-                return 6;
-            case 3:
                 return 8;
+            case 2:
+                return 9;
+            case 3:
+                return 11;
         }
         return 0;
     }
@@ -99,6 +100,7 @@ public class FireTower extends Tower {
     @Override
     public void attackMob(Mob target) {
         super.attackMob(target);
+        target.addEffect(new FireEffect(getFireDamage()));
     }
 
     @Override

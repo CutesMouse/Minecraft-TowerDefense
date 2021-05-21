@@ -32,7 +32,7 @@ public class DariusTower extends Tower {
 
     @Override
     public double getRange() {
-        return 5;
+        return 10;
     }
 
     @Override

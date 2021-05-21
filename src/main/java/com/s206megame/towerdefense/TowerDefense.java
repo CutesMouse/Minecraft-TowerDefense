@@ -20,6 +20,23 @@ public class TowerDefense {
         return INST;
     }
 
+    private int health = 20;
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void removeHealth() {
+        if (health <= 0) return;
+        health --;
+    }
+
+    public void checkGameStat() {
+        if (health <= 0) {
+            announce("遊戲結束~");
+        }
+    }
+
     private int spawnDelay;
 
     private double money;
@@ -56,8 +73,10 @@ public class TowerDefense {
             p.getInventory().clear();
             p.getInventory().addItem(Items.BUILD_TOOL());
         }
-        Bukkit.getWorlds().get(0).setDifficulty(Difficulty.HARD);
-        WaveBar.init("◤召喚中◢ 第 1 波 已召喚 0/49", BarColor.RED, BarStyle.SEGMENTED_10);
+        World world = Bukkit.getWorlds().get(0);
+        world.setDifficulty(Difficulty.HARD);
+        world.setGameRule(GameRule.DO_TILE_DROPS,false);
+        WaveBar.init("Loading...", BarColor.RED, BarStyle.SEGMENTED_10);
         WaveBar.setVisible(true);
     }
     private Wave currentWave;
@@ -103,6 +122,7 @@ public class TowerDefense {
                                 currentWave.getEndReason().equals(Wave.EndReason.MOB_CLEARED)) {
                             announce("太棒了! 由於你在時間內清除所有怪物，系統將跳過等待時間，於10秒後召喚下一波怪物!");
                             spawnDelay = 10;
+                            WaveBar.setTitle("§e怪物準備中..");
                             cleared = false;
                             return;
                         }

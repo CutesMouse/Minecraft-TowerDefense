@@ -1,6 +1,7 @@
 package com.s206megame.towerdefense.mobs;
 
 import com.s206megame.towerdefense.Main;
+import com.s206megame.towerdefense.TowerDefense;
 import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.utils.HoveringText;
@@ -17,6 +18,7 @@ public abstract class CraftMob implements Mob {
     }
 
     protected boolean alive;
+    protected int strengthen_offset = 1;
     protected double health;
     private int nameupdateDelay = 0;
     private boolean onFire = false;
@@ -57,6 +59,11 @@ public abstract class CraftMob implements Mob {
             return;
         }
         Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getBlockPerTick() * 1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
+        //cps.add(new CheckPoint());
+        if (getEntity().getLocation().distance(new Location(getEntity().getWorld(),-14,6,-47)) < 4) {
+            TowerDefense.getInstance().removeHealth();
+            kill();
+        }
         moveMob(getBlockPerTick());
     }
 
@@ -109,6 +116,7 @@ public abstract class CraftMob implements Mob {
         Random r = new Random();
         new HoveringText("+ " + (Math.round(getAward()*10)/10D),getEntity().getLocation()
                 .add(r.nextDouble()* 2 - 1,r.nextDouble(),r.nextDouble() * 2 - 1),20);
+        TowerDefense.getInstance().addMoney(getAward());
     }
 
     @Override
@@ -181,5 +189,11 @@ public abstract class CraftMob implements Mob {
     @Override
     public void setSnowness(double ratio) {
         this.snowless = ratio;
+    }
+
+    @Override
+    public void strengthen(int l) {
+        strengthen_offset = (int)(Math.pow(2,l) * strengthen_offset);
+        health = getMaxHealth();
     }
 }

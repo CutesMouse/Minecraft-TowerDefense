@@ -77,7 +77,6 @@ public class DefaultMap implements Map {
         cps.add(new CheckPoint(16.0,5,17.0,-168.7));
         cps.add(new CheckPoint(17.0,5,12.0,-180.0));
         cps.add(new CheckPoint(17.0,5,-46.5,90));
-        cps.add(new CheckPoint(-12.5,5,-46.5,0));
         return cps;
     }
 
