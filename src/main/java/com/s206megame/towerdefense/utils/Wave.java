@@ -5,14 +5,25 @@ import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Wave {
     private HashMap<Class<? extends Mob>, Integer> content; //整波怪物的完整資料
-    public Wave() {
+    private int wave;
+    public Wave(int wave) {
         content = new HashMap<>();
+        this.wave = wave;
         maxMob = 0;
+    }
+
+    public int getWave() {
+        return wave;
+    }
+
+    public Wave strengthen(int l) {
+        return this;
     }
 
     private int process; //目前召喚了幾隻怪物
@@ -21,9 +32,11 @@ public class Wave {
     private boolean thread_end; //是否召喚完成
     private ArrayList<Mob> spawnedMobs; //已經召喚的怪物列表 ((可以方便我們知道怪物死了沒
     private LinkedList<Class<? extends Mob>> QUEUE; //召喚序列
+    private long start_time; //完成召喚的時間
 
 
     public void spawnWave() {
+        start_time = System.currentTimeMillis();
         started = true;
         thread_end = false;
         process = 0;
@@ -32,7 +45,9 @@ public class Wave {
         for (Class<? extends Mob> mobType : content.keySet()) {
             int amount = content.get(mobType);
             for (int i = 0; i < amount ; i++) QUEUE.add(mobType);
-        } // 建立怪物召喚序列
+        }
+        Collections.shuffle(QUEUE);
+        // 建立怪物召喚序列
         new BukkitRunnable() {
             @Override
             public void run() {
@@ -65,5 +80,18 @@ public class Wave {
     public boolean hasEnded() {
         if (!thread_end) return false;
         return spawnedMobs.stream().noneMatch(Mob::isAlive);
+    }
+
+    public int getMobLeft() {
+        if (spawnedMobs == null) return 0;
+        return (int) spawnedMobs.stream().filter(Mob::isAlive).count();
+    }
+
+    public boolean isThread_end() {
+        return thread_end;
+    }
+
+    public long getTimeLeft() {
+        return 1000 * 120 - (System.currentTimeMillis() - start_time);
     }
 }

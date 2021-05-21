@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.api;
 
+import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.tower.Direction;
 import com.s206megame.towerdefense.tower.Tower;
 import org.bukkit.Location;
@@ -24,12 +25,14 @@ public class TowerSlot {
 
     public void buildTower(Tower tower) {
         tower.build(this);
+        Main.map.getTowers().add(tower);
         link(tower);
     }
 
     public void removeTower() {
         if (tower == null) return;
         tower.remove();
+        Main.map.getTowers().remove(tower);
         tower = null;
     }
 

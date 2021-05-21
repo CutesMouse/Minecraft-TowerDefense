@@ -103,6 +103,7 @@ public abstract class CraftMob implements Mob {
             return;
         }
         ((LivingEntity) getEntity()).setHealth(0);
+        alive = false;
     }
 
     @Override

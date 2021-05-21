@@ -7,11 +7,11 @@ public class WaveManager {
     public static Wave getWaveData(int w) {
         int strengthen = w / 10;
         int baseWave = w % 10;
-        return getBaseWaveData(baseWave);
+        return getBaseWaveData(baseWave,w).strengthen(strengthen);
     }
-    private static Wave getBaseWaveData(int w) { // 1 <= w <= 10
-        Wave wave = new Wave();
-        switch (w) {
+    private static Wave getBaseWaveData(int base, int total) { // 1 <= w <= 10
+        Wave wave = new Wave(total);
+        switch (base) {
             case 1:
             {
                 wave.append(ZombieMob.class, 10);
@@ -122,32 +122,4 @@ public class WaveManager {
         }
         return wave;
     }
-/*
-    ArrayList<Wave> wavelist = new ArrayList<>();
-    public WaveManager()
-    {
-
-        Wave wave1 = new Wave();
-        wave1.addMob(ZombieMob.class, 10);
-        wave1.addMob(SkeletonMob.class, 10);
-        wave1.addMob(SpiderMob.class, 10);
-        Wave wave2 = new Wave();
-        wave2.addMob(ZombieMob.class, 5);
-        wave2.addMob(SkeletonMob.class, 5);
-        wave2.addMob(SpiderMob.class, 10);
-        wave2.addMob(VindicatorMob.class, 10);
-        wave2.addMob(SlimeMob.class, 5);
-        Wave wave3 = new Wave();
-        wave3.addMob(ZombieMob.class, 3);
-        wave3.addMob(SkeletonMob.class, 3);
-        wave3.addMob(SpiderMob.class, 5);
-        wave3.addMob(VindicatorMob.class, 5);
-        wavelist.add(wave1);
-        wavelist.add(wave2);
-    }
-    public Wave getWave(int value)
-    {
-        return wavelist.get(value-1);
-    }
-*/
 }

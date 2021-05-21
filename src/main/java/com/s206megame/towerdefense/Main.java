@@ -2,6 +2,7 @@ package com.s206megame.towerdefense;
 
 import com.s206megame.towerdefense.api.ScoreboardManager;
 import com.s206megame.towerdefense.appearance.PlaceParticle;
+import com.s206megame.towerdefense.appearance.WaveBar;
 import com.s206megame.towerdefense.commands.*;
 import com.s206megame.towerdefense.map.DefaultMap;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -14,7 +15,6 @@ public class Main extends JavaPlugin {
         map = new DefaultMap();
         CMD_MANAGER = TDCommandManager.getInstance(this);
         CMD_MANAGER.registerArg(new TDStart());
-        CMD_MANAGER.registerArg(new TDPart());
         CMD_MANAGER.registerArg(new TDSetMap());
         CMD_MANAGER.registerArg(new TDEco());
         CMD_MANAGER.registerArg(new TDMobTest());
@@ -25,6 +25,10 @@ public class Main extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new ListenerHandler(),this);
         PlaceParticle.init(this);
         ScoreboardManager.init(this);
-        new TowerDefense().MainLoop(this);
+    }
+
+    @Override
+    public void onDisable() {
+        WaveBar.destroy();
     }
 }

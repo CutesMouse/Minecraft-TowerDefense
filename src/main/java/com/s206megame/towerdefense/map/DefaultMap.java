@@ -16,9 +16,9 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 
 public class DefaultMap implements Map {
-    private static ArrayList<TowerSlot> towerSlots;
-    private static ArrayList<Mob> moblist;
-    private static ArrayList<Tower> towers;
+    private ArrayList<TowerSlot> towerSlots;
+    private ArrayList<Mob> moblist;
+    private ArrayList<Tower> towers;
     private static World WORLD;
 
     public DefaultMap() {
@@ -37,7 +37,8 @@ public class DefaultMap implements Map {
 
     public void tickEvent() {
         if (moblist.size() > 0) {
-            for (Mob mob : moblist) {
+            ArrayList<Mob> copy = new ArrayList<>(moblist);
+            for (Mob mob : copy) {
                 if (mob == null) continue;
                 mob.onEntityMove();
                 mob.updateDisplayName();
@@ -46,7 +47,7 @@ public class DefaultMap implements Map {
         }
     }
 
-    public static ArrayList<Tower> getTowers() {
+    public ArrayList<Tower> getTowers() {
         return towers;
     }
 
