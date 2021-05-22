@@ -26,9 +26,9 @@ public class FireTower extends Tower {
     public double getInitialDamage() {
         switch (level) {
             case 1:
-                return 40;
+                return 30;
             case 2:
-                return 50;
+                return 40;
             case 3:
                 return 60;
         }
@@ -85,7 +85,7 @@ public class FireTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f燃燒吧，§c火鳥！", "§f使敵人得到§c火焰球的初始傷害與持續數秒的傷害");
+        return Arrays.asList("§f燃燒吧，§c火鳥！", "§f使敵人得到§c火焰球的初始傷害與持續數秒的燃燒傷害(初始傷害20%)");
     }
 
     @Override
