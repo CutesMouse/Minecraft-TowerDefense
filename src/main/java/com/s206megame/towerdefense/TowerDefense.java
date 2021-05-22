@@ -91,7 +91,7 @@ public class TowerDefense {
             public void run() {
                 money --;
                 if (money == 0) {
-                    TowerDefense.getInstance().money += 2;
+                    TowerDefense.getInstance().money += 5;
                     money = 20;
                 }
                 for (Tower tower : Main.map.getTowers()) {

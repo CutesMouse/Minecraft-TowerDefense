@@ -50,7 +50,7 @@ public class Wave {
         QUEUE = new LinkedList<>();
         for (Class<? extends Mob> mobType : content.keySet()) {
             int amount = content.get(mobType);
-            for (int i = 0; i < amount ; i++) QUEUE.add(mobType);
+            for (int i = 0; i < amount*strengthen ; i++) QUEUE.add(mobType);
         }
         Collections.shuffle(QUEUE);
         // 建立怪物召喚序列
@@ -69,7 +69,7 @@ public class Wave {
                 spawnedMobs.add(mob);// 召喚怪物
                 process++;
             }
-        }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,20L);
+        }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,10L);
 
     }
 
@@ -79,7 +79,7 @@ public class Wave {
     }
 
     public int getMaxMob() {
-        return maxMob;
+        return maxMob*strengthen;
     }
 
     public int getProcess() {

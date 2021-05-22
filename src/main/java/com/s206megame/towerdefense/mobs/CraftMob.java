@@ -178,7 +178,7 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public double getAward() {
-        return getMaxHealth() * getBlockPerTick() * 1;
+        return getMaxHealth() * getBlockPerTick() * 0.5;
     }
 
     @Override
