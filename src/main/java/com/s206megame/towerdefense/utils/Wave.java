@@ -50,7 +50,7 @@ public class Wave {
         QUEUE = new LinkedList<>();
         for (Class<? extends Mob> mobType : content.keySet()) {
             int amount = content.get(mobType);
-            for (int i = 0; i < amount*strengthen ; i++) QUEUE.add(mobType);
+            for (int i = 0; i < amount*(strengthen+1) ; i++) QUEUE.add(mobType);
         }
         Collections.shuffle(QUEUE);
         // 建立怪物召喚序列
