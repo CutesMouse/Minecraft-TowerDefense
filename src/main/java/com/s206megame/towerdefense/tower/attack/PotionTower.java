@@ -25,11 +25,11 @@ public class PotionTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 10;
-            case 2:
-                return 15;
-            case 3:
                 return 20;
+            case 2:
+                return 30;
+            case 3:
+                return 40;
         }
         return 0;
     }
@@ -51,9 +51,9 @@ public class PotionTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 5;
-            case 2:
                 return 6;
+            case 2:
+                return 7;
             case 3:
                 return 8;
         }
