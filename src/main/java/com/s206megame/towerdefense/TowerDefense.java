@@ -20,6 +20,8 @@ public class TowerDefense {
         return INST;
     }
 
+    private boolean end;
+
     private int health = 20;
 
     public int getHealth() {
@@ -79,6 +81,11 @@ public class TowerDefense {
         WaveBar.init("Loading...", BarColor.RED, BarStyle.SEGMENTED_10);
         WaveBar.setVisible(true);
     }
+
+    public void End() {
+
+    }
+
     private Wave currentWave;
 
     public void MainLoop(Main m) {
@@ -89,6 +96,10 @@ public class TowerDefense {
             int mobSpawnDelay = 400;
             @Override
             public void run() {
+                if (end) {
+                    this.cancel();
+                    return;
+                }
                 money --;
                 if (money == 0) {
                     TowerDefense.getInstance().money += 5;
