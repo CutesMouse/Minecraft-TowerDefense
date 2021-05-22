@@ -25,9 +25,9 @@ public class FireTower extends Tower {
     public double getInitialDamage() {
         switch (level) {
             case 1:
-                return 50;
+                return 80;
             case 2:
-                return 75;
+                return 90;
             case 3:
                 return 100;
         }
@@ -59,7 +59,7 @@ public class FireTower extends Tower {
             case 2:
                 return 9;
             case 3:
-                return 11;
+                return 10;
         }
         return 0;
     }
