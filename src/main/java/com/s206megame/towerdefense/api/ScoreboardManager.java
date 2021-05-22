@@ -47,7 +47,7 @@ public class ScoreboardManager {
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
         ObjectiveData od = new ObjectiveData(obj, p);
 
-        od.addScoreData(new ScoreData(0).setUpd(player -> "§f主堡血量: "+TowerDefense.getInstance().getHealth()+"\u2764"));
+        od.addScoreData(new ScoreData(0).setUpd(player -> "§f主堡血量: §c"+TowerDefense.getInstance().getHealth()+"\u2764"));
         od.addScoreData(new ScoreData(1).setUpd(player -> "§f金錢: §6" + MathTool.round(TowerDefense.getInstance().getMoney(),2)));
         od.addScoreData(new ScoreData(2).setUpd(player -> new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date())));
         ps.setObjectiveData(od);
