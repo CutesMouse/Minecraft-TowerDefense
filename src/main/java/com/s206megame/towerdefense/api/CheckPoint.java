@@ -15,11 +15,21 @@ public class CheckPoint {
     }
     public boolean isPassBy(Location loc) {
         this.loc.setWorld(loc.getWorld());
-        return loc.distance(this.loc) < 0.4;
+        return distance(loc,this.loc) < 0.4;
     }
+    private double distance(Location loc1, Location loc2) {
+        double x1 = loc1.getX();
+        double z1 = loc1.getZ();
+        double x2 = loc2.getX();
+        double z2 = loc2.getZ();
+        double dx = x1 - x2;
+        double dz = z1 - z2;
+        return Math.sqrt(dx * dx + dz * dz);
+    }
+
     public boolean isPassBy(Location loc,double def) {
         this.loc.setWorld(loc.getWorld());
-        return loc.distance(this.loc) < def;
+        return distance(loc,this.loc) < def;
     }
 
     public double getYaw() {

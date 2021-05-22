@@ -5,6 +5,7 @@ import com.s206megame.towerdefense.tower.Tower;
 import org.bukkit.Location;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public interface Map {
     ArrayList<TowerSlot> getTowerSlots();
@@ -13,4 +14,6 @@ public interface Map {
     ArrayList<CheckPoint> getCheckpoints();
     Location getMobSpawnLocation();
     ArrayList<Tower> getTowers();
+    LinkedList<Location> getCastleBlocks();
+    ArrayList<Location> getFinalCastleBlocks();
 }

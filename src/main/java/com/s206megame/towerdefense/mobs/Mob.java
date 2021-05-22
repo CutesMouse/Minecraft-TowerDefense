@@ -17,7 +17,7 @@ public interface Mob {
     void moveMob(double distance);
     void setFacingDegree(double yaw);
     double getBlockPerTick();
-    void setSnowness(double ratio);
+    void setSlowness(double ratio);
     void updateDisplayName();
     double getMaxHealth();
     double getHealth();

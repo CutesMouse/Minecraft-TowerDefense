@@ -26,11 +26,11 @@ public class FireTower extends Tower {
     public double getInitialDamage() {
         switch (level) {
             case 1:
-                return 30;
+                return 55;
             case 2:
-                return 40;
+                return 105;
             case 3:
-                return 60;
+                return 180;
         }
         return 0;
     }
@@ -43,11 +43,11 @@ public class FireTower extends Tower {
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 70;
-            case 2:
                 return 60;
+            case 2:
+                return 34;
             case 3:
-                return 50;
+                return 25;
         }
         return 0;
     }
@@ -69,7 +69,7 @@ public class FireTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 320;
+                return 280;
             case 2:
                 return 640;
             case 3:

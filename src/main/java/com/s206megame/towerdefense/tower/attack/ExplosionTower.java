@@ -23,11 +23,11 @@ public class ExplosionTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 50;
+                return 41;
             case 2:
-                return 75;
+                return 93;
             case 3:
-                return 100;
+                return 185;
         }
         return 0;
     }
@@ -40,7 +40,7 @@ public class ExplosionTower extends Tower {
             case 2:
                 return 40;
             case 3:
-                return 30;
+                return 31;
         }
         return 0;
     }
@@ -62,9 +62,9 @@ public class ExplosionTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 480;
+                return 550;
             case 2:
-                return 900;
+                return 1000;
             case 3:
                 return 2400;
         }

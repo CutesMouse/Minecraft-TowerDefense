@@ -53,5 +53,8 @@ public class WaveBar {
         if (bar == null) return;
         bar.removeAll();
     }
+    public static void setColor(BarColor color) {
+        bar.setColor(color);
+    }
 }
 

@@ -27,9 +27,9 @@ public class PotionTower extends Tower {
             case 1:
                 return 20;
             case 2:
-                return 30;
+                return 50;
             case 3:
-                return 40;
+                return 100;
         }
         return 0;
     }
@@ -66,9 +66,9 @@ public class PotionTower extends Tower {
             case 1:
                 return 300;
             case 2:
-                return 660;
+                return 640;
             case 3:
-                return 1620;
+                return 1600;
         }
         return 0;
     }

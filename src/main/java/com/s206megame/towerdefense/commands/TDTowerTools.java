@@ -2,11 +2,17 @@ package com.s206megame.towerdefense.commands;
 
 import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.player.PlayerDataManager;
-import com.s206megame.towerdefense.tower.Direction;
-import com.s206megame.towerdefense.tower.MultipleFacingBlockElement;
-import com.s206megame.towerdefense.tower.TowerStructure;
-import com.s206megame.towerdefense.tower.TowerStructureBank;
+import com.s206megame.towerdefense.tower.*;
+import com.s206megame.towerdefense.tower.attack.DariusTower;
+import com.s206megame.towerdefense.tower.attack.ExplosionTower;
+import com.s206megame.towerdefense.tower.attack.FireTower;
+import com.s206megame.towerdefense.tower.attack.PotionTower;
 import com.s206megame.towerdefense.tower.range.ArcherTower;
+import com.s206megame.towerdefense.tower.range.LongbowTower;
+import com.s206megame.towerdefense.tower.range.SniperTower;
+import com.s206megame.towerdefense.tower.speed.CrossbowTower;
+import com.s206megame.towerdefense.tower.speed.MinigunTower;
+import com.s206megame.towerdefense.tower.speed.SnowballTower;
 import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -35,18 +41,26 @@ public class TDTowerTools implements TDCommandBase {
         return new ArrayList<>();
     }
 
-    private LinkedList<Particle> part = new LinkedList<>(Arrays.asList(Particle.values()));
-
     @Override
     public void run(Player player, String[] arg) {
-        if (part.size() == 0) {
-            player.sendMessage("no more!");
-            return;
+        ArrayList<Tower> towers = new ArrayList<>();
+        towers.add(new SnowballTower());
+        towers.add(new MinigunTower());
+        towers.add(new CrossbowTower());
+        towers.add(new SniperTower());
+        towers.add(new LongbowTower());
+        towers.add(new ArcherTower());
+        towers.add(new PotionTower());
+        towers.add(new FireTower());
+        towers.add(new ExplosionTower());
+        towers.add(new DariusTower());
+        for (Tower t : towers) {
+            //防禦塔名稱	射程	單次攻擊	攻擊頻率 每...tick打一下 (= 50ms)
+            for (int level = 1; level <= t.getMaxLevel(); level++) {
+                t.setLevel(level);
+                System.out.println(t.getTitle()+"\t"+t.getRange()+"\t"+t.getDamage()+"\t"+t.getHitDelay()+"\t"+t.getPrice(level));
+            }
         }
-        Particle p = part.poll();
-        ParticleManager.playParticle(new Location(player.getWorld(),-51,7 ,-42),new Vector(1,0,0),
-                       6,0.5, p);
-        player.sendMessage(p.name());
         /*int mx = Integer.parseInt(arg[0]);
         int my = Integer.parseInt(arg[1]);
         int mz = Integer.parseInt(arg[2]);

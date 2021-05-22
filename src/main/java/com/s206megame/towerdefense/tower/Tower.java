@@ -128,7 +128,7 @@ public abstract class Tower {
         double vy = ml.getY() - cl.getY();
         double vz = ml.getZ() - cl.getZ();
         Vector vec = new Vector(vx,vy,vz);
-        ParticleManager.playParticle(getConvertedParticleStart(),vec.normalize(),Math.sqrt(vx*vx+vy*vy+vz*vz),0.5,getParticle());
+        ParticleManager.playParticle(getConvertedParticleStart(),vec.normalize(),Math.sqrt(vx*vx+vy*vy+vz*vz),1,getParticle());
     }
 
     protected World getWorld() {

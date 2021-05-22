@@ -113,6 +113,6 @@ public class Wave {
     }
 
     public long getTimeLeft() {
-        return 1000 * 120 - (System.currentTimeMillis() - start_time);
+        return 1000 * 30 - (System.currentTimeMillis() - start_time);
     }
 }

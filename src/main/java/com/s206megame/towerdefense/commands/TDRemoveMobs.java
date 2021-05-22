@@ -20,8 +20,6 @@ public class TDRemoveMobs implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        for (Mob mob : Main.map.getMobList()) {
-            mob.kill();
-        }
+
     }
 }

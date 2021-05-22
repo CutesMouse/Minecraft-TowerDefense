@@ -20,11 +20,11 @@ public class ArcherTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 5;
-            case 2:
-                return 7;
-            case 3:
                 return 10;
+            case 2:
+                return 12;
+            case 3:
+                return 15;
         }
         return 0;
     }
@@ -33,11 +33,11 @@ public class ArcherTower extends Tower {
     public double getHitDelay() {
         switch (level) {
             case 1:
-                return 10;
+                return 18;
             case 2:
-                return 8;
+                return 13;
             case 3:
-                return 5;
+                return 10;
         }
         return 0;
     }
@@ -61,7 +61,7 @@ public class ArcherTower extends Tower {
             case 1:
                 return 100;
             case 2:
-                return 220;
+                return 200;
             case 3:
                 return 600;
         }

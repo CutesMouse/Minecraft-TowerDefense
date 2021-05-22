@@ -20,10 +20,10 @@ public class SlownessEffect extends MobEffect {
 
     @Override
     public void tickEvent(Mob target) {
-        target.setSnowness(getSlownessRatio());
+        target.setSlowness(getSlownessRatio());
         target.getEntity().getWorld().spawnParticle(Particle.SNOWBALL,target.getEntity().getLocation(),5);
         duration--;
-        if (duration == 0) target.setSnowness(1);
+        if (duration == 0) target.setSlowness(1);
     }
 
     @Override

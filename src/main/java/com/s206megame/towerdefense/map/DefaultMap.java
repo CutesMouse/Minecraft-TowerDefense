@@ -14,6 +14,7 @@ import org.bukkit.World;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class DefaultMap implements Map {
     private ArrayList<TowerSlot> towerSlots;
@@ -193,5 +194,45 @@ public class DefaultMap implements Map {
         towerSlots.add(new TowerSlot(new Location(w, 10, 5, -15), TowerType.FIVE_BY_FIVE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, 11, 5, -3), TowerType.THREE_BY_THREE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, 10, 5, 2), TowerType.FIVE_BY_FIVE, Direction.EAST));
+    }
+
+    private LinkedList<Location> castleBlocks;
+
+    @Override
+    public LinkedList<Location> getCastleBlocks() {
+        if (castleBlocks != null) return castleBlocks;
+        castleBlocks = new LinkedList<>();
+        castleBlocks.add(new Location(WORLD,-13, 7, -47));
+        castleBlocks.add(new Location(WORLD,-13, 7, -48));
+        castleBlocks.add(new Location(WORLD,-13, 6, -48));
+        castleBlocks.add(new Location(WORLD,-14, 6, -47));
+        castleBlocks.add(new Location(WORLD,-13, 6, -47));
+        castleBlocks.add(new Location(WORLD,-12, 6, -47));
+        castleBlocks.add(new Location(WORLD,-12, 6, -48));
+        castleBlocks.add(new Location(WORLD,-13, 5, -48));
+        castleBlocks.add(new Location(WORLD,-13, 6, -46));
+        castleBlocks.add(new Location(WORLD,-13, 5, -49));
+        castleBlocks.add(new Location(WORLD,-12, 5, -48));
+        castleBlocks.add(new Location(WORLD,-12, 5, -47));
+        castleBlocks.add(new Location(WORLD,-12, 5, -46));
+        castleBlocks.add(new Location(WORLD,-13, 5, -45));
+        castleBlocks.add(new Location(WORLD,-13, 5, -46));
+        castleBlocks.add(new Location(WORLD,-13, 5, -47));
+        castleBlocks.add(new Location(WORLD,-13, 5, -48));
+        castleBlocks.add(new Location(WORLD,-14, 5, -48));
+        castleBlocks.add(new Location(WORLD,-14, 5, -47));
+        castleBlocks.add(new Location(WORLD,-14, 5, -46));
+        return castleBlocks;
+    }
+
+    @Override
+    public ArrayList<Location> getFinalCastleBlocks() {
+        ArrayList<Location> loc = new ArrayList<>();
+        for (int x = -14; x <= -12; x++) {
+            for (int z = -49; z <= -45; z++) {
+                loc.add(new Location(WORLD,x,4,z));
+            }
+        }
+        return loc;
     }
 }

@@ -1,10 +1,7 @@
 package com.s206megame.towerdefense.commands;
 
 import com.s206megame.towerdefense.Main;
-import com.s206megame.towerdefense.mobs.ChickenJockeyMob;
-import com.s206megame.towerdefense.mobs.GolemMob;
-import com.s206megame.towerdefense.mobs.WitherMob;
-import com.s206megame.towerdefense.mobs.ZombieMob;
+import com.s206megame.towerdefense.mobs.*;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;
@@ -23,6 +20,6 @@ public class TDMobTest implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        Main.map.spawnMob(GolemMob.class);
+        Main.map.spawnMob(EndermanMob.class);
     }
 }

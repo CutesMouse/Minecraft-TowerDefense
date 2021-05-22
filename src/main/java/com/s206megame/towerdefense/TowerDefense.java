@@ -3,15 +3,25 @@ package com.s206megame.towerdefense;
 import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.appearance.WaveBar;
 import com.s206megame.towerdefense.items.Items;
+import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.utils.Wave;
 import com.s206megame.towerdefense.utils.WaveManager;
+import net.minecraft.server.v1_16_R3.BlockPosition;
+import net.minecraft.server.v1_16_R3.PacketPlayOutBlockBreakAnimation;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;
+import org.bukkit.entity.Firework;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.meta.FireworkMeta;
 import org.bukkit.scheduler.BukkitRunnable;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Random;
 
 public class TowerDefense {
     private static TowerDefense INST;
@@ -24,16 +34,38 @@ public class TowerDefense {
 
     private int health = 20;
 
+    private long start_time;
+    private long end_time;
+
+    public long getTime() {
+        if (start_time == 0) return -1;
+        if (end_time == 0) return System.currentTimeMillis() - start_time;
+        return end_time - start_time;
+    }
+
     public int getHealth() {
         return health;
     }
 
+    public Wave getCurrentWave() {
+        return currentWave;
+    }
+
     public void removeHealth() {
+        health --;
         if (health <= 0) {
             End();
             return;
         }
-        health --;
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_VILLAGER_CURE,1,1);
+            String color = (health > 10 ? "§a" : "§c");
+            p.sendMessage("\u00a7c\u00a7lOh NO! \u00a7e怪物偷走了你的寶藏! 你剩下 "+color+health+"\u2764");
+        }
+        LinkedList<Location> cast = Main.map.getCastleBlocks();
+        if (cast.size() == 0) return;
+        Location loc = cast.poll();
+        loc.getBlock().breakNaturally();
     }
 
     private int spawnDelay;
@@ -62,11 +94,21 @@ public class TowerDefense {
 
     public void Start() {
         money = 1000;
+        start_time = System.currentTimeMillis();
+        ArrayList<Material> able = new ArrayList<>(Arrays.asList(Material.GOLD_BLOCK,Material.DIAMOND_BLOCK,Material.EMERALD_BLOCK));
+        Random r= new Random();
+        for (Location castle : Main.map.getCastleBlocks()) {
+            castle.getBlock().setType(able.get(r.nextInt(able.size())));
+        }
+        for (Location loc : Main.map.getFinalCastleBlocks()) {
+            loc.getBlock().setType(Material.REDSTONE_BLOCK);
+        }
         MainLoop(Main.getPlugin(Main.class));
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.teleport(new Location(p.getWorld(), -23.5, 6, -27.5));
             p.sendTitle("§f歡迎來到§aTOWER DEFENSE！", "§f遊戲將在不久後開始", 10, 100, 10);
-            p.setGameMode(GameMode.CREATIVE);
+            p.setGameMode(GameMode.ADVENTURE);
+            p.setAllowFlight(true);
             p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
             p.setFoodLevel(20);
             p.getInventory().clear();
@@ -80,19 +122,56 @@ public class TowerDefense {
     }
 
     public void End() {
+        end = true;
+        end_time = System.currentTimeMillis();
+        for (Location loc : Main.map.getFinalCastleBlocks()) {
+            loc.getBlock().breakNaturally();
+        }
         for (Player p : Bukkit.getOnlinePlayers()) {
             p.teleport(new Location(p.getWorld(), -12.5, 5, -193.5));
-            p.sendTitle("§c你輸了!", "§c怪物們搶走了你的寶藏並抓住了你", 10, 100, 10);
-            announce("■■■■■■■■■■■■■■■■■■■■■", false);
-            announce("§c面對一波又一波的怪物，你最終不敵，敗在了怪物手裡。", false);
-            announce("§c你與你的隊員面對著未知的命運。", false);
-            announce("§f輸入指令§a/td start§f開始下一局遊戲吧，下次請再接再勵!", false);
-            announce("■■■■■■■■■■■■■■■■■■■■■", false);
-            p.setGameMode(GameMode.ADVENTURE);
+            p.sendTitle("§c遊戲結束!", "§c怪物們搶走了你的寶藏並抓住了你", 10, 100, 10);
+            p.setGameMode(GameMode.CREATIVE);
             p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
             p.setFoodLevel(20);
             p.getInventory().clear();
+            p.playSound(p.getLocation(),Sound.ENTITY_WITHER_DEATH,1,1);
         }
+        announce("■■■■■■■■■■■■■■■■■■■■■", false);
+        announce("§c面對一波又一波的怪物，你最終不敵，敗在了怪物手裡。", false);
+        announce("§c你與你的隊員面對著未知的命運。", false);
+        announce("§f下次請再接再勵!", false);
+        announce("■■■■■■■■■■■■■■■■■■■■■", false);
+        for (Mob mob : Main.map.getMobList()) {
+            mob.kill();
+        }
+        WaveBar.setTitle("§a你撐到了第 " + currentWave.getWave() + " 波!");
+        WaveBar.setVisible(true);
+        WaveBar.setMaximum(100);
+        WaveBar.setValue(100);
+        WaveBar.setColor(BarColor.GREEN);
+        new BukkitRunnable() {
+            private final Random r = new Random();
+            private int times = 10;
+            @Override
+            public void run() {
+                times--;
+                for (Player p : Bukkit.getOnlinePlayers()) {
+                    Location loc = p.getLocation().clone().add(r.nextInt(30) - 15, r.nextInt(15), r.nextInt(30) - 15);
+                    Firework fw = p.getWorld().spawn(loc, Firework.class);
+                    fw.setFireworkMeta(getRandomMeta(r,fw));
+                }
+                if (times == 0) this.cancel();
+            }
+        }.runTaskTimer(Main.getProvidingPlugin(Main.class),0L,20L);
+    }
+
+    private FireworkMeta getRandomMeta(Random r, Firework fw) {
+        FireworkMeta meta = fw.getFireworkMeta();
+        meta.addEffect(FireworkEffect.builder().flicker(r.nextBoolean()).trail(r.nextBoolean())
+        .with(FireworkEffect.Type.values()[r.nextInt(FireworkEffect.Type.values().length)])
+        .withColor(Color.fromBGR(r.nextInt(256*256*256)))
+        .build());
+        return meta;
     }
 
     private Wave currentWave;
@@ -154,12 +233,13 @@ public class TowerDefense {
                         currentWave = WaveManager.getWaveData(currentWave == null ? 1 : (currentWave.getWave() + 1));
                         currentWave.spawnWave(); // Spawn the new wave
                         cleared = true;
-                        announce("============",false);
-                        announce("守住你的村莊!!",false);
-                        announce("第 " + currentWave.getWave() + " 波怪物開始攻擊!!",false);
-                        announce("此波怪物共有 " + currentWave.getMaxMob()+" 隻",false);
-                        announce("祝你好運!",false);
-                        announce("============",false);
+                        announce(String.format("§e■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■\n \n" +
+                                "\n                                §e§l第 %02d 波" +
+                                "\n                        §c§l守住你的村莊" +
+                                "\n                       §c§l怪物開始攻擊!!" +
+                                "\n                     §7#此波怪物共有 %d 隻"+
+                                "\n                                 §6祝你好運" +
+                                "\n \n§e■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■",currentWave.getWave(),currentWave.getMaxMob()),false,false);
                         for (Player p : Bukkit.getOnlinePlayers()) {
                             p.playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_AMBIENT,1,1);
                         }
@@ -178,14 +258,14 @@ public class TowerDefense {
             WaveBar.setMaximum(currentWave.getMaxMob());
             WaveBar.setValue(currentWave.getProcess());
         } else {
-            String title = "§b◤§a召喚完畢§b◢ §b第 §e%d §b波 剩餘 §e%d§b:§e%d §b怪物數量 §e%d§b/§e%d";
+            String title = "§b◤§a召喚完畢§b◢ §b第 §e%d §b波 剩餘 §e%d§b:§e%02d §b怪物數量 §e%d§b/§e%d";
             int left = ((int) currentWave.getTimeLeft()) / 1000;
             int lm = left / 60;
             int ls = left % 60;
             WaveBar.setTitle(String.format(title,
                     currentWave.getWave(),lm,ls,
                     currentWave.getMobLeft(),currentWave.getMaxMob()));
-            WaveBar.setMaximum(120);
+            WaveBar.setMaximum(30);
             WaveBar.setValue(left);
         }
     }
@@ -193,8 +273,11 @@ public class TowerDefense {
         announce(text,true);
     }
     private void announce(String text, boolean sound) {
+        announce(text, sound,true);
+    }
+    private void announce(String text, boolean sound,boolean prefix) {
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.sendMessage("§a[TowerDefense] §e" + text);
+            p.sendMessage((prefix ? "§a[TowerDefense] §e" : "") + text);
             if (sound) p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_HAT,1,1);
         }
     }

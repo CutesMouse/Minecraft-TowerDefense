@@ -34,7 +34,7 @@ public class PlaceParticle {
                         continue;
                     }
                     ParticleManager.playParticle(p.getEyeLocation(),
-                            p.getEyeLocation().getDirection(),tb.getLocation().distance(p.getEyeLocation()),0.5, Particle.SPELL_WITCH);
+                            p.getEyeLocation().getDirection(),tb.getLocation().distance(p.getEyeLocation()),1, Particle.SPELL_WITCH);
                     for (Location loc : tower.getOutline()) {
                         TempBlock.sendTempBlock(p,Material.GLOWSTONE,3,loc);
                     }

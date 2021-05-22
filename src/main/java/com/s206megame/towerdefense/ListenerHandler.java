@@ -48,6 +48,11 @@ public class ListenerHandler implements Listener {
     }
 
     @EventHandler
+    public void onHunger(FoodLevelChangeEvent e) {
+        e.setFoodLevel(20);
+    }
+
+    @EventHandler
     public void onTowerPlacing(PlayerInteractEvent e) {
         if (e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.ARMOR_STAND)) e.setCancelled(true);
         PlayerData pd = PlayerDataManager.getPlayerData(e.getPlayer());
@@ -63,6 +68,10 @@ public class ListenerHandler implements Listener {
     public void onLootDrop(EntityDeathEvent e) {
         if (e.getEntity().getType().equals(EntityType.PLAYER)) return;
         e.getDrops().clear();
+    }
+    @EventHandler
+    public void onEntityAttack(EntityTargetLivingEntityEvent e) {
+        if (!e.getEntityType().equals(EntityType.PLAYER)) e.setCancelled(true);
     }
     @EventHandler
     public void onTeleport(EntityTeleportEvent e) {
