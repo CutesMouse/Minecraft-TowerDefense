@@ -21,11 +21,11 @@ public class MinigunTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 4;
+                return 2;
             case 2:
-                return 6;
+                return 3;
             case 3:
-                return 8;
+                return 4;
         }
         return 0;
     }
