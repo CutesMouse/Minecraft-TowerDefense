@@ -20,11 +20,11 @@ public class CrossbowTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 4;
+                return 6;
             case 2:
-                return 7;
+                return 11;
             case 3:
-                return 10;
+                return 15;
         }
         return 0;
     }
@@ -59,11 +59,11 @@ public class CrossbowTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 120;
+                return 215;
             case 2:
-                return 340;
+                return 335;
             case 3:
-                return 940;
+                return 700;
         }
         return 0;
     }
