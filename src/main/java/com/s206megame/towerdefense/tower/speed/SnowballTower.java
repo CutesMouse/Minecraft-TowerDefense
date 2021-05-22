@@ -49,9 +49,9 @@ public class SnowballTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 6;
-            case 2:
                 return 10;
+            case 2:
+                return 12;
             case 3:
                 return 14;
         }

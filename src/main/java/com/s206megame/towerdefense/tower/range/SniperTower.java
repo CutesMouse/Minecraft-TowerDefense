@@ -47,11 +47,11 @@ public class SniperTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 40;
-            case 2:
-                return 45;
-            case 3:
                 return 50;
+            case 2:
+                return 55;
+            case 3:
+                return 60;
         }
         return 0;
     }

@@ -51,11 +51,11 @@ public class PotionTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 6;
+                return 10;
             case 2:
-                return 7;
+                return 11;
             case 3:
-                return 8;
+                return 12;
         }
         return 0;
     }

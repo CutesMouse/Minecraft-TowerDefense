@@ -137,7 +137,7 @@ public class TowerDefense {
                         announce("============",false);
                         announce("守住你的村莊!!",false);
                         announce("第 " + currentWave.getWave() + " 波怪物開始攻擊!!",false);
-                        announce("此波怪物共有 " +currentWave.getMaxMob()+" 隻",false);
+                        announce("此波怪物共有 " + currentWave.getMaxMob()+" 隻",false);
                         announce("祝你好運!",false);
                         announce("============",false);
                         for (Player p : Bukkit.getOnlinePlayers()) {

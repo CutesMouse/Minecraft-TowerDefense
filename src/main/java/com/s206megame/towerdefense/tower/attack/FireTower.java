@@ -55,11 +55,11 @@ public class FireTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 8;
-            case 2:
-                return 9;
-            case 3:
                 return 10;
+            case 2:
+                return 11;
+            case 3:
+                return 12;
         }
         return 0;
     }
