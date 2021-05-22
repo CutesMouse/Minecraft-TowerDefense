@@ -22,7 +22,7 @@ public class SnowballTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 1.5;
+                return 1;
             case 2:
                 return 2.5;
             case 3:
@@ -61,11 +61,11 @@ public class SnowballTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 80;
+                return 100;
             case 2:
                 return 320;
             case 3:
-                return 800;
+                return 450;
         }
         return 0;
     }

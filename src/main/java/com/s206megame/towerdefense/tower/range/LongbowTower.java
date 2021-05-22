@@ -20,11 +20,11 @@ public class LongbowTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 50;
+                return 60;
             case 2:
-                return 70;
+                return 120;
             case 3:
-                return 90;
+                return 190;
         }
         return 0;
     }
@@ -59,11 +59,11 @@ public class LongbowTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 380;
+                return 185;
             case 2:
-                return 700;
+                return 250;
             case 3:
-                return 1440;
+                return 500;
         }
         return 0;
     }

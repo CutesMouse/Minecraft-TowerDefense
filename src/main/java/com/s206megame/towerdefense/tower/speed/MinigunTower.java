@@ -20,11 +20,11 @@ public class MinigunTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 2;
-            case 2:
                 return 3;
+            case 2:
+                return 6;
             case 3:
-                return 4;
+                return 9;
         }
         return 0;
     }
@@ -59,11 +59,11 @@ public class MinigunTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 140;
+                return 670;
             case 2:
-                return 420;
+                return 1320;
             case 3:
-                return 1600;
+                return 4000;
         }
         return 0;
     }

@@ -20,11 +20,11 @@ public class SniperTower extends Tower {
     public double getDamage() {
         switch (level) {
             case 1:
-                return 100;
+                return 500;
             case 2:
-                return 150;
+                return 1000;
             case 3:
-                return 200;
+                return 1500;
         }
         return 0;
     }
@@ -59,11 +59,11 @@ public class SniperTower extends Tower {
     public int getPrice(int level) {
         switch (level) {
             case 1:
-                return 800;
+                return 830;
             case 2:
-                return 1500;
+                return 1020;
             case 3:
-                return 2500;
+                return 1500;
         }
         return 0;
     }
