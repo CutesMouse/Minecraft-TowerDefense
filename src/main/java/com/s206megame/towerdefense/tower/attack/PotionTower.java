@@ -1,6 +1,9 @@
 package com.s206megame.towerdefense.tower.attack;
 
+import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.effect.PoisonousEffect;
+import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
@@ -9,6 +12,7 @@ import org.bukkit.Particle;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class PotionTower extends Tower {
 
@@ -92,5 +96,16 @@ public class PotionTower extends Tower {
     @Override
     public TowerType getType() {
         return TowerType.THREE_BY_THREE;
+    }
+
+    @Override
+    public void attackMob(Mob target) {
+        lastAttack = System.currentTimeMillis();
+        List<Mob> attackList = Main.map.getMobList().stream().filter(p -> p.getEntity().getLocation().distance(target.getEntity().getLocation()) < 5)
+                .collect(Collectors.toList());
+        for (Mob mob : attackList) {
+            mob.addEffect(new PoisonousEffect(getDamage(),level));
+            getWorld().spawnParticle(Particle.SPELL,mob.getEntity().getLocation(),1);
+        }
     }
 }
