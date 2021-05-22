@@ -5,12 +5,9 @@ import com.s206megame.towerdefense.TowerDefense;
 import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.utils.HoveringText;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -22,21 +19,21 @@ public abstract class CraftMob implements Mob {
     protected double health;
     private int nameupdateDelay = 0;
     private boolean onFire = false;
-    protected double slowness;
+    protected double snowless;
     private double yaw;
     private ArrayList<MobEffect> me = new ArrayList<>();
 
     public CraftMob() {
         this.health = getMaxHealth();
-        this.slowness = 1.0;
+        this.snowless = 1.0;
         alive = true;
     }
 
     @Override
     public void moveMob(double distance) {
         double pi = (yaw + 90) * Math.PI / 180.0;
-        double dx = Math.cos(pi) * distance * slowness;
-        double dz = Math.sin(pi) * distance * slowness;
+        double dx = Math.cos(pi) * distance * snowless;
+        double dz = Math.sin(pi) * distance * snowless;
         Location c = getEntity().getLocation();
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
@@ -178,7 +175,7 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public double getAward() {
-        return getMaxHealth() * getBlockPerTick() * 0.5 / strengthen_offset;
+        return getMaxHealth() * getBlockPerTick() * 0.1 / strengthen_offset;
     }
 
     @Override
@@ -187,8 +184,8 @@ public abstract class CraftMob implements Mob {
     }
 
     @Override
-    public void setSlowness(double ratio) {
-        this.slowness = ratio;
+    public void setSnowness(double ratio) {
+        this.snowless = ratio;
     }
 
     @Override
