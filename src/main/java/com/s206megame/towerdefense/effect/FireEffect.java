@@ -3,12 +3,16 @@ package com.s206megame.towerdefense.effect;
 import com.s206megame.towerdefense.mobs.Mob;
 
 public class FireEffect extends MobEffect {
-    private int duration = 100;
+    private int duration = 40;
+    protected int level;
     private boolean firstApply = true;
     private double base;
-    public FireEffect(double base) {
+
+    public FireEffect(double base,int level) {
         this.base = base;
+        this.level = level;
     }
+
     @Override
     public int getDuration() {
         return duration;
@@ -37,7 +41,7 @@ public class FireEffect extends MobEffect {
 
     @Override
     public int getLevel() {
-        return 0;
+        return level;
     }
 
     @Override

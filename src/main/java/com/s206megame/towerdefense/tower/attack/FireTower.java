@@ -100,7 +100,7 @@ public class FireTower extends Tower {
     @Override
     public void attackMob(Mob target) {
         super.attackMob(target);
-        target.addEffect(new FireEffect(getFireDamage()));
+        target.addEffect(new FireEffect(getFireDamage(),getLevel()));
     }
 
     @Override
