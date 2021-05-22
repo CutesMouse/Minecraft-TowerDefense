@@ -80,7 +80,19 @@ public class TowerDefense {
     }
 
     public void End() {
-
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.teleport(new Location(p.getWorld(), -12.5, 5, -193.5));
+            p.sendTitle("§c你輸了!", "§c怪物們搶走了你的寶藏並抓住了你", 10, 100, 10);
+            announce("■■■■■■■■■■■■■■■■■■■■■", false);
+            announce("§c面對一波又一波的怪物，你最終不敵，敗在了怪物手裡。", false);
+            announce("§c你與你的隊員面對著未知的命運。", false);
+            announce("§f輸入指令§a/td start§f開始下一局遊戲吧，下次請再接再勵!", false);
+            announce("■■■■■■■■■■■■■■■■■■■■■", false);
+            p.setGameMode(GameMode.ADVENTURE);
+            p.getAttribute(Attribute.GENERIC_MAX_HEALTH);
+            p.setFoodLevel(20);
+            p.getInventory().clear();
+        }
     }
 
     private Wave currentWave;
