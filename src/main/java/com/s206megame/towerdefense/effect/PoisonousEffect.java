@@ -12,21 +12,20 @@ public class PoisonousEffect extends MobEffect {
     public PoisonousEffect(double damage, int level) {
         this.level = level;
         this.damage = damage;
-        duration = getDuration();
+        duration = 100;
     }
     @Override
     public int getDuration() {
-        return 20;
+        return duration;
     }
 
     @Override
     public void tickEvent(Mob target) {
-        target.setOnFire(true);
         if (duration % 20 == 0) {
             Random r = new Random();
             target.getEntity().getWorld().spawnParticle(Particle.DAMAGE_INDICATOR,
                     target.getEntity().getLocation().add(-1 + r.nextDouble() * 2,r.nextDouble(),-1 + 2 *r.nextDouble()),5);
-            target.damage(damage * 0.1);
+            target.damage(damage * 0.2);
         }
         duration--;
     }

@@ -3,7 +3,9 @@ package com.s206megame.towerdefense.api;
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.tower.Direction;
 import com.s206megame.towerdefense.tower.Tower;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 import java.util.ArrayList;
 

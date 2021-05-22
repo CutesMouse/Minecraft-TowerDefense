@@ -23,7 +23,9 @@ import com.s206megame.towerdefense.tower.speed.MinigunTower;
 import com.s206megame.towerdefense.tower.speed.SnowballTower;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.minecraft.server.v1_16_R3.Slot;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -78,9 +80,13 @@ public class TowerPlacingGUI {
             return new StaticGUIItem(tower.getDisplayItem(),tower.getDescriptionTitle(),intro).setAction(e -> {
                 e.setCancelled(true);
                 e.getPlayer().closeInventory();
+                if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) {
+                    return;
+                }
                 int cost = tower.getPrice(tower.getLevel());
                 if (TowerDefense.getInstance().canAfford(cost)) {
                     slot.getTower().upgrade();
+                    sendBuildMessage(e.getPlayer().getName(),tower);
                     TowerDefense.getInstance().removeMoney(cost);
                 } else {
                     e.getPlayer().sendMessage("§c你沒有足夠的金錢!");
@@ -116,6 +122,7 @@ public class TowerPlacingGUI {
                 return;
             }
             slot.buildTower(tower);
+            sendBuildMessage(e.getPlayer().getName(),tower);
             TowerDefense.getInstance().removeMoney(tower.getPrice(tower.getLevel()));
         };
     }
@@ -127,7 +134,22 @@ public class TowerPlacingGUI {
             return;
         }
         double back = slot.getTower().getPrice() / 2D;
+        sendRemoveMessage(e.getPlayer().getName(),slot.getTower());
         TowerDefense.getInstance().addMoney(back);
         slot.removeTower();
+    }
+
+    private static void sendBuildMessage(String builder, Tower tower) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            String verb = tower.getLevel() == 1 ? "放置" : "升級";
+            p.sendMessage("§6" + builder + " §a"+verb+"了 §6" + tower.getTitle());
+            p.playSound(p.getLocation(), Sound.ENTITY_EXPERIENCE_ORB_PICKUP,1,1);
+        }
+    }
+    private static void sendRemoveMessage(String remover, Tower tower) {
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.sendMessage("§6" + remover + " §c移除了 §6" + tower.getTitle());
+            p.playSound(p.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING,1,1);
+        }
     }
 }

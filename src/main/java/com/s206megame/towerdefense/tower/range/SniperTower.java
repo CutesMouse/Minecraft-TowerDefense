@@ -4,7 +4,6 @@ import com.s206megame.towerdefense.api.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
-import com.s206megame.towerdefense.tower.TowerCategory;
 import org.bukkit.Particle;
 
 import java.util.Arrays;

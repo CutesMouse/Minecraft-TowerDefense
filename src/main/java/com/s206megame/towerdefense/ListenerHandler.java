@@ -39,16 +39,14 @@ public class ListenerHandler implements Listener {
     @EventHandler
     public void onEntityFired(EntityDamageEvent e) {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.CUSTOM)) return;
-        Main.map.getMobList().stream().filter(p -> p.getEntity().equals(e.getEntity())).findFirst().ifPresent(mob -> {
-            e.setCancelled(true);
-        });
+        Main.map.getMobList().stream().filter(p -> p.getEntity().equals(e.getEntity())).findFirst()
+                .ifPresent(mob -> e.setCancelled(true));
     }
     @EventHandler
     public void disableTNT(EntityExplodeEvent e) {
         e.setCancelled(true);
     }
 
-    private Location p1;
     @EventHandler
     public void onTowerPlacing(PlayerInteractEvent e) {
         if (e.getPlayer().getInventory().getItemInMainHand().getType().equals(Material.ARMOR_STAND)) e.setCancelled(true);

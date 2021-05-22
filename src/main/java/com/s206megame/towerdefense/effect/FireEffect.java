@@ -7,10 +7,12 @@ public class FireEffect extends MobEffect {
     protected int level;
     private boolean firstApply = true;
     private double base;
+    private double init;
 
-    public FireEffect(double base,int level) {
+    public FireEffect(double init, double base,int level) {
         this.base = base;
         this.level = level;
+        this.init = init;
     }
 
     @Override
@@ -26,12 +28,12 @@ public class FireEffect extends MobEffect {
     public void tickEvent(Mob target) {
         target.setOnFire(true);
         if (firstApply) {
-            target.damage(getBaseDamage());
+            target.damage(init);
             firstApply = false;
             return;
         }
         if (duration % 20 == 0) {
-            target.damage(getBaseDamage() * 0.1);
+            target.damage(getBaseDamage());
         }
         duration--;
         if (duration == 0) {

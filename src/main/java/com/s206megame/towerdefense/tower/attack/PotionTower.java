@@ -3,11 +3,11 @@ package com.s206megame.towerdefense.tower.attack;
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.effect.PoisonousEffect;
+import com.s206megame.towerdefense.effect.SlownessEffect;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
-import com.s206megame.towerdefense.tower.TowerCategory;
 import org.bukkit.Particle;
 
 import java.util.Arrays;
@@ -80,7 +80,8 @@ public class PotionTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f巫婆調製的§2劇毒藥水§f會要了你的命！","§f給予敵人§c持續數秒的傷害");
+        return Arrays.asList("§f巫婆調製的§2劇毒藥水§f會要了你的命！","§f給予敵人§c持續數秒的傷害",
+                "§f並緩速敵人!");
     }
 
     @Override
@@ -105,7 +106,9 @@ public class PotionTower extends Tower {
                 .collect(Collectors.toList());
         for (Mob mob : attackList) {
             mob.addEffect(new PoisonousEffect(getDamage(),level));
+            mob.addEffect(new SlownessEffect(getLevel(),(int) getHitDelay()));
             getWorld().spawnParticle(Particle.SPELL,mob.getEntity().getLocation(),1);
         }
+        playParticle(target);
     }
 }

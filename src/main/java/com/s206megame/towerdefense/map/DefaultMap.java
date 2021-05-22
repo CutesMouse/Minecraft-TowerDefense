@@ -72,7 +72,7 @@ public class DefaultMap implements Map {
     public ArrayList<CheckPoint> getCheckpoints() {
         if (cps != null) return cps;
         cps = new ArrayList<>();
-        cps.add(new CheckPoint(-46.0,5,-13.0,-78.7));
+        cps.add(new CheckPoint(-46.0,5,-12.0,-78.7));
         cps.add(new CheckPoint(-26.0,5,-9.0,4.8));
         cps.add(new CheckPoint(-27.0,5,3.0,86.8));
         cps.add(new CheckPoint(-45.0,5,4.0,0));
@@ -102,6 +102,7 @@ public class DefaultMap implements Map {
 
     private void initTowers(World w) {
         towerSlots = new ArrayList<>();
+        towerSlots.add(new TowerSlot(new Location(w, -52, 5, -43), TowerType.THREE_BY_THREE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, -40, 5, -44), TowerType.FIVE_BY_FIVE, Direction.WEST));
         towerSlots.add(new TowerSlot(new Location(w, -41, 5, -39), TowerType.THREE_BY_THREE, Direction.WEST));
         towerSlots.add(new TowerSlot(new Location(w, -41, 5, -36), TowerType.THREE_BY_THREE, Direction.WEST));
@@ -109,7 +110,7 @@ public class DefaultMap implements Map {
         towerSlots.add(new TowerSlot(new Location(w, -41, 5, -26), TowerType.THREE_BY_THREE, Direction.WEST));
         towerSlots.add(new TowerSlot(new Location(w, -41, 5, -23), TowerType.THREE_BY_THREE, Direction.WEST));
         towerSlots.add(new TowerSlot(new Location(w, -40, 5, -18), TowerType.FIVE_BY_FIVE, Direction.WEST));
-        towerSlots.add(new TowerSlot(new Location(w, -52, 5, -43), TowerType.THREE_BY_THREE, Direction.EAST));
+        //
         towerSlots.add(new TowerSlot(new Location(w, -52, 5, -40), TowerType.THREE_BY_THREE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, -52, 5, -37), TowerType.THREE_BY_THREE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, -52, 5, -34), TowerType.THREE_BY_THREE, Direction.EAST));

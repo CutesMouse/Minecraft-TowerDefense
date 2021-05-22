@@ -16,17 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Tower {
-
-    protected TowerCategory category;
     protected int level;
     protected long lastAttack;
     protected TowerSlot location;
     private Location converted;
     protected TowerAI ai;
-
-    public TowerCategory getCategory() {
-        return category;
-    }
 
     public StaticGUIItem getGUIItem() {
         StaticGUIItem item = new StaticGUIItem(getDisplayItem());
@@ -107,7 +101,7 @@ public abstract class Tower {
         re.addAll(getDescription());
         re.add("§a射程： §e半徑 " + getRange()+ " 格");
         re.add("§a單次攻擊力： §e每次 " +getDamage() + " 點傷害");
-        re.add("§a攻擊頻率： §e每 " + getHitDelay() + " tick一次");
+        re.add("§a攻擊頻率： §e每秒 " + (((int) Math.round(200D / getHitDelay())) / 10D) + " 次");
         re.add("");
         re.add("§a費用: §e" + getPrice(level));
         return re;

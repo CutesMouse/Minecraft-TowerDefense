@@ -6,7 +6,6 @@ import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
-import com.s206megame.towerdefense.tower.TowerCategory;
 import org.bukkit.Particle;
 
 import java.util.Arrays;
@@ -20,7 +19,9 @@ public class FireTower extends Tower {
     }
 
     @Override
-    public double getDamage() { return 0; } // unused
+    public double getDamage() {
+        return getInitialDamage();
+    } // unused
 
     public double getInitialDamage() {
         switch (level) {
@@ -100,7 +101,7 @@ public class FireTower extends Tower {
     @Override
     public void attackMob(Mob target) {
         super.attackMob(target);
-        target.addEffect(new FireEffect(getFireDamage(),getLevel()));
+        target.addEffect(new FireEffect(getInitialDamage(),getFireDamage(),getLevel()));
     }
 
     @Override
