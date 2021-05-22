@@ -26,17 +26,17 @@ public class FireTower extends Tower {
     public double getInitialDamage() {
         switch (level) {
             case 1:
-                return 80;
+                return 40;
             case 2:
-                return 90;
+                return 50;
             case 3:
-                return 100;
+                return 60;
         }
         return 0;
     }
 
     public double getFireDamage() {
-        return getInitialDamage()*0.1;
+        return getInitialDamage()*0.2;
     }
 
     @Override
