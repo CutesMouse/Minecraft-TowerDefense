@@ -79,7 +79,7 @@ public class Wave {
     }
 
     public int getMaxMob() {
-        return maxMob*strengthen;
+        return maxMob*(strengthen+1);
     }
 
     public int getProcess() {
