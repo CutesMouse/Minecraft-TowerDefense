@@ -47,11 +47,11 @@ public class MinigunTower extends Tower {
     public double getRange() {
         switch (level) {
             case 1:
-                return 5;
-            case 2:
-                return 7;
-            case 3:
                 return 10;
+            case 2:
+                return 12;
+            case 3:
+                return 15;
         }
         return 0;
     }
@@ -77,7 +77,7 @@ public class MinigunTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§c機關槍§f將會掃射來自四面八方的敵人，","§f再強大的怪物軍隊都將輝飛煙滅！", "§a快速發射§f大量的§c小子彈§f造成驚人的傷害");
+        return Arrays.asList("§c機關槍§f將會掃射來自四面八方的敵人，","§f再強大的怪物軍隊都將灰飛煙滅！", "§a快速發射§f大量的§c小子彈§f造成驚人的傷害");
     }
 
     @Override
@@ -87,7 +87,12 @@ public class MinigunTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return Particle.BLOCK_DUST;
+        return Particle.FIREWORKS_SPARK;
+    }
+
+    @Override
+    public int getMaxTargetAmount() {
+        return 5;
     }
 
     @Override

@@ -86,7 +86,7 @@ public class LongbowTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return Particle.ASH;
+        return Particle.END_ROD;
     }
 
     @Override

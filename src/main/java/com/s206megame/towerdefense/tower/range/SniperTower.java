@@ -86,7 +86,7 @@ public class SniperTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return Particle.CRIT_MAGIC;
+        return Particle.SMOKE_LARGE;
     }
 
     @Override

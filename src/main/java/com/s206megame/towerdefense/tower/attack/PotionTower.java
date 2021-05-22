@@ -86,7 +86,7 @@ public class PotionTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return Particle.CRIT_MAGIC;
+        return Particle.SPELL;
     }
 
     @Override

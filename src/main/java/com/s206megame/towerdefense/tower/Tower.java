@@ -74,6 +74,16 @@ public abstract class Tower {
 
     public abstract int getPrice(int level);
 
+    public int getPrice() {
+        int level = this.level;
+        int price = 0;
+        while (level != 0) {
+            price += getPrice(level);
+            level--;
+        }
+        return price;
+    }
+
     public int getLevel() {
         return level;
     }

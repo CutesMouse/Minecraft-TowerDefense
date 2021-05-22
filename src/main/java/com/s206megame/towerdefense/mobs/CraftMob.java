@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class CraftMob implements Mob {
-    private static Map getMap() {
-        return Main.map;
-    }
 
     protected boolean alive;
     protected int strengthen_offset = 1;
@@ -58,7 +55,7 @@ public abstract class CraftMob implements Mob {
             Main.map.getMobList().remove(this);
             return;
         }
-        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getBlockPerTick() * 1.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
+        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getBlockPerTick() * 1.5 + 0.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
         //cps.add(new CheckPoint());
         if (getEntity().getLocation().distance(new Location(getEntity().getWorld(),-14,6,-47)) < 4) {
             TowerDefense.getInstance().removeHealth();

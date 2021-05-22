@@ -66,9 +66,12 @@ public class DefaultMap implements Map {
         return moblist;
     }
 
+    private ArrayList<CheckPoint> cps;
+
     @Override
     public ArrayList<CheckPoint> getCheckpoints() {
-        ArrayList<CheckPoint> cps = new ArrayList<>();
+        if (cps != null) return cps;
+        cps = new ArrayList<>();
         cps.add(new CheckPoint(-46.0,5,-13.0,-78.7));
         cps.add(new CheckPoint(-26.0,5,-9.0,4.8));
         cps.add(new CheckPoint(-27.0,5,3.0,86.8));
@@ -134,8 +137,6 @@ public class DefaultMap implements Map {
         towerSlots.add(new TowerSlot(new Location(w, -52, 5, 8), TowerType.THREE_BY_THREE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, -52, 5, 11), TowerType.THREE_BY_THREE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, -52, 5, 14), TowerType.THREE_BY_THREE, Direction.EAST));
-        towerSlots.add(new TowerSlot(new Location(w, -52, 5, 17), TowerType.THREE_BY_THREE, Direction.EAST));
-        towerSlots.add(new TowerSlot(new Location(w, -47, 5, 22), TowerType.THREE_BY_THREE, Direction.NORTH));
         towerSlots.add(new TowerSlot(new Location(w, -44, 5, 22), TowerType.THREE_BY_THREE, Direction.NORTH));
         towerSlots.add(new TowerSlot(new Location(w, -41, 5, 22), TowerType.THREE_BY_THREE, Direction.NORTH));
         towerSlots.add(new TowerSlot(new Location(w, -38, 5, 22), TowerType.THREE_BY_THREE, Direction.NORTH));

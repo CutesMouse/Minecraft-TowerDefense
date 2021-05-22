@@ -21,9 +21,7 @@ import org.bukkit.block.data.type.Stairs;
 import org.bukkit.entity.Player;
 import org.bukkit.util.Vector;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 public class TDTowerTools implements TDCommandBase {
 
@@ -37,9 +35,18 @@ public class TDTowerTools implements TDCommandBase {
         return new ArrayList<>();
     }
 
+    private LinkedList<Particle> part = new LinkedList<>(Arrays.asList(Particle.values()));
+
     @Override
     public void run(Player player, String[] arg) {
-
+        if (part.size() == 0) {
+            player.sendMessage("no more!");
+            return;
+        }
+        Particle p = part.poll();
+        ParticleManager.playParticle(new Location(player.getWorld(),-51,7 ,-42),new Vector(1,0,0),
+                       6,0.5, p);
+        player.sendMessage(p.name());
         /*int mx = Integer.parseInt(arg[0]);
         int my = Integer.parseInt(arg[1]);
         int mz = Integer.parseInt(arg[2]);

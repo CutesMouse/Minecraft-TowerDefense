@@ -94,7 +94,7 @@ public class FireTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return Particle.FLAME;
+        return Particle.LAVA;
     }
 
     @Override

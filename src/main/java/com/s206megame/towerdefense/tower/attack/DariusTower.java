@@ -53,7 +53,7 @@ public class DariusTower extends Tower {
 
     @Override
     protected Location getParticleStartPoint() {
-        return new Location(getWorld(),-1,5.5,1);
+        return new Location(getWorld(),1,5.5,-1);
     }
 
     @Override
@@ -63,11 +63,11 @@ public class DariusTower extends Tower {
 
     @Override
     public void playParticle(Mob target) {
-        double vx = target.getEntity().getLocation().getX() - getParticleStartPoint().getX();
-        double vy = target.getEntity().getLocation().getY() - getParticleStartPoint().getY();
-        double vz = target.getEntity().getLocation().getZ() - getParticleStartPoint().getZ();
+        double vx = target.getEntity().getLocation().getX() - getConvertedParticleStart().getX();
+        double vy = target.getEntity().getLocation().getY() - getConvertedParticleStart().getY();
+        double vz = target.getEntity().getLocation().getZ() - getConvertedParticleStart().getZ();
         Vector vec = new Vector(vx,vy,vz);
-        ParticleManager.playParticle(getParticleStartPoint(),vec,Math.sqrt(vx*vx+vy*vy+vz*vz),0.2,getParticle(),Material.REDSTONE_BLOCK.createBlockData());
+        ParticleManager.playParticle(getConvertedParticleStart(),vec,Math.sqrt(vx*vx+vy*vy+vz*vz),0.2,getParticle(),Material.REDSTONE_BLOCK.createBlockData());
     }
 
     @Override

@@ -99,7 +99,7 @@ public class ExplosionTower extends Tower {
                 .collect(Collectors.toList());
         for (Mob mob : attackList) {
             mob.damage(getDamage());
-            getWorld().spawnParticle(Particle.EXPLOSION_NORMAL,mob.getEntity().getLocation(),1);
+            getWorld().spawnParticle(Particle.FLASH,mob.getEntity().getLocation(),1);
         }
         getWorld().spawnParticle(Particle.EXPLOSION_HUGE,target.getEntity().getLocation(),1);
     }

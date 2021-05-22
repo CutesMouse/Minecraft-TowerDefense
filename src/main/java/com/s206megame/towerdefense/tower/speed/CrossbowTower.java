@@ -86,7 +86,7 @@ public class CrossbowTower extends Tower {
 
     @Override
     protected Particle getParticle() {
-        return Particle.CRIT;
+        return Particle.CLOUD;
     }
 
     @Override
