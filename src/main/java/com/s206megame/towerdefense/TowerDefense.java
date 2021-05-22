@@ -29,14 +29,11 @@ public class TowerDefense {
     }
 
     public void removeHealth() {
-        if (health <= 0) return;
-        health --;
-    }
-
-    public void checkGameStat() {
         if (health <= 0) {
-            announce("遊戲結束~");
+            End();
+            return;
         }
+        health --;
     }
 
     private int spawnDelay;
@@ -138,7 +135,7 @@ public class TowerDefense {
                             return;
                         }
                         if (spawnDelay > 0) {
-                            if (spawnDelay <= 5) announce(String.format("下一波怪物即將於§c%d§e秒後生成!",spawnDelay));
+                            if (spawnDelay <= 5) announce(String.format("下一波怪物即將於 §c%d§e 秒後生成!",spawnDelay));
                             spawnDelay--;
                             return;
                         }
