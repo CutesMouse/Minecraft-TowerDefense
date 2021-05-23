@@ -8,7 +8,7 @@ import org.bukkit.entity.Skeleton;
 public class SkeletonMob extends CraftMob {
 
     private Skeleton skeleton;
-    private static final double MAX_HEALTH = 100.0;
+    private static final double MAX_HEALTH = 150.0;
 
     @Override
     public Entity getEntity() {
@@ -35,7 +35,7 @@ public class SkeletonMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.1 * strengthen_offset;
+        return 0.15 * strengthen_offset;
     }
 
     @Override

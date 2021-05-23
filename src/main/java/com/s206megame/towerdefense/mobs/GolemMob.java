@@ -7,7 +7,7 @@ import org.bukkit.entity.IronGolem;
 
 public class GolemMob extends CraftMob {
     private IronGolem golem;
-    private static final double MAX_HEALTH = 1000.0;
+    private static final double MAX_HEALTH = 5000.0;
     @Override
     public Entity getEntity() {
         return golem;
@@ -33,7 +33,7 @@ public class GolemMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.05 * strengthen_offset;
+        return 0.15 * strengthen_offset;
     }
 
     @Override

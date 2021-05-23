@@ -11,7 +11,7 @@ import java.util.Objects;
 public class WitherMob extends CraftMob {
 
     private Wither wither;
-    private static final double MAX_HEALTH = 2500.0;
+    private static final double MAX_HEALTH = 10000.0;
 
     @Override
     public Entity getEntity() {
@@ -38,7 +38,7 @@ public class WitherMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.075 * strengthen_offset;
+        return 0.15 * strengthen_offset;
     }
 
     @Override

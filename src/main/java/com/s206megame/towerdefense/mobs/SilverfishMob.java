@@ -8,7 +8,7 @@ import org.bukkit.entity.Silverfish;
 public class SilverfishMob extends CraftMob {
 
     private Silverfish silverfish;
-    private static final double MAX_HEALTH = 30.0;
+    private static final double MAX_HEALTH = 50.0;
 
     @Override
     public Entity getEntity() {
@@ -35,7 +35,7 @@ public class SilverfishMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.25 * strengthen_offset;
+        return 0.55 * strengthen_offset;
     }
 
     @Override

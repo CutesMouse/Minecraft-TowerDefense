@@ -8,7 +8,7 @@ import org.bukkit.entity.WitherSkeleton;
 public class EndermanMob extends CraftMob {
 
     private Enderman enderman;
-    private static final double MAX_HEALTH = 150.0;
+    private static final double MAX_HEALTH = 800.0;
 
     @Override
     public Entity getEntity() {
@@ -35,7 +35,7 @@ public class EndermanMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.35 * strengthen_offset;
+        return 0.5 * strengthen_offset;
     }
 
     @Override

@@ -6,7 +6,7 @@ import org.bukkit.entity.Vindicator;
 
 public class VindicatorMob extends CraftMob {
     private Vindicator vindicator;
-    private static final double MAX_HEALTH = 250.0;
+    private static final double MAX_HEALTH =400.0;
 
     @Override
     public Entity getEntity() {
@@ -33,7 +33,7 @@ public class VindicatorMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.1 * strengthen_offset;
+        return 0.25 * strengthen_offset;
     }
 
     @Override

@@ -35,7 +35,7 @@ public class SmallSlimeMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.1 * strengthen_offset;
+        return 0.25 * strengthen_offset;
     }
 
     @Override

@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class BabyZombieMob extends CraftMob {
     private Zombie babyzombie;
-    private static final double MAX_HEALTH = 50.0;
+    private static final double MAX_HEALTH = 400.0;
 
     @Override
     public Entity getEntity() {
@@ -39,7 +39,7 @@ public class BabyZombieMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.15 * strengthen_offset;
+        return 0.45 * strengthen_offset;
     }
 
     @Override

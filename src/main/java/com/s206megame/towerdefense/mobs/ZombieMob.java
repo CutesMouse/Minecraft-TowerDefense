@@ -38,7 +38,7 @@ public class ZombieMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.05 * strengthen_offset;
+        return 0.15 * strengthen_offset;
     }
 
     @Override

@@ -190,7 +190,7 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void strengthen(int l) {
-        strengthen_offset = (int)(Math.pow(2,l) * strengthen_offset);
+        strengthen_offset = (int)((l+1) * strengthen_offset);
         health = getMaxHealth();
     }
 }

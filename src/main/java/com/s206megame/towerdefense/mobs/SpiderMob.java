@@ -6,7 +6,7 @@ import org.bukkit.entity.Spider;
 
 public class SpiderMob extends CraftMob {
     private Spider spider;
-    private static final double MAX_HEALTH = 150.0;
+    private static final double MAX_HEALTH = 300.0;
 
     @Override
     public Entity getEntity() {
@@ -33,7 +33,7 @@ public class SpiderMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.075 * strengthen_offset;
+        return 0.2 * strengthen_offset;
     }
 
     @Override

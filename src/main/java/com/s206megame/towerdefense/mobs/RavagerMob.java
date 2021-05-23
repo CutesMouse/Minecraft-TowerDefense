@@ -8,7 +8,7 @@ import org.bukkit.entity.WitherSkeleton;
 public class RavagerMob extends CraftMob {
 
     private Ravager ravager;
-    private static final double MAX_HEALTH = 500.0;
+    private static final double MAX_HEALTH = 1500.0;
 
     @Override
     public Entity getEntity() {
@@ -35,7 +35,7 @@ public class RavagerMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.05 * strengthen_offset;
+        return 0.15 * strengthen_offset;
     }
 
     @Override
