@@ -8,7 +8,7 @@ import org.bukkit.entity.WitherSkeleton;
 public class BlazeMob extends CraftMob {
 
     private Blaze blaze;
-    private static final double MAX_HEALTH = 600.0;
+    private static final double MAX_HEALTH = 1000.0;
 
     @Override
     public Entity getEntity() {

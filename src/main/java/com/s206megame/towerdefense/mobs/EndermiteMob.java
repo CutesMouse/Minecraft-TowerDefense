@@ -8,7 +8,7 @@ import org.bukkit.entity.Entity;
 public class EndermiteMob extends CraftMob {
 
     private Endermite endermite;
-    private static final double MAX_HEALTH = 200.0;
+    private static final double MAX_HEALTH = 500.0;
 
     @Override
     public Entity getEntity() {

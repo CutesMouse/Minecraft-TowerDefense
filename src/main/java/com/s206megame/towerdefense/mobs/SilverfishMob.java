@@ -8,7 +8,7 @@ import org.bukkit.entity.Silverfish;
 public class SilverfishMob extends CraftMob {
 
     private Silverfish silverfish;
-    private static final double MAX_HEALTH = 300.0;
+    private static final double MAX_HEALTH = 700.0;
 
     @Override
     public Entity getEntity() {
