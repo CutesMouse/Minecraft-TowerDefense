@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.mobs;
 
+import com.s206megame.towerdefense.TowerDefense;
 import org.bukkit.Location;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
@@ -54,8 +55,16 @@ public class WitherMob extends CraftMob {
     @Override
     public void damage(double point) {
         super.damage(point);
+        if (health < 0) {
+            TowerDefense.getInstance().addHealth();
+        }
         double ratio = getHealth() / getMaxHealth();
         if (ratio < 0 || ratio > 1) return;
         wither.setHealth(300.0 * ratio);
+    }
+
+    @Override
+    public void kill() {
+        super.kill();
     }
 }

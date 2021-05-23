@@ -32,6 +32,10 @@ public class Wave {
         return this;
     }
 
+    public int getStrengthen() {
+        return strengthen;
+    }
+
     private EndReason endReason;
     private int process; //目前召喚了幾隻怪物
     private int maxMob; //最多有幾隻怪物
