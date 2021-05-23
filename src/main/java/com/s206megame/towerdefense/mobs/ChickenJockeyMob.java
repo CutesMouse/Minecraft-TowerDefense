@@ -55,7 +55,7 @@ public class ChickenJockeyMob extends CraftMob {
 
     @Override
     public double getBlockPerTick() {
-        return 0.55 * strengthen_offset;
+        return 0.35 * strengthen_offset;
     }
 
     @Override
