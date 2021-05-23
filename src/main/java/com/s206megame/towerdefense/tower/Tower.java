@@ -110,11 +110,11 @@ public abstract class Tower {
         re.add("");
         re.add("§a射程： §e半徑 " + getRange()+ " 格");
         re.add("§a單次攻擊力： §e每次 " +getDamage() + " 點傷害");
-        re.add("§a攻擊頻率： §e每秒 " + (((int) Math.round(200D / getHitDelay())) / 10D) + " 次");
+        re.add("§a攻擊頻率： §e每秒 " + MathTool.round(20D / getHitDelay(),2) + " 次");
         re.add("");
         re.add("§a費用: §e" + getPrice(level));
         re.add("");
-        re.add("§e點擊完成建造!");
+        if (level != getMaxLevel()) re.add("§e點擊完成建造!");
         return re;
     }
 
@@ -130,10 +130,10 @@ public abstract class Tower {
             }
         }
         re.add("");
-        re.add("§a射程： §e半徑 §7" + oldTower.getRange() + " §e(➲ "+getRange()+ ") 格");
-        re.add("§a單次攻擊力： §e每次 §7" + oldTower.getDamage() + " §e(➲ " + getDamage() + ") 點傷害");
-        re.add("§a攻擊頻率： §e每秒 §7" + MathTool.round(200D / oldTower.getHitDelay(),2) + " §e(➲ "+
-                MathTool.round(200D / getHitDelay(),2) + ") 次");
+        re.add("§a射程： §e半徑 §7" + oldTower.getRange() + " §e(➲"+getRange()+ ") 格");
+        re.add("§a單次攻擊力： §e每次 §7" + oldTower.getDamage() + " §e(➲" + getDamage() + ") 點傷害");
+        re.add("§a攻擊頻率： §e每秒 §7" + MathTool.round(20D / oldTower.getHitDelay(),2) + " §e(➲"+
+                MathTool.round(20D / getHitDelay(),2) + ") 次");
         re.add("");
         re.add("§a費用: §e" + getPrice(level));
         return re;

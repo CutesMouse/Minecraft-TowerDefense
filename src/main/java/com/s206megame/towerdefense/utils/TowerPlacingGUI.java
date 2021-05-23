@@ -83,7 +83,7 @@ public class TowerPlacingGUI {
                 intro.add("");
                 intro.add("§e點擊完成升級!");
             }
-            return new StaticGUIItem(slot.getTower().getDisplayItem(),tower.getDescriptionTitle(),intro).setAction(e -> {
+            return new StaticGUIItem(tower.getDisplayItem(),slot.getTower().getDescriptionTitle(),intro).setAction(e -> {
                 e.setCancelled(true);
                 e.getPlayer().closeInventory();
                 if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) {

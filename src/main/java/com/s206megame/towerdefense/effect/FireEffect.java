@@ -58,10 +58,10 @@ public class FireEffect extends MobEffect {
     @Override
     public ArrayList<String> getDescription() {
         return new ArrayList<>(Arrays.asList(
-                "§6物品效果: 燃燒 "+ MathTool.rome(level),
+                "§6特殊效果: 燃燒 "+ MathTool.rome(level),
                 "§7高溫的炙燒使敵人感到窒息,",
                 "§7立即對目標造成 §a"+MathTool.round(init,1)+" §7點傷害,",
-                "§7並在之後的 §a2 §7秒內",
+                "§7並在之後的 §a2 §7秒內,",
                 "§7持續對目標造成 §a" + MathTool.round(getBaseDamage(),1) + " §7點的傷害."
         ));
     }
@@ -71,10 +71,10 @@ public class FireEffect extends MobEffect {
         if (!(old instanceof FireEffect)) return new ArrayList<>();
         FireEffect effect = ((FireEffect) old);
         return new ArrayList<>(Arrays.asList(
-                "§6物品效果: 燃燒 §7"+ MathTool.rome(level) +" §6(➲" + MathTool.rome(level)+")",
+                "§6特殊效果: 燃燒 §7"+ MathTool.rome(effect.level) +" §6(➲" + MathTool.rome(level)+")",
                 "§7高溫的炙燒使敵人感到窒息,",
                 "§7立即對目標造成 §7"+MathTool.round(effect.init,1)+" §a(➲"+MathTool.round(init,1)+")"+" §7點傷害,",
-                "§7並在之後的 §a2 §7秒內",
+                "§7並在之後的 §a2 §7秒內,",
                 "§7持續對目標造成 §7" + MathTool.round(effect.getBaseDamage(),1) + " §a(➲" + MathTool.round(getBaseDamage(),1)+ ") §7點的傷害."
         ));
     }

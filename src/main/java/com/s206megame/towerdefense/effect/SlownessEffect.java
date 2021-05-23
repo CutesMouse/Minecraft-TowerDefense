@@ -21,7 +21,7 @@ public class SlownessEffect extends MobEffect {
     @Override
     public ArrayList<String> getDescription() {
         return new ArrayList<>(Arrays.asList(
-                "§6物品效果: 緩速 "+ MathTool.rome(level),
+                "§6特殊效果: 緩速 "+ MathTool.rome(level),
                 "§7將敵人緩速 §a" + MathTool.toPercentage(1-getSlownessRatio())+"§7,",
                 "§7持續 §a" + MathTool.round(duration/20.0,1) +" §7秒."
         ));
@@ -32,9 +32,9 @@ public class SlownessEffect extends MobEffect {
         if (!(old instanceof SlownessEffect)) return new ArrayList<>();
         SlownessEffect effect = ((SlownessEffect) old);
         return new ArrayList<>(Arrays.asList(
-                "§6物品效果: 緩速 §7"+ MathTool.rome(effect.level) + " §6(➲" + MathTool.rome(level)+")",
+                "§6特殊效果: 緩速 §7"+ MathTool.rome(effect.level) + " §6(➲" + MathTool.rome(level)+")",
                 "§7將敵人緩速 §7" + MathTool.toPercentage(1-effect.getSlownessRatio()) + " §a(➲" + MathTool.toPercentage(1-getSlownessRatio())+")§7,",
-                "§7持續 §7" + MathTool.round(effect.duration/20.0,1) +" §a(➲"+MathTool.round(duration / 20.0,1)+") §7秒."
+                "§7持續 " + (effect.duration == duration ? ("§a" + MathTool.round(duration/20.0,1) +" §7秒."):("§7"+MathTool.round(effect.duration/20.0,1) +" §a(➲"+MathTool.round(duration / 20.0,1)+") §7秒."))
         ));
     }
     @Override
