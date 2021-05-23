@@ -24,4 +24,7 @@ public abstract class MobEffect {
         if (getDuration() > old.getDuration()) return true;
         return false;
     }
+    public abstract ArrayList<String> getDescription();
+    public abstract ArrayList<String> getUpgradeDescription(MobEffect old);
+
 }

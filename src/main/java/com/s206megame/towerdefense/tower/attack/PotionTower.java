@@ -2,19 +2,22 @@ package com.s206megame.towerdefense.tower.attack;
 
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.effect.PoisonousEffect;
 import com.s206megame.towerdefense.effect.SlownessEffect;
 import com.s206megame.towerdefense.mobs.Mob;
+import com.s206megame.towerdefense.tower.AbilityTower;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import org.bukkit.Particle;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class PotionTower extends Tower {
+public class PotionTower extends Tower implements AbilityTower {
 
     @Override
     public Material getDisplayItem() {
@@ -110,5 +113,11 @@ public class PotionTower extends Tower {
             getWorld().spawnParticle(Particle.SPELL,mob.getEntity().getLocation(),1);
         }
         playParticle(target);
+    }
+
+    @Override
+    public ArrayList<MobEffect> getAbilities() {
+        return new ArrayList<>(Arrays.asList(new PoisonousEffect(getDamage(),level),
+                new SlownessEffect(getLevel(),(int) getHitDelay())));
     }
 }

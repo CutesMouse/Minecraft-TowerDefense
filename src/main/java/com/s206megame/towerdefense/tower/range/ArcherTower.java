@@ -75,7 +75,7 @@ public class ArcherTower extends Tower {
 
     @Override
     public List<String> getDescription() {
-        return Arrays.asList("§f冷血的§c弓箭手§f躲在堅固的堡壘中，§f準確§c射殺§f迎面而來的§c敵人！", "§f無特殊效果");
+        return Arrays.asList("§f冷血的§c弓箭手§f躲在堅固的堡壘中，","§f準確§c射殺§f迎面而來的§c敵人！", "§f無特殊效果");
     }
 
     @Override

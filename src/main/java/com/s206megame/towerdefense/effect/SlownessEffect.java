@@ -1,7 +1,11 @@
 package com.s206megame.towerdefense.effect;
 
+import com.s206megame.towerdefense.api.MathTool;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Particle;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SlownessEffect extends MobEffect {
     private int duration = 20;
@@ -12,6 +16,26 @@ public class SlownessEffect extends MobEffect {
     public SlownessEffect(int level, int duration) {
         this.level = level;
         this.duration = duration;
+    }
+
+    @Override
+    public ArrayList<String> getDescription() {
+        return new ArrayList<>(Arrays.asList(
+                "§6物品效果: 緩速 "+ MathTool.rome(level),
+                "§7將敵人緩速 §a" + MathTool.toPercentage(1-getSlownessRatio())+"§7,",
+                "§7持續 §a" + MathTool.round(duration/20.0,1) +" §7秒."
+        ));
+    }
+
+    @Override
+    public ArrayList<String> getUpgradeDescription(MobEffect old) {
+        if (!(old instanceof SlownessEffect)) return new ArrayList<>();
+        SlownessEffect effect = ((SlownessEffect) old);
+        return new ArrayList<>(Arrays.asList(
+                "§6物品效果: 緩速 §7"+ MathTool.rome(effect.level) + " §6(➲" + MathTool.rome(level)+")",
+                "§7將敵人緩速 §7" + MathTool.toPercentage(1-effect.getSlownessRatio()) + " §a(➲" + MathTool.toPercentage(1-getSlownessRatio())+")§7,",
+                "§7持續 §7" + MathTool.round(effect.duration/20.0,1) +" §a(➲"+MathTool.round(duration / 20.0,1)+") §7秒."
+        ));
     }
     @Override
     public int getDuration() {

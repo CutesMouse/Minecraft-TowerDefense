@@ -1,17 +1,21 @@
 package com.s206megame.towerdefense.tower.speed;
 
 import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.effect.SlownessEffect;
 import com.s206megame.towerdefense.mobs.Mob;
+import com.s206megame.towerdefense.tower.AbilityTower;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;
 import org.bukkit.Particle;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
-public class SnowballTower extends Tower {
+public class SnowballTower extends Tower implements AbilityTower {
 
     @Override
     public Material getDisplayItem() {
@@ -100,5 +104,10 @@ public class SnowballTower extends Tower {
     @Override
     public TowerType getType() {
         return TowerType.THREE_BY_THREE;
+    }
+
+    @Override
+    public ArrayList<MobEffect> getAbilities() {
+        return new ArrayList<>(Collections.singletonList(new SlownessEffect(level)));
     }
 }

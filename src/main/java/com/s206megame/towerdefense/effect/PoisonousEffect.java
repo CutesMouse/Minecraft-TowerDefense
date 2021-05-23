@@ -1,8 +1,11 @@
 package com.s206megame.towerdefense.effect;
 
+import com.s206megame.towerdefense.api.MathTool;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Particle;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class PoisonousEffect extends MobEffect {
@@ -38,5 +41,27 @@ public class PoisonousEffect extends MobEffect {
     @Override
     public String getType() {
         return "PoisonousEffect";
+    }
+
+    @Override
+    public ArrayList<String> getDescription() {
+        return new ArrayList<>(Arrays.asList(
+                "§6物品效果: 中毒 "+ MathTool.rome(level),
+                "§7將敵人置於極度危險之中,",
+                "§7對目標造成每秒 §a" + MathTool.round(damage * 0.2,1) + " 點的傷害,",
+                "§7持續 §a" + MathTool.round(duration/20.0,1) +" §7秒."
+        ));
+    }
+
+    @Override
+    public ArrayList<String> getUpgradeDescription(MobEffect old) {
+        if (!(old instanceof PoisonousEffect)) return new ArrayList<>();
+        PoisonousEffect effect = ((PoisonousEffect) old);
+        return new ArrayList<>(Arrays.asList(
+                "§6物品效果: 中毒 §7"+ MathTool.rome(effect.level) + " §6(➲" + MathTool.rome(level)+")",
+                "§7將敵人置於極度危險之中,",
+                "§7對目標造成每秒 §7" + MathTool.round(effect.damage * 0.2,1) + " §a(➲" + MathTool.round(damage * 0.2,1)+")",
+                "§7持續 §7" + MathTool.round(effect.duration/20.0,1) +" §a(➲"+MathTool.round(duration / 20.0,1)+") §7秒"
+        ));
     }
 }

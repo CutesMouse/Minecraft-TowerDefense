@@ -45,7 +45,8 @@ public class TowerPlacingGUI {
 
         if (slot.getTower() != null) {
             gui.put(22,upgradeItem(slot));
-            gui.put(44, new StaticGUIItem(Material.BEDROCK, "§c拆除此建築", new ArrayList<>(Arrays.asList("§a拆除後將會退還一半的建築費用", "§a此功能無法撤回!")),
+            gui.put(44, new StaticGUIItem(Material.BEDROCK, "§c拆除此建築", new ArrayList<>(Arrays.asList("§a拆除後將會退還一半的建築費用",
+                    "§c此功能無法撤回!","","§a您將獲得 §e$" + slot.getTower().getPrice() / 2.0,"","§e點擊拆除!")),
                     1).setAction(c -> removeTower(c,slot)));
             gui.open(player);
             return;
@@ -73,11 +74,16 @@ public class TowerPlacingGUI {
         try {
             Tower tower = slot.getTower().getClass().newInstance();
             tower.setLevel(slot.getTower().getLevel() != slot.getTower().getMaxLevel() ? slot.getTower().getLevel() +1 : slot.getTower().getLevel());
-            ArrayList<String> intro = tower.getDescriptionLore();
+            ArrayList<String> intro;
             if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) {
+                intro = tower.getDescriptionLore();
                 intro.add("§a★ 已達到最高等級");
+            } else {
+                intro = tower.getUpgradeDescriptionLore(slot.getTower());
+                intro.add("");
+                intro.add("§e點擊完成升級!");
             }
-            return new StaticGUIItem(tower.getDisplayItem(),tower.getDescriptionTitle(),intro).setAction(e -> {
+            return new StaticGUIItem(slot.getTower().getDisplayItem(),tower.getDescriptionTitle(),intro).setAction(e -> {
                 e.setCancelled(true);
                 e.getPlayer().closeInventory();
                 if (slot.getTower().getLevel() == slot.getTower().getMaxLevel()) {
@@ -115,6 +121,7 @@ public class TowerPlacingGUI {
         return e -> {
             e.setCancelled(true);
             e.getPlayer().closeInventory();
+            if (slot.getTower() != null) return;
             if (!slot.getType().equals(tower.getType())) return;
             if (tower instanceof DariusTower && Main.map.getTowers().stream().anyMatch(p -> p instanceof DariusTower)) return;
             if (!TowerDefense.getInstance().canAfford(tower.getPrice(tower.getLevel()))) {

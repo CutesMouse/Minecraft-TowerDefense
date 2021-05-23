@@ -2,8 +2,10 @@ package com.s206megame.towerdefense.tower;
 
 import com.cutesmouse.mgui.items.StaticGUIItem;
 import com.s206megame.towerdefense.Main;
+import com.s206megame.towerdefense.api.MathTool;
 import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Location;
@@ -99,12 +101,46 @@ public abstract class Tower {
     public ArrayList<String> getDescriptionLore() {
         ArrayList<String> re = new ArrayList<>();
         re.addAll(getDescription());
+        if (this instanceof AbilityTower) {
+            for (MobEffect effect : ((AbilityTower) this).getAbilities()) {
+                re.add("");
+                re.addAll(effect.getDescription());
+            }
+        }
+        re.add("");
         re.add("§a射程： §e半徑 " + getRange()+ " 格");
         re.add("§a單次攻擊力： §e每次 " +getDamage() + " 點傷害");
         re.add("§a攻擊頻率： §e每秒 " + (((int) Math.round(200D / getHitDelay())) / 10D) + " 次");
         re.add("");
         re.add("§a費用: §e" + getPrice(level));
+        re.add("");
+        re.add("§e點擊完成建造!");
         return re;
+    }
+
+    public ArrayList<String> getUpgradeDescriptionLore(Tower oldTower) {
+        ArrayList<String> re = new ArrayList<>();
+        re.addAll(getDescription());//➲
+        if (this instanceof AbilityTower && oldTower instanceof AbilityTower) {
+            int position = 0;
+            for (MobEffect effect : ((AbilityTower) this).getAbilities()) {
+                re.add("");
+                re.addAll(effect.getUpgradeDescription(((AbilityTower) oldTower).getAbilities().get(position)));
+                position++;
+            }
+        }
+        re.add("");
+        re.add("§a射程： §e半徑 §7" + oldTower.getRange() + " §e(➲ "+getRange()+ ") 格");
+        re.add("§a單次攻擊力： §e每次 §7" + oldTower.getDamage() + " §e(➲ " + getDamage() + ") 點傷害");
+        re.add("§a攻擊頻率： §e每秒 §7" + MathTool.round(200D / oldTower.getHitDelay(),2) + " §e(➲ "+
+                MathTool.round(200D / getHitDelay(),2) + ") 次");
+        re.add("");
+        re.add("§a費用: §e" + getPrice(level));
+        return re;
+    }
+
+    protected double getDPS() {
+        return (20D / getHitDelay()) * getDamage();
     }
 
     protected abstract Location getParticleStartPoint();
