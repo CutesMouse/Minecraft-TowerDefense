@@ -8,7 +8,7 @@ import org.bukkit.entity.WitherSkeleton;
 public class StrayMob extends CraftMob {
 
     private Stray stray;
-    private static final double MAX_HEALTH = 400.0;
+    private static final double MAX_HEALTH = 300.0;
 
     @Override
     public Entity getEntity() {
