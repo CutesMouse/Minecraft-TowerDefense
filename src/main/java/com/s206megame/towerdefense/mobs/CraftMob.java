@@ -69,7 +69,7 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void onEntityMove() {
-        if (getEntity().isDead()) {
+        if (getEntity().isDead() || !alive) {
             Main.map.getMobList().remove(this);
             return;
         }
@@ -184,6 +184,7 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public void damage(double point) {
+        if (!alive) return;
         if (getEntity() instanceof LivingEntity) {
             ((LivingEntity) getEntity()).damage(0);
         }

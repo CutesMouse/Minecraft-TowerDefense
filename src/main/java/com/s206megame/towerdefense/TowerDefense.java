@@ -154,6 +154,7 @@ public class TowerDefense {
     }
 
     public void End() {
+        if (end) return;
         end = true;
         end_time = System.currentTimeMillis();
         for (Location loc : Main.map.getFinalCastleBlocks()) {

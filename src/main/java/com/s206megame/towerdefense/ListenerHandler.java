@@ -17,6 +17,7 @@ import org.bukkit.event.entity.*;
 import org.bukkit.event.player.*;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.function.Consumer;
 
 public class ListenerHandler implements Listener {
@@ -67,7 +68,7 @@ public class ListenerHandler implements Listener {
     @EventHandler
     public void onSlimeSpilt(SlimeSplitEvent e) {
         if (TowerDefense.getInstance().hasStarted()) {
-            Main.map.spawnSpiltSlime(e.getEntity().getLocation(),e.getEntity().getSize() / 2, e.getCount());
+            Main.map.spawnSpiltSlime(e.getEntity().getLocation(),e.getEntity().getSize() / 2, new Random().nextInt(3));
         }
         e.setCancelled(true);
     }

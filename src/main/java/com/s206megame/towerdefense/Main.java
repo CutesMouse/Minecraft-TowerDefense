@@ -5,6 +5,7 @@ import com.s206megame.towerdefense.appearance.PlaceParticle;
 import com.s206megame.towerdefense.appearance.WaveBar;
 import com.s206megame.towerdefense.commands.*;
 import com.s206megame.towerdefense.map.DefaultMap;
+import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.utils.HoveringText;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -32,6 +33,9 @@ public class Main extends JavaPlugin {
     public void onDisable() {
         for (Tower t : map.getTowers()) {
             t.remove();
+        }
+        for (Mob mob : map.getMobList()) {
+            mob.kill();
         }
         WaveBar.destroy();
         HoveringText.clear();

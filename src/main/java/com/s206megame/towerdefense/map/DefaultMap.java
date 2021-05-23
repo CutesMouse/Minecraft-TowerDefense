@@ -106,6 +106,7 @@ public class DefaultMap implements Map {
     }
 
     public void spawnSpiltSlime(Location parentLocation, int afterSize, int amount) {
+        if (amount == 0) return;
         Wave wave = TowerDefense.getInstance().getCurrentWave();
         if (wave == null) return;
         int strengthen = wave.getStrengthen();
@@ -114,7 +115,7 @@ public class DefaultMap implements Map {
             Mob mob = CraftMob.SlimeSpilt(afterSize);
             if (mob == null) return;
             mob.strengthen(strengthen);
-            mob.spawn(randomOffset(parentLocation,r,0.3));
+            mob.spawn(randomOffset(parentLocation,r,0.1));
             mob.setFacingDegree(parentLocation.getYaw());
             moblist.add(mob);
         }
