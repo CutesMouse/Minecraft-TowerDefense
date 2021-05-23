@@ -51,6 +51,8 @@ public class TowerDefense {
         return currentWave;
     }
 
+    private LinkedList<Location> missing_blocks = new LinkedList<>();
+
     public void removeHealth() {
         health --;
         if (health <= 0) {
@@ -58,14 +60,39 @@ public class TowerDefense {
             return;
         }
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_VILLAGER_CURE,1,1);
+            p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_VILLAGER_CURE,0.5F,1);
             String color = (health > 10 ? "§a" : "§c");
             p.sendMessage("\u00a7c\u00a7lOh NO! \u00a7e怪物偷走了你的寶藏! 你剩下 "+color+health+"\u2764");
         }
         LinkedList<Location> cast = Main.map.getCastleBlocks();
         if (cast.size() == 0) return;
         Location loc = cast.poll();
+        missing_blocks.addFirst(loc);
         loc.getBlock().breakNaturally();
+    }
+
+    public void addHealth() {
+        if (health == 20) return;
+        int ori = health;
+        health = Math.min(20,health + 5);
+        int delta = health - ori;
+        for (Player p : Bukkit.getOnlinePlayers()) {
+            p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_CELEBRATE,0.5F,1);
+            p.sendMessage("\u00a7a\u00a7lPOG! \u00a7e凋零怪為你帶來了財富! 你獲得了 §a"+delta+"\u2764");
+        }
+        LinkedList<Location> cast = Main.map.getCastleBlocks();
+        Random r = new Random();
+        for (int i = 0; i < delta; i++) {
+            if (missing_blocks.size() == 0) break;
+            Location poll = missing_blocks.poll();
+            cast.addFirst(poll);
+            poll.getBlock().setType(getRandomTreasure(r));
+        }
+
+    }
+
+    public boolean hasStarted() {
+        return start_time != 0;
     }
 
     private int spawnDelay;
@@ -92,13 +119,18 @@ public class TowerDefense {
         return this.money >= money;
     }
 
-    public void Start() {
-        money = 1000;
-        start_time = System.currentTimeMillis();
+    private Material getRandomTreasure(Random r) {
         ArrayList<Material> able = new ArrayList<>(Arrays.asList(Material.GOLD_BLOCK,Material.DIAMOND_BLOCK,Material.EMERALD_BLOCK));
+        return able.get(r.nextInt(able.size()));
+    }
+
+    public void Start() {
+        money = 3500;
+        start_time = System.currentTimeMillis();
         Random r= new Random();
+        ListenerHandler.registerLoginEvent(p -> p.getPlayer().setAllowFlight(true));
         for (Location castle : Main.map.getCastleBlocks()) {
-            castle.getBlock().setType(able.get(r.nextInt(able.size())));
+            castle.getBlock().setType(getRandomTreasure(r));
         }
         for (Location loc : Main.map.getFinalCastleBlocks()) {
             loc.getBlock().setType(Material.REDSTONE_BLOCK);

@@ -39,6 +39,10 @@ public class ListenerHandler implements Listener {
     @EventHandler
     public void onEntityFired(EntityDamageEvent e) {
         if (e.getCause().equals(EntityDamageEvent.DamageCause.CUSTOM)) return;
+        if (e.getEntityType().equals(EntityType.PLAYER)) {
+            e.setCancelled(true);
+            return;
+        }
         Main.map.getMobList().stream().filter(p -> p.getEntity().equals(e.getEntity())).findFirst()
                 .ifPresent(mob -> e.setCancelled(true));
     }
@@ -62,6 +66,9 @@ public class ListenerHandler implements Listener {
     }
     @EventHandler
     public void onSlimeSpilt(SlimeSplitEvent e) {
+        if (TowerDefense.getInstance().hasStarted()) {
+            Main.map.spawnSpiltSlime(e.getEntity().getLocation(),e.getEntity().getSize() / 2, e.getCount());
+        }
         e.setCancelled(true);
     }
     @EventHandler

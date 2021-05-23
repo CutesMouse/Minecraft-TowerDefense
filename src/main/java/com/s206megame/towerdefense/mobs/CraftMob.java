@@ -5,9 +5,13 @@ import com.s206megame.towerdefense.TowerDefense;
 import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.utils.HoveringText;
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
+import org.bukkit.entity.Slime;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,21 +23,35 @@ public abstract class CraftMob implements Mob {
     protected double health;
     private int nameupdateDelay = 0;
     private boolean onFire = false;
-    protected double snowless;
+    protected double slowness;
     private double yaw;
     private ArrayList<MobEffect> me = new ArrayList<>();
+    protected double award = -1;
 
     public CraftMob() {
         this.health = getMaxHealth();
-        this.snowless = 1.0;
+        this.slowness = 1.0;
         alive = true;
+        this.award = getAward();
+    }
+
+    public static Mob SlimeSpilt(int slime) {
+        switch (slime) {
+            case 4:
+                return new SlimeMob();
+            case 2:
+                return new SmallSlimeMob();
+            case 1:
+                return new MiniSlimeMob();
+        }
+        return null;
     }
 
     @Override
     public void moveMob(double distance) {
         double pi = (yaw + 90) * Math.PI / 180.0;
-        double dx = Math.cos(pi) * distance * snowless;
-        double dz = Math.sin(pi) * distance * snowless;
+        double dx = Math.cos(pi) * distance * slowness;
+        double dz = Math.sin(pi) * distance * slowness;
         Location c = getEntity().getLocation();
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
@@ -175,7 +193,8 @@ public abstract class CraftMob implements Mob {
 
     @Override
     public double getAward() {
-        return getMaxHealth() * getBlockPerTick() * 0.1 / strengthen_offset;
+        if (award >= 0) return award;
+        return getMaxHealth() * getBlockPerTick() * 0.5 / strengthen_offset;
     }
 
     @Override
@@ -184,13 +203,13 @@ public abstract class CraftMob implements Mob {
     }
 
     @Override
-    public void setSnowness(double ratio) {
-        this.snowless = ratio;
+    public void setSlowness(double ratio) {
+        this.slowness = ratio;
     }
 
     @Override
     public void strengthen(int l) {
-        strengthen_offset = (int)((l+1) * strengthen_offset);
+        strengthen_offset = (int)(Math.pow(2,l) * strengthen_offset);
         health = getMaxHealth();
     }
 }

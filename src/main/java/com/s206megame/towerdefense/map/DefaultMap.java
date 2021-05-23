@@ -1,13 +1,16 @@
 package com.s206megame.towerdefense.map;
 
 import com.s206megame.towerdefense.Main;
+import com.s206megame.towerdefense.TowerDefense;
 import com.s206megame.towerdefense.api.CheckPoint;
 import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.api.TowerSlot;
 import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.mobs.CraftMob;
 import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.tower.Direction;
 import com.s206megame.towerdefense.tower.Tower;
+import com.s206megame.towerdefense.utils.Wave;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
@@ -15,6 +18,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.Random;
 
 public class DefaultMap implements Map {
     private ArrayList<TowerSlot> towerSlots;
@@ -99,6 +103,25 @@ public class DefaultMap implements Map {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void spawnSpiltSlime(Location parentLocation, int afterSize, int amount) {
+        Wave wave = TowerDefense.getInstance().getCurrentWave();
+        if (wave == null) return;
+        int strengthen = wave.getStrengthen();
+        Random r = new Random();
+        for (int i = 0; i < amount; i++) {
+            Mob mob = CraftMob.SlimeSpilt(afterSize);
+            if (mob == null) return;
+            mob.strengthen(strengthen);
+            mob.spawn(randomOffset(parentLocation,r,0.3));
+            mob.setFacingDegree(parentLocation.getYaw());
+            moblist.add(mob);
+        }
+    }
+
+    private Location randomOffset(Location loc, Random r, double offset) {
+        return loc.clone().add(r.nextDouble() * offset * 2 - offset,0,r.nextDouble()* offset * 2 - offset);
     }
 
     private void initTowers(World w) {
@@ -209,7 +232,6 @@ public class DefaultMap implements Map {
         castleBlocks.add(new Location(WORLD,-13, 6, -47));
         castleBlocks.add(new Location(WORLD,-12, 6, -47));
         castleBlocks.add(new Location(WORLD,-12, 6, -48));
-        castleBlocks.add(new Location(WORLD,-13, 5, -48));
         castleBlocks.add(new Location(WORLD,-13, 6, -46));
         castleBlocks.add(new Location(WORLD,-13, 5, -49));
         castleBlocks.add(new Location(WORLD,-12, 5, -48));

@@ -8,6 +8,10 @@ public class SlimeMob extends CraftMob {
     private Slime slime;
     private static final double MAX_HEALTH = 250.0;
 
+    public SlimeMob() {
+        super();
+    }
+
     @Override
     public Entity getEntity() {
         return slime;
