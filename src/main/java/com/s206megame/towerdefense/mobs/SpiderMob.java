@@ -6,7 +6,7 @@ import org.bukkit.entity.Spider;
 
 public class SpiderMob extends CraftMob {
     private Spider spider;
-    private static final double MAX_HEALTH = 300.0;
+    private static final double MAX_HEALTH = 200.0;
 
     @Override
     public Entity getEntity() {

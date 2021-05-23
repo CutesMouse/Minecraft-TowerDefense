@@ -15,7 +15,7 @@ import java.util.Random;
 public class ChickenJockeyMob extends CraftMob {
     private Chicken chicken;
     private Zombie zombie;
-    private static final double MAX_HEALTH = 500.0;
+    private static final double MAX_HEALTH = 400.0;
 
     @Override
     public Entity getEntity() {

@@ -6,7 +6,7 @@ import org.bukkit.entity.Vindicator;
 
 public class VindicatorMob extends CraftMob {
     private Vindicator vindicator;
-    private static final double MAX_HEALTH =400.0;
+    private static final double MAX_HEALTH =250.0;
 
     @Override
     public Entity getEntity() {

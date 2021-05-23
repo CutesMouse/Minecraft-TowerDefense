@@ -7,7 +7,7 @@ import org.bukkit.entity.Slime;
 
 public class SmallSlimeMob extends CraftMob {
     private Slime smallslime;
-    private static final double MAX_HEALTH = 250.0;
+    private static final double MAX_HEALTH = 125.0;
 
     @Override
     public Entity getEntity() {

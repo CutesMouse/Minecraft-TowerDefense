@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 
 public class BabyZombieMob extends CraftMob {
     private Zombie babyzombie;
-    private static final double MAX_HEALTH = 400.0;
+    private static final double MAX_HEALTH = 300.0;
 
     @Override
     public Entity getEntity() {

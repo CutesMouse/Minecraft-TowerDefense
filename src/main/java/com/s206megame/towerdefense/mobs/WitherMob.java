@@ -11,7 +11,7 @@ import java.util.Objects;
 public class WitherMob extends CraftMob {
 
     private Wither wither;
-    private static final double MAX_HEALTH = 10000.0;
+    private static final double MAX_HEALTH = 5000.0;
 
     @Override
     public Entity getEntity() {

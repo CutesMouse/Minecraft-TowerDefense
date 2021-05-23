@@ -7,7 +7,7 @@ import org.bukkit.entity.Zombie;
 import org.bukkit.inventory.ItemStack;
 
 public class ArmoredZombieMob extends CraftMob {
-    private static final double MAX_HEALTH = 1000.0;
+    private static final double MAX_HEALTH = 750.0;
     private Zombie armoredzombie;
 
     @Override
