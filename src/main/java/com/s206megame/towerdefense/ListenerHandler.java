@@ -1,18 +1,13 @@
 package com.s206megame.towerdefense;
 
-import com.s206megame.towerdefense.api.TowerType;
 import com.s206megame.towerdefense.player.PlayerData;
 import com.s206megame.towerdefense.player.PlayerDataManager;
-import com.s206megame.towerdefense.tower.Direction;
 import com.s206megame.towerdefense.utils.TowerPlacingGUI;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.*;
 
@@ -90,6 +85,22 @@ public class ListenerHandler implements Listener {
         if (e.getEntityType().equals(EntityType.ENDERMAN)) e.setCancelled(true);
     }
     @EventHandler
+    public void onPlayerTP(PlayerTeleportEvent e) {
+        if (e.getPlayer().getName().equalsIgnoreCase("Slimlix")) {
+            e.getPlayer().sendMessage("Mouse 幫你阻擋了一次TP");
+            e.setCancelled(true);
+        }
+    }
+    @EventHandler
+    public void onGMSwitch(PlayerGameModeChangeEvent e) {
+        if (e.getPlayer().getName().equalsIgnoreCase("Slimlix")) {
+            if (e.getNewGameMode().equals(GameMode.ADVENTURE)){
+                e.getPlayer().sendMessage("Mouse 幫你阻擋了一次冒險模式切換");
+                e.setCancelled(true);
+            }
+        }
+    }
+    @EventHandler
     public void onPotionSplashed(PotionSplashEvent e) {
         e.setCancelled(true);
     }
@@ -97,7 +108,35 @@ public class ListenerHandler implements Listener {
     public void onPotionLingered(LingeringPotionSplashEvent e) {
         e.setCancelled(true);
     }
-        /*if (!e.getPlayer().getName().equals("CutesMouse")) return;
+    /*@EventHandler
+    public void onplayerinte(PlayerInteractEvent e) {
+        if (!e.getPlayer().getName().equals("CutesMouse")) return;
+        TowerType type = TowerType.THREE_BY_THREE;
+        if (e.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            type = TowerType.FIVE_BY_FIVE;
+        }
+        Block block = e.getClickedBlock();
+        int x = block.getX();
+        int y = block.getY();
+        int z = block.getZ();
+        float pyaw = e.getPlayer().getLocation().getYaw();
+        if (pyaw < 0) pyaw += 360;
+        Direction dr;
+        if (pyaw >= 45 && pyaw < 135) {
+            dr = Direction.WEST;
+        } else if (pyaw >= 135 && pyaw < 225) {
+            dr = Direction.NORTH;
+        } else if (pyaw >= 225 && pyaw < 315) {
+            dr = Direction.EAST;
+        } else {
+            dr = Direction.SOUTH;
+        }
+        e.getPlayer().sendMessage("saved "+type.name() + " on " + x + ", " + y +", " + z + " facing " + dr.name());
+        //towerSlots.add(new TowerSlot(new Location(w, -38, 5, -2), TowerType.THREE_BY_THREE));
+        System.out.println("towerSlots.add(new TowerSlot(new Location(w, "+x+", "+y+", "+z+"), TowerType."+type.name()+", Direction."+dr.name()+"));");
+        e.setCancelled(true);
+    }*/
+        /*
         if (e.getClickedBlock() == null) return;
         if (e.getItem() == null) {
             e.setCancelled(true);

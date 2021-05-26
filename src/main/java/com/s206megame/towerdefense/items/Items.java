@@ -1,6 +1,5 @@
 package com.s206megame.towerdefense.items;
 
-import com.s206megame.towerdefense.api.CustomItem;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;

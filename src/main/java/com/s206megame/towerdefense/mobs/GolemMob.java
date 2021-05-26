@@ -25,6 +25,7 @@ public class GolemMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         IronGolem entity = loc.getWorld().spawn(loc, IronGolem.class);
         this.golem = entity;
         entity.setAI(false);

@@ -1,14 +1,13 @@
 package com.s206megame.towerdefense;
 
-import com.s206megame.towerdefense.api.TowerSlot;
+import com.s206megame.towerdefense.utils.ScoreboardManager;
+import com.s206megame.towerdefense.appearance.PlaceParticle;
 import com.s206megame.towerdefense.appearance.WaveBar;
 import com.s206megame.towerdefense.items.Items;
 import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.utils.Wave;
 import com.s206megame.towerdefense.utils.WaveManager;
-import net.minecraft.server.v1_16_R3.BlockPosition;
-import net.minecraft.server.v1_16_R3.PacketPlayOutBlockBreakAnimation;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.boss.BarColor;
@@ -125,8 +124,12 @@ public class TowerDefense {
     }
 
     public void Start() {
+        Main plugin = Main.getPlugin(Main.class);
         money = 3500;
+        Main.map.start();
         start_time = System.currentTimeMillis();
+        PlaceParticle.init(plugin);
+        ScoreboardManager.init(plugin);
         Random r= new Random();
         ListenerHandler.registerLoginEvent(p -> p.getPlayer().setAllowFlight(true));
         for (Location castle : Main.map.getCastleBlocks()) {
@@ -137,7 +140,7 @@ public class TowerDefense {
         }
         MainLoop(Main.getPlugin(Main.class));
         for (Player p : Bukkit.getOnlinePlayers()) {
-            p.teleport(new Location(p.getWorld(), -23.5, 6, -27.5));
+            p.teleport(Main.map.getSpawnPoint());
             p.sendTitle("§f歡迎來到§aTOWER DEFENSE！", "§f遊戲將在不久後開始", 10, 100, 10);
             p.setGameMode(GameMode.ADVENTURE);
             p.setAllowFlight(true);

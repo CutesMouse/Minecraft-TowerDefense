@@ -1,4 +1,4 @@
-package com.s206megame.towerdefense.api;
+package com.s206megame.towerdefense.utils;
 
 import com.cutesmouse.mgui.Main;
 import org.bukkit.Location;

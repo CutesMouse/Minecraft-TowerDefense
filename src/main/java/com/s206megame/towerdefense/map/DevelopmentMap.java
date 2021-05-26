@@ -1,81 +1,19 @@
 package com.s206megame.towerdefense.map;
 
-import com.s206megame.towerdefense.Main;
-import com.s206megame.towerdefense.TowerDefense;
-import com.s206megame.towerdefense.api.CheckPoint;
-import com.s206megame.towerdefense.api.Map;
-import com.s206megame.towerdefense.api.TowerSlot;
-import com.s206megame.towerdefense.api.TowerType;
-import com.s206megame.towerdefense.mobs.CraftMob;
-import com.s206megame.towerdefense.mobs.Mob;
+import com.s206megame.towerdefense.utils.CheckPoint;
+import com.s206megame.towerdefense.utils.TowerSlot;
+import com.s206megame.towerdefense.utils.TowerType;
 import com.s206megame.towerdefense.tower.Direction;
-import com.s206megame.towerdefense.tower.Tower;
-import com.s206megame.towerdefense.utils.Wave;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.World;
-import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Random;
 
-public class DefaultMap implements Map {
-    private ArrayList<TowerSlot> towerSlots;
-    private ArrayList<Mob> moblist;
-    private ArrayList<Tower> towers;
-    private static World WORLD;
-
-    public DefaultMap() {
-        moblist = new ArrayList<>();
-        WORLD = Bukkit.getWorlds().get(0);
-        towers = new ArrayList<>();
-        // init towerslots
-        initTowers(WORLD);
-        new BukkitRunnable() {
-            @Override
-            public void run() {
-                tickEvent();
-            }
-        }.runTaskTimer(Main.getPlugin(Main.class),0L,1L);
-    }
-
-    public void tickEvent() {
-        if (moblist.size() > 0) {
-            ArrayList<Mob> copy = new ArrayList<>(moblist);
-            for (Mob mob : copy) {
-                if (mob == null) continue;
-                mob.onEntityMove();
-                mob.updateDisplayName();
-                mob.effectUpdate();
-            }
-        }
-    }
-
-    public ArrayList<Tower> getTowers() {
-        return towers;
-    }
+public class DevelopmentMap extends CraftMap {
 
     @Override
-    public ArrayList<TowerSlot> getTowerSlots() {
-        return towerSlots;
-    }
-
-    @Override
-    public TowerSlot identifyTower(Location loc) {
-        return towerSlots.stream().filter(p -> p.isInside(loc)).findFirst().orElse(null);
-    }
-
-    @Override
-    public ArrayList<Mob> getMobList() {
-        return moblist;
-    }
-
-    private ArrayList<CheckPoint> cps;
-
-    @Override
-    public ArrayList<CheckPoint> getCheckpoints() {
-        if (cps != null) return cps;
+    protected void initCheckpoints() {
         cps = new ArrayList<>();
         cps.add(new CheckPoint(-46.0,5,-12.0,-78.7));
         cps.add(new CheckPoint(-26.0,5,-9.0,4.8));
@@ -85,7 +23,6 @@ public class DefaultMap implements Map {
         cps.add(new CheckPoint(16.0,5,17.0,-168.7));
         cps.add(new CheckPoint(17.0,5,12.0,-180.0));
         cps.add(new CheckPoint(17.0,5,-46.5,90));
-        return cps;
     }
 
     @Override
@@ -93,39 +30,24 @@ public class DefaultMap implements Map {
         return new Location(WORLD, -46, 5, -48.5);
     }
 
-    public Mob spawnMob(Class<? extends Mob> mob) {
-        try {
-            Mob mobEntity = mob.newInstance();
-            mobEntity.spawn(getMobSpawnLocation());
-            moblist.add(mobEntity);
-            return mobEntity;
-        } catch (InstantiationException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+    @Override
+    public Location getEndPoint() {
+        return new Location(WORLD,-13.5,6,-46.5);
     }
 
-    public void spawnSpiltSlime(Location parentLocation, int afterSize, int amount) {
-        if (amount == 0) return;
-        Wave wave = TowerDefense.getInstance().getCurrentWave();
-        if (wave == null) return;
-        int strengthen = wave.getStrengthen();
-        Random r = new Random();
-        for (int i = 0; i < amount; i++) {
-            Mob mob = CraftMob.SlimeSpilt(afterSize);
-            if (mob == null) return;
-            mob.strengthen(strengthen);
-            mob.spawn(randomOffset(parentLocation,r,0.1));
-            mob.setFacingDegree(parentLocation.getYaw());
-            moblist.add(mob);
-        }
+    @Override
+    public double getEndPointOffset() {
+        return 4;
     }
 
-    private Location randomOffset(Location loc, Random r, double offset) {
-        return loc.clone().add(r.nextDouble() * offset * 2 - offset,0,r.nextDouble()* offset * 2 - offset);
+    @Override
+    public Location getSpawnPoint() {
+        return new Location(WORLD, -23.5, 6, -27.5);
     }
 
-    private void initTowers(World w) {
+    @Override
+    protected void initTowers() {
+        World w = WORLD;
         towerSlots = new ArrayList<>();
         towerSlots.add(new TowerSlot(new Location(w, -52, 5, -43), TowerType.THREE_BY_THREE, Direction.EAST));
         towerSlots.add(new TowerSlot(new Location(w, -40, 5, -44), TowerType.FIVE_BY_FIVE, Direction.WEST));
@@ -220,11 +142,8 @@ public class DefaultMap implements Map {
         towerSlots.add(new TowerSlot(new Location(w, 10, 5, 2), TowerType.FIVE_BY_FIVE, Direction.EAST));
     }
 
-    private LinkedList<Location> castleBlocks;
-
     @Override
-    public LinkedList<Location> getCastleBlocks() {
-        if (castleBlocks != null) return castleBlocks;
+    protected void initCastleBlocks() {
         castleBlocks = new LinkedList<>();
         castleBlocks.add(new Location(WORLD,-13, 7, -47));
         castleBlocks.add(new Location(WORLD,-13, 7, -48));
@@ -245,17 +164,15 @@ public class DefaultMap implements Map {
         castleBlocks.add(new Location(WORLD,-14, 5, -48));
         castleBlocks.add(new Location(WORLD,-14, 5, -47));
         castleBlocks.add(new Location(WORLD,-14, 5, -46));
-        return castleBlocks;
     }
 
     @Override
-    public ArrayList<Location> getFinalCastleBlocks() {
-        ArrayList<Location> loc = new ArrayList<>();
+    protected void initFinalCastleBlocks() {
+        finalCastleBlocks = new ArrayList<>();
         for (int x = -14; x <= -12; x++) {
             for (int z = -49; z <= -45; z++) {
-                loc.add(new Location(WORLD,x,4,z));
+                finalCastleBlocks.add(new Location(WORLD,x,4,z));
             }
         }
-        return loc;
     }
 }

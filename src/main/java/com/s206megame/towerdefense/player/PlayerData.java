@@ -1,6 +1,6 @@
 package com.s206megame.towerdefense.player;
 
-import com.s206megame.towerdefense.api.TowerSlot;
+import com.s206megame.towerdefense.utils.TowerSlot;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 

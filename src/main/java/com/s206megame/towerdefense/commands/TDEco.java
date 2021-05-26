@@ -25,29 +25,16 @@ public class TDEco implements TDCommandBase {
         if (!sender.isOp()) {
             sender.sendMessage("§c沒有權限!");
         }
-        if (arg.length == 0) {
-            sender.sendMessage("§6用法: §f/td eco <玩家> <set | add | remove>");
+        if (arg.length != 2) {
+            sender.sendMessage("§6用法: §f/td eco <set | add | remove> <金額>");
             return;
         }
-        String playerName = arg[0];
-        Player player = Bukkit.getPlayer(playerName);
-        if (player == null) {
-            sender.sendMessage("§4找不到目標玩家!");
-            return;
-        }
-        if (arg.length == 1) {
-            return;
-        }
-        if (arg.length != 3) {
-            sender.sendMessage("§6用法: /td eco <玩家> <set | add | remove> <金額>");
-            return;
-        }
-        if (!arg[2].matches("-\\d+\\.\\d+|\\d+\\.\\d+|\\d+")) {
+        if (!arg[1].matches("-\\d+\\.\\d+|\\d+\\.\\d+|\\d+")) {
             sender.sendMessage("§a金額必須為數字或浮點數!");
             return;
         }
-        double amount = Double.parseDouble(arg[2]);
-        switch (arg[1].toLowerCase()) {
+        double amount = Double.parseDouble(arg[1]);
+        switch (arg[0].toLowerCase()) {
             case "set":
                 TowerDefense.getInstance().setMoney(amount);
                 break;

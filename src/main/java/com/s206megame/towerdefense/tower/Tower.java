@@ -2,9 +2,9 @@ package com.s206megame.towerdefense.tower;
 
 import com.cutesmouse.mgui.items.StaticGUIItem;
 import com.s206megame.towerdefense.Main;
-import com.s206megame.towerdefense.api.MathTool;
-import com.s206megame.towerdefense.api.TowerSlot;
-import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.utils.MathTool;
+import com.s206megame.towerdefense.utils.TowerSlot;
+import com.s206megame.towerdefense.utils.TowerType;
 import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.mobs.Mob;
 import com.s206megame.towerdefense.utils.ParticleManager;

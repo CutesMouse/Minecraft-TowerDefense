@@ -27,6 +27,7 @@ public class StrayMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Stray entity = loc.getWorld().spawn(loc, Stray.class);
         this.stray = entity;
         entity.setAI(false);

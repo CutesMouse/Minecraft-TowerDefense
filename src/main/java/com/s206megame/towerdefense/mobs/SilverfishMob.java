@@ -27,6 +27,7 @@ public class SilverfishMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Silverfish entity = loc.getWorld().spawn(loc, Silverfish.class);
         this.silverfish = entity;
         entity.setAI(false);

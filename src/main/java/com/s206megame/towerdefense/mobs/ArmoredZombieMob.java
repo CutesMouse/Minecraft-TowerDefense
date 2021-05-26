@@ -27,6 +27,7 @@ public class ArmoredZombieMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Zombie entity = loc.getWorld().spawn(loc, Zombie.class);
         entity.getEquipment().setHelmet(new ItemStack(Material.DIAMOND_HELMET));
         entity.getEquipment().setChestplate(new ItemStack(Material.DIAMOND_CHESTPLATE));

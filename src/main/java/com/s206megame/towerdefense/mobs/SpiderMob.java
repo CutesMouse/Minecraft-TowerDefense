@@ -25,6 +25,7 @@ public class SpiderMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Spider entity = loc.getWorld().spawn(loc, Spider.class);
         this.spider = entity;
         entity.setAI(false);

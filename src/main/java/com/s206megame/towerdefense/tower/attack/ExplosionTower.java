@@ -1,7 +1,7 @@
 package com.s206megame.towerdefense.tower.attack;
 
 import com.s206megame.towerdefense.Main;
-import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.utils.TowerType;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Location;
 import org.bukkit.Material;

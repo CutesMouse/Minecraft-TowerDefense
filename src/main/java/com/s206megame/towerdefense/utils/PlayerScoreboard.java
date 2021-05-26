@@ -1,4 +1,4 @@
-package com.s206megame.towerdefense.api;
+package com.s206megame.towerdefense.utils;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Scoreboard;

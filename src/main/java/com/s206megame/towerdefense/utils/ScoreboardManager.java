@@ -1,10 +1,8 @@
-package com.s206megame.towerdefense.api;
+package com.s206megame.towerdefense.utils;
 
 import com.s206megame.towerdefense.ListenerHandler;
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.TowerDefense;
-import com.s206megame.towerdefense.player.PlayerDataManager;
-import com.s206megame.towerdefense.tower.Tower;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -12,8 +10,6 @@ import org.bukkit.scoreboard.DisplaySlot;
 import org.bukkit.scoreboard.Objective;
 import org.bukkit.scoreboard.Scoreboard;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 
 public class ScoreboardManager {

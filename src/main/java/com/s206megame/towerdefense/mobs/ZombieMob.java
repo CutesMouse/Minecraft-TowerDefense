@@ -28,6 +28,7 @@ public class ZombieMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Zombie entity = loc.getWorld().spawn(loc, Zombie.class);
         this.zombie = entity;
         entity.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE,Integer.MAX_VALUE,0,

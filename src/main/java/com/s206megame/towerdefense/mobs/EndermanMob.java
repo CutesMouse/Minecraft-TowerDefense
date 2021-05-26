@@ -27,6 +27,7 @@ public class EndermanMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Enderman entity = loc.getWorld().spawn(loc, Enderman.class);
         this.enderman = entity;
         entity.setAI(false);

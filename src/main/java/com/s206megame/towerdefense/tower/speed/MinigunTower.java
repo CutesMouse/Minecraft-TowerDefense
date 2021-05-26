@@ -1,6 +1,6 @@
 package com.s206megame.towerdefense.tower.speed;
 
-import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.utils.TowerType;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import com.s206megame.towerdefense.tower.Tower;

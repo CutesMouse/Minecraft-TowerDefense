@@ -27,6 +27,7 @@ public class WitherSkeletonMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         WitherSkeleton entity = loc.getWorld().spawn(loc, WitherSkeleton.class);
         this.witherskeleton = entity;
         entity.setAI(false);

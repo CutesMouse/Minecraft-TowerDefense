@@ -27,6 +27,7 @@ public class BlazeMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Blaze entity = loc.getWorld().spawn(loc, Blaze.class);
         this.blaze = entity;
         entity.setAI(false);

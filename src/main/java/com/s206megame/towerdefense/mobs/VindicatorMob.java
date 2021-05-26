@@ -25,6 +25,7 @@ public class VindicatorMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Vindicator entity = loc.getWorld().spawn(loc, Vindicator.class);
         this.vindicator = entity;
         entity.setAI(false);

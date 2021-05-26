@@ -27,6 +27,7 @@ public class SkeletonMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Skeleton entity = loc.getWorld().spawn(loc, Skeleton.class);
         this.skeleton = entity;
         entity.setAI(false);

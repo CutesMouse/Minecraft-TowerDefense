@@ -34,6 +34,7 @@ public class ChickenJockeyMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         chicken = loc.getWorld().spawn(loc, Chicken.class);
         zombie = loc.getWorld().spawn(loc, Zombie.class);
         zombie.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE,Integer.MAX_VALUE,0,

@@ -27,6 +27,7 @@ public class RavagerMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Ravager entity = loc.getWorld().spawn(loc, Ravager.class);
         this.ravager = entity;
         entity.setAI(false);

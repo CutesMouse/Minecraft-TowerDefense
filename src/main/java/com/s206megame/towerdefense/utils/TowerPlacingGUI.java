@@ -1,15 +1,12 @@
 package com.s206megame.towerdefense.utils;
 
 import com.cutesmouse.mgui.events.PlayerGUIClickEvent;
-import com.cutesmouse.mgui.guis.DynamicGUI;
 import com.cutesmouse.mgui.guis.StaticGUI;
 import com.cutesmouse.mgui.interfaces.ClickAction;
 import com.cutesmouse.mgui.items.GUIItem;
 import com.cutesmouse.mgui.items.StaticGUIItem;
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.TowerDefense;
-import com.s206megame.towerdefense.api.TowerSlot;
-import com.s206megame.towerdefense.player.PlayerDataManager;
 import com.s206megame.towerdefense.tower.Tower;
 import com.s206megame.towerdefense.tower.attack.DariusTower;
 import com.s206megame.towerdefense.tower.attack.ExplosionTower;
@@ -21,19 +18,14 @@ import com.s206megame.towerdefense.tower.range.SniperTower;
 import com.s206megame.towerdefense.tower.speed.CrossbowTower;
 import com.s206megame.towerdefense.tower.speed.MinigunTower;
 import com.s206megame.towerdefense.tower.speed.SnowballTower;
-import net.md_5.bungee.api.chat.ClickEvent;
-import net.minecraft.server.v1_16_R3.Slot;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
 
 public class TowerPlacingGUI {
     public static void open(Player player, TowerSlot slot) {

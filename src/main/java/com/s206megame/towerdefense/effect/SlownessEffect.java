@@ -1,6 +1,6 @@
 package com.s206megame.towerdefense.effect;
 
-import com.s206megame.towerdefense.api.MathTool;
+import com.s206megame.towerdefense.utils.MathTool;
 import com.s206megame.towerdefense.mobs.Mob;
 import org.bukkit.Particle;
 

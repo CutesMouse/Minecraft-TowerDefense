@@ -1,31 +1,6 @@
 package com.s206megame.towerdefense.commands;
 
-import com.s206megame.towerdefense.api.TowerSlot;
-import com.s206megame.towerdefense.player.PlayerDataManager;
-import com.s206megame.towerdefense.tower.*;
-import com.s206megame.towerdefense.tower.attack.DariusTower;
-import com.s206megame.towerdefense.tower.attack.ExplosionTower;
-import com.s206megame.towerdefense.tower.attack.FireTower;
-import com.s206megame.towerdefense.tower.attack.PotionTower;
-import com.s206megame.towerdefense.tower.range.ArcherTower;
-import com.s206megame.towerdefense.tower.range.LongbowTower;
-import com.s206megame.towerdefense.tower.range.SniperTower;
-import com.s206megame.towerdefense.tower.speed.CrossbowTower;
-import com.s206megame.towerdefense.tower.speed.MinigunTower;
-import com.s206megame.towerdefense.tower.speed.SnowballTower;
-import com.s206megame.towerdefense.utils.ParticleManager;
-import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.Particle;
-import org.bukkit.World;
-import org.bukkit.block.Block;
-import org.bukkit.block.BlockFace;
-import org.bukkit.block.data.BlockData;
-import org.bukkit.block.data.Directional;
-import org.bukkit.block.data.MultipleFacing;
-import org.bukkit.block.data.type.Stairs;
 import org.bukkit.entity.Player;
-import org.bukkit.util.Vector;
 
 import java.util.*;
 
@@ -43,24 +18,6 @@ public class TDTowerTools implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        ArrayList<Tower> towers = new ArrayList<>();
-        towers.add(new SnowballTower());
-        towers.add(new MinigunTower());
-        towers.add(new CrossbowTower());
-        towers.add(new SniperTower());
-        towers.add(new LongbowTower());
-        towers.add(new ArcherTower());
-        towers.add(new PotionTower());
-        towers.add(new FireTower());
-        towers.add(new ExplosionTower());
-        towers.add(new DariusTower());
-        for (Tower t : towers) {
-            //防禦塔名稱	射程	單次攻擊	攻擊頻率 每...tick打一下 (= 50ms)
-            for (int level = 1; level <= t.getMaxLevel(); level++) {
-                t.setLevel(level);
-                System.out.println(t.getTitle()+"\t"+t.getRange()+"\t"+t.getDamage()+"\t"+t.getHitDelay()+"\t"+t.getPrice(level));
-            }
-        }
         /*int mx = Integer.parseInt(arg[0]);
         int my = Integer.parseInt(arg[1]);
         int mz = Integer.parseInt(arg[2]);

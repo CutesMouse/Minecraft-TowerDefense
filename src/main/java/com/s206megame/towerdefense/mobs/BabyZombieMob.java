@@ -28,6 +28,7 @@ public class BabyZombieMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Zombie entity = loc.getWorld().spawn(loc, Zombie.class);
         entity.setBaby();
         this.babyzombie = entity;

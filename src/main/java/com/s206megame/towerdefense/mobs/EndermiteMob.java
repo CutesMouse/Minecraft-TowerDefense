@@ -27,6 +27,7 @@ public class EndermiteMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Endermite entity = loc.getWorld().spawn(loc, Endermite.class);
         this.endermite = entity;
         entity.setAI(false);

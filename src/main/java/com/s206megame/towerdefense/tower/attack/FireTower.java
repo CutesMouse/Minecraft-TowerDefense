@@ -1,6 +1,6 @@
 package com.s206megame.towerdefense.tower.attack;
 
-import com.s206megame.towerdefense.api.TowerType;
+import com.s206megame.towerdefense.utils.TowerType;
 import com.s206megame.towerdefense.effect.FireEffect;
 import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.mobs.Mob;

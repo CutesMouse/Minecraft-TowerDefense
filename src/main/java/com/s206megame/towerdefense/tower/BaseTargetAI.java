@@ -1,8 +1,7 @@
 package com.s206megame.towerdefense.tower;
 
-import com.s206megame.towerdefense.api.Map;
+import com.s206megame.towerdefense.map.Map;
 import com.s206megame.towerdefense.mobs.Mob;
-import org.bukkit.Location;
 
 import java.util.ArrayList;
 import java.util.Comparator;

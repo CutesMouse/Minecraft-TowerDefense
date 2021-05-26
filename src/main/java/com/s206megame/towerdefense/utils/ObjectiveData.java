@@ -1,10 +1,9 @@
-package com.s206megame.towerdefense.api;
+package com.s206megame.towerdefense.utils;
 
 import org.bukkit.entity.Player;
 import org.bukkit.scoreboard.Objective;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ObjectiveData {
     private ArrayList<ScoreData> SCORES;

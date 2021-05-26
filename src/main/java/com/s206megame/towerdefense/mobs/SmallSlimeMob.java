@@ -26,6 +26,7 @@ public class SmallSlimeMob extends CraftMob {
 
     @Override
     public void spawn(Location loc) {
+        currentLocation = loc;
         Slime entity = loc.getWorld().spawn(loc, Slime.class);
         entity.setSize(2);
         this.smallslime = entity;

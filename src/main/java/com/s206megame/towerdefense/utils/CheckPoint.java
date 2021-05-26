@@ -1,4 +1,4 @@
-package com.s206megame.towerdefense.api;
+package com.s206megame.towerdefense.utils;
 
 import org.bukkit.Location;
 
@@ -12,6 +12,15 @@ public class CheckPoint {
     public CheckPoint(double x, double y, double z, double yaw) {
         this.yaw = yaw;
         this.loc = new Location(null,x,y,z);
+    }
+    public CheckPoint(double x, double y, double z) {
+        this.loc = new Location(null,x,y,z);
+    }
+    public void connectTo(CheckPoint point) {
+        yaw = MathTool.locationToDegree(loc,point.loc);
+    }
+    public void connectTo(Location point) {
+        yaw = MathTool.locationToDegree(loc,point);
     }
     public boolean isPassBy(Location loc) {
         this.loc.setWorld(loc.getWorld());

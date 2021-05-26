@@ -2,22 +2,18 @@ package com.s206megame.towerdefense.mobs;
 
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.TowerDefense;
-import com.s206megame.towerdefense.api.Map;
 import com.s206megame.towerdefense.effect.MobEffect;
 import com.s206megame.towerdefense.utils.HoveringText;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Sound;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
-import org.bukkit.entity.Player;
-import org.bukkit.entity.Slime;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class CraftMob implements Mob {
 
+    protected Location currentLocation;
     protected boolean alive;
     protected int strengthen_offset = 1;
     protected double health;
@@ -52,19 +48,19 @@ public abstract class CraftMob implements Mob {
         double pi = (yaw + 90) * Math.PI / 180.0;
         double dx = Math.cos(pi) * distance * slowness;
         double dz = Math.sin(pi) * distance * slowness;
-        Location c = getEntity().getLocation();
+        Location c = currentLocation;
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
         double newY = c.getWorld().getHighestBlockAt((int) newX, (int) newZ).getLocation().getBlockY() + 1 + getYoffset();
-        Location tpto = new Location(c.getWorld(), newX, newY, newZ, (float) yaw, 0);
+        currentLocation = new Location(c.getWorld(), newX, newY, newZ, (float) yaw, 0);
         if (getEntity().getPassengers().size() != 0) {
             Entity pas = getEntity().getPassengers().get(0);
-            pas.teleport(tpto);
-            getEntity().teleport(tpto);
+            pas.teleport(currentLocation);
+            getEntity().teleport(currentLocation);
             getEntity().addPassenger(pas);
             return;
         }
-        getEntity().teleport(tpto);
+        getEntity().teleport(currentLocation);
     }
 
     @Override
@@ -73,13 +69,17 @@ public abstract class CraftMob implements Mob {
             Main.map.getMobList().remove(this);
             return;
         }
-        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(getEntity().getLocation(), getBlockPerTick() * 1.5 + 0.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
+        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(currentLocation, getBlockPerTick()*1.5 + 0.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
         //cps.add(new CheckPoint());
-        if (getEntity().getLocation().distance(new Location(getEntity().getWorld(),-14,6,-47)) < 4) {
+        if (getEntity().getLocation().distance(Main.map.getEndPoint()) < Main.map.getEndPointOffset()) {
             TowerDefense.getInstance().removeHealth();
             kill();
         }
         moveMob(getBlockPerTick());
+    }
+
+    public Location getLocation() {
+        return currentLocation;
     }
 
     @Override
