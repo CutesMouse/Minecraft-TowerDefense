@@ -82,8 +82,20 @@ public class ListenerHandler implements Listener {
         if (!e.getEntityType().equals(EntityType.PLAYER)) e.setCancelled(true);
     }
     @EventHandler
+    public void onDrinkingPotion(EntityPotionEffectEvent e) {
+        if (e.getCause().equals(EntityPotionEffectEvent.Cause.POTION_DRINK)) e.setCancelled(true);
+    }
+    @EventHandler
     public void onTeleport(EntityTeleportEvent e) {
         if (e.getEntityType().equals(EntityType.ENDERMAN)) e.setCancelled(true);
+    }
+    @EventHandler
+    public void onPotionSplashed(PotionSplashEvent e) {
+        e.setCancelled(true);
+    }
+    @EventHandler
+    public void onPotionLingered(LingeringPotionSplashEvent e) {
+        e.setCancelled(true);
     }
         /*if (!e.getPlayer().getName().equals("CutesMouse")) return;
         if (e.getClickedBlock() == null) return;

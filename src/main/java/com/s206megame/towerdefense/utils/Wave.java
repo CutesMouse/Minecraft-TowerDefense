@@ -11,6 +11,7 @@ import java.util.LinkedList;
 
 public class Wave {
     private int strengthen;
+    public static final int WAVE_CD_SECOND = 45;
     public enum EndReason {
         OUT_OF_TIME,MOB_CLEARED
     }
@@ -117,6 +118,6 @@ public class Wave {
     }
 
     public long getTimeLeft() {
-        return 1000 * 30 - (System.currentTimeMillis() - start_time);
+        return 1000 * WAVE_CD_SECOND - (System.currentTimeMillis() - start_time);
     }
 }

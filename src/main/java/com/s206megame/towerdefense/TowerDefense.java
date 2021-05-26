@@ -298,7 +298,7 @@ public class TowerDefense {
             WaveBar.setTitle(String.format(title,
                     currentWave.getWave(),lm,ls,
                     currentWave.getMobLeft(),currentWave.getMaxMob()));
-            WaveBar.setMaximum(30);
+            WaveBar.setMaximum(Wave.WAVE_CD_SECOND);
             WaveBar.setValue(left);
         }
     }
