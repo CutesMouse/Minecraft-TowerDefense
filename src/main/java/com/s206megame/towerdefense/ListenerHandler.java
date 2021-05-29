@@ -85,22 +85,6 @@ public class ListenerHandler implements Listener {
         if (e.getEntityType().equals(EntityType.ENDERMAN)) e.setCancelled(true);
     }
     @EventHandler
-    public void onPlayerTP(PlayerTeleportEvent e) {
-        if (e.getPlayer().getName().equalsIgnoreCase("Slimlix")) {
-            e.getPlayer().sendMessage("Mouse 幫你阻擋了一次TP");
-            e.setCancelled(true);
-        }
-    }
-    @EventHandler
-    public void onGMSwitch(PlayerGameModeChangeEvent e) {
-        if (e.getPlayer().getName().equalsIgnoreCase("Slimlix")) {
-            if (e.getNewGameMode().equals(GameMode.ADVENTURE)){
-                e.getPlayer().sendMessage("Mouse 幫你阻擋了一次冒險模式切換");
-                e.setCancelled(true);
-            }
-        }
-    }
-    @EventHandler
     public void onPotionSplashed(PotionSplashEvent e) {
         e.setCancelled(true);
     }

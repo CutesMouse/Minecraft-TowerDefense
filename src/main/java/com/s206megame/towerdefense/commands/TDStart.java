@@ -45,7 +45,7 @@ public class TDStart implements TDCommandBase {
         StaticGUI start = new StaticGUI("§a選擇地圖",9);
         final DevelopmentMap developmentMap = new DevelopmentMap();
         final DesertMap desertMap = new DesertMap();
-        start.put(3,getMapItem(developmentMap, "Development",Material.WATER_BUCKET));
+        start.put(3,getMapItem(developmentMap, "Development",Material.SLIME_BLOCK));
         start.put(5,getMapItem(desertMap,"Desert",Material.CACTUS));
         start.open(player);
     }

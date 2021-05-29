@@ -15,14 +15,14 @@ public class DevelopmentMap extends CraftMap {
     @Override
     protected void initCheckpoints() {
         cps = new ArrayList<>();
-        cps.add(new CheckPoint(-46.0,5,-12.0,-78.7));
-        cps.add(new CheckPoint(-26.0,5,-9.0,4.8));
-        cps.add(new CheckPoint(-27.0,5,3.0,86.8));
-        cps.add(new CheckPoint(-45.0,5,4.0,0));
-        cps.add(new CheckPoint(-45.0,5,17.0,-90));
-        cps.add(new CheckPoint(16.0,5,17.0,-168.7));
-        cps.add(new CheckPoint(17.0,5,12.0,-180.0));
-        cps.add(new CheckPoint(17.0,5,-46.5,90));
+        cps.add(new CheckPoint(-46.0,5,-12.0));
+        cps.add(new CheckPoint(-26.0,5,-9.0));
+        cps.add(new CheckPoint(-27.0,5,3.0));
+        cps.add(new CheckPoint(-45.0,5,4.0));
+        cps.add(new CheckPoint(-45.0,5,17.0));
+        cps.add(new CheckPoint(16.0,5,17.0));
+        cps.add(new CheckPoint(17.0,5,12.0));
+        cps.add(new CheckPoint(17.0,5,-46.5));
     }
 
     @Override
