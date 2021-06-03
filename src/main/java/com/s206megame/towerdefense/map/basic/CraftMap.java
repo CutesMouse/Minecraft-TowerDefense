@@ -1,7 +1,6 @@
 package com.s206megame.towerdefense.map.basic;
 import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.TowerDefense;
-import com.s206megame.towerdefense.utils.CheckPoint;
 import com.s206megame.towerdefense.mobs.basic.CraftMob;
 import com.s206megame.towerdefense.mobs.basic.Mob;
 import com.s206megame.towerdefense.tower.basic.Tower;

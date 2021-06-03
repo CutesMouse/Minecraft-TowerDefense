@@ -2,7 +2,6 @@ package com.s206megame.towerdefense.map.basic;
 
 import com.s206megame.towerdefense.mobs.basic.Mob;
 import com.s206megame.towerdefense.tower.basic.Tower;
-import com.s206megame.towerdefense.utils.CheckPoint;
 import org.bukkit.Location;
 
 import java.util.ArrayList;

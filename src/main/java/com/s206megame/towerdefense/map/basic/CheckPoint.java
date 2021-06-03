@@ -1,18 +1,11 @@
-package com.s206megame.towerdefense.utils;
+package com.s206megame.towerdefense.map.basic;
 
+import com.s206megame.towerdefense.utils.MathTool;
 import org.bukkit.Location;
 
 public class CheckPoint {
     private Location loc;
     private double yaw;
-    public CheckPoint(Location loc, double yaw) {
-        this.yaw = yaw;
-        this.loc = loc;
-    }
-    public CheckPoint(double x, double y, double z, double yaw) {
-        this.yaw = yaw;
-        this.loc = new Location(null,x,y,z);
-    }
     public CheckPoint(double x, double y, double z) {
         this.loc = new Location(null,x,y,z);
     }

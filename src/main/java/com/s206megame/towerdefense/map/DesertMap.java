@@ -2,7 +2,7 @@ package com.s206megame.towerdefense.map;
 
 import com.s206megame.towerdefense.map.basic.CraftMap;
 import com.s206megame.towerdefense.map.basic.TowerSlot;
-import com.s206megame.towerdefense.utils.CheckPoint;
+import com.s206megame.towerdefense.map.basic.CheckPoint;
 import com.s206megame.towerdefense.tower.basic.TowerType;
 import com.s206megame.towerdefense.build.Direction;
 import org.bukkit.Location;
