@@ -1,6 +1,6 @@
 package com.s206megame.towerdefense.effect;
 
-import com.s206megame.towerdefense.mobs.Mob;
+import com.s206megame.towerdefense.mobs.basic.Mob;
 
 import java.util.ArrayList;
 

@@ -1,7 +1,7 @@
 package com.s206megame.towerdefense.utils;
 
 import com.s206megame.towerdefense.Main;
-import com.s206megame.towerdefense.mobs.Mob;
+import com.s206megame.towerdefense.mobs.basic.Mob;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;

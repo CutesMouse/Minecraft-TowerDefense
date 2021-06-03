@@ -1,12 +1,12 @@
 package com.s206megame.towerdefense;
 
 import com.s206megame.towerdefense.map.DesertMap;
-import com.s206megame.towerdefense.map.Map;
+import com.s206megame.towerdefense.map.basic.Map;
 import com.s206megame.towerdefense.appearance.WaveBar;
 import com.s206megame.towerdefense.commands.*;
-import com.s206megame.towerdefense.mobs.Mob;
-import com.s206megame.towerdefense.tower.Tower;
-import com.s206megame.towerdefense.utils.HoveringText;
+import com.s206megame.towerdefense.mobs.basic.Mob;
+import com.s206megame.towerdefense.tower.basic.Tower;
+import com.s206megame.towerdefense.appearance.HoveringText;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin {

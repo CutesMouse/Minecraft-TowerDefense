@@ -1,11 +1,11 @@
 package com.s206megame.towerdefense;
 
-import com.s206megame.towerdefense.utils.ScoreboardManager;
+import com.s206megame.towerdefense.appearance.ScoreboardManager;
 import com.s206megame.towerdefense.appearance.PlaceParticle;
 import com.s206megame.towerdefense.appearance.WaveBar;
-import com.s206megame.towerdefense.items.Items;
-import com.s206megame.towerdefense.mobs.Mob;
-import com.s206megame.towerdefense.tower.Tower;
+import com.s206megame.towerdefense.utils.Items;
+import com.s206megame.towerdefense.mobs.basic.Mob;
+import com.s206megame.towerdefense.tower.basic.Tower;
 import com.s206megame.towerdefense.utils.Wave;
 import com.s206megame.towerdefense.utils.WaveManager;
 import org.bukkit.*;

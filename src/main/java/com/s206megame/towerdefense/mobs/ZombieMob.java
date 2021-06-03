@@ -1,5 +1,6 @@
 package com.s206megame.towerdefense.mobs;
 
+import com.s206megame.towerdefense.mobs.basic.CraftMob;
 import org.bukkit.Location;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Zombie;

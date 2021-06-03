@@ -7,15 +7,11 @@ import com.s206megame.towerdefense.Main;
 import com.s206megame.towerdefense.TowerDefense;
 import com.s206megame.towerdefense.map.DesertMap;
 import com.s206megame.towerdefense.map.DevelopmentMap;
-import com.s206megame.towerdefense.map.Map;
-import com.s206megame.towerdefense.utils.TowerType;
+import com.s206megame.towerdefense.map.basic.Map;
+import com.s206megame.towerdefense.tower.basic.TowerType;
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Material;
-import org.bukkit.Nameable;
 import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.awt.*;
 import java.util.ArrayList;

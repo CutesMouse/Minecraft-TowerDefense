@@ -1,10 +1,8 @@
 package com.s206megame.towerdefense.appearance;
 
 import com.s206megame.towerdefense.Main;
-import com.s206megame.towerdefense.utils.TempBlock;
-import com.s206megame.towerdefense.utils.TowerSlot;
+import com.s206megame.towerdefense.map.basic.TowerSlot;
 import com.s206megame.towerdefense.player.PlayerDataManager;
-import com.s206megame.towerdefense.utils.ParticleManager;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

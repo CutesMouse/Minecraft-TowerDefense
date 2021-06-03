@@ -1,11 +1,11 @@
 package com.s206megame.towerdefense.mobs;
 
 import com.s206megame.towerdefense.TowerDefense;
-import com.s206megame.towerdefense.utils.HoveringText;
+import com.s206megame.towerdefense.appearance.HoveringText;
+import com.s206megame.towerdefense.mobs.basic.CraftMob;
 import org.bukkit.Location;
 import org.bukkit.entity.Chicken;
 import org.bukkit.entity.Entity;
-import org.bukkit.entity.Skeleton;
 import org.bukkit.entity.Zombie;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;

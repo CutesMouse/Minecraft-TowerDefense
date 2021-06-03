@@ -1,13 +1,10 @@
 package com.s206megame.towerdefense.mobs;
 
 import com.s206megame.towerdefense.TowerDefense;
+import com.s206megame.towerdefense.mobs.basic.CraftMob;
 import org.bukkit.Location;
-import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Wither;
-import org.bukkit.entity.WitherSkeleton;
-
-import java.util.Objects;
 
 public class WitherMob extends CraftMob {
 

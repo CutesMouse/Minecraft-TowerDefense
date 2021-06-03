@@ -2,17 +2,11 @@ package com.s206megame.towerdefense;
 
 import com.s206megame.towerdefense.player.PlayerData;
 import com.s206megame.towerdefense.player.PlayerDataManager;
-import com.s206megame.towerdefense.tower.Direction;
-import com.s206megame.towerdefense.utils.TowerPlacingGUI;
-import com.s206megame.towerdefense.utils.TowerType;
-import org.bukkit.GameMode;
-import org.bukkit.Location;
+import com.s206megame.towerdefense.appearance.TowerPlacingGUI;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.*;
 import org.bukkit.event.player.*;
 

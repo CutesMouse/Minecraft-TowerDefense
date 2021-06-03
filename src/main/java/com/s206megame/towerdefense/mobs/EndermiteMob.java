@@ -1,7 +1,7 @@
 package com.s206megame.towerdefense.mobs;
 
+import com.s206megame.towerdefense.mobs.basic.CraftMob;
 import org.bukkit.Location;
-import org.bukkit.entity.Enderman;
 import org.bukkit.entity.Endermite;
 import org.bukkit.entity.Entity;
 
