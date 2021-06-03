@@ -52,11 +52,13 @@ public class Wave {
         thread_end = false;
         process = 0;
         spawnedMobs = new ArrayList<>();
-        QUEUE = new LinkedList<>();
+        QUEUE = new LinkedList<>(); // 建立生成佇列
         for (Class<? extends Mob> mobType : content.keySet()) {
+            // 將各種怪物放入佇列中
             int amount = content.get(mobType);
             for (int i = 0; i < amount*(strengthen+1) ; i++) QUEUE.add(mobType);
         }
+        // 打亂佇列順序
         Collections.shuffle(QUEUE);
         // 建立怪物召喚序列
         new BukkitRunnable() {
@@ -68,7 +70,7 @@ public class Wave {
                     this.cancel();
                     return;
                 }
-                Class<? extends Mob> first = QUEUE.poll();// 每次往序列的下個元素前進
+                Class<? extends Mob> first = QUEUE.poll();// 往序列的下個元素前進
                 Mob mob = Main.map.spawnMob(first);
                 mob.strengthen(strengthen);
                 spawnedMobs.add(mob);// 召喚怪物
@@ -94,10 +96,12 @@ public class Wave {
     public boolean hasEnded() {
         if (!thread_end) return false;
         if (spawnedMobs.stream().noneMatch(Mob::isAlive)) {
+            // 沒有任何怪物活著
             endReason = EndReason.MOB_CLEARED;
             return true;
         }
         if (getTimeLeft() < 0) {
+            // 超過間隔時間
             endReason = EndReason.OUT_OF_TIME;
             return true;
         }

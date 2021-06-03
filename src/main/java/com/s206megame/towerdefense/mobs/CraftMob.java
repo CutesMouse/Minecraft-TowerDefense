@@ -31,6 +31,15 @@ public abstract class CraftMob implements Mob {
         this.award = getAward();
     }
 
+    public Location getCurrentLocation() {
+        return currentLocation;
+    }
+
+    @Override
+    public double getFacingDegree() {
+        return yaw;
+    }
+
     public static Mob SlimeSpilt(int slime) {
         switch (slime) {
             case 4:
@@ -51,8 +60,12 @@ public abstract class CraftMob implements Mob {
         Location c = currentLocation;
         double newX = c.getX() + dx;
         double newZ = c.getZ() + dz;
-        double newY = c.getWorld().getHighestBlockAt((int) newX, (int) newZ).getLocation().getBlockY() + 1 + getYoffset();
-        currentLocation = new Location(c.getWorld(), newX, newY, newZ, (float) yaw, 0);
+        double newY = c.getWorld()
+                .getHighestBlockAt((int) newX, (int) newZ).getLocation()
+                .getBlockY() + 1 + getYoffset();
+        currentLocation = new Location(c.getWorld(),
+                newX, newY, newZ, (float) yaw, 0);
+        // Chicken Jockey 由於為兩個實體，必須有特殊處理方法
         if (getEntity().getPassengers().size() != 0) {
             Entity pas = getEntity().getPassengers().get(0);
             pas.teleport(currentLocation);
@@ -69,9 +82,15 @@ public abstract class CraftMob implements Mob {
             Main.map.getMobList().remove(this);
             return;
         }
-        Main.map.getCheckpoints().stream().filter(p -> p.isPassBy(currentLocation, getBlockPerTick()*1.5 + 0.5)).findFirst().ifPresent(cp -> setFacingDegree(cp.getYaw()));
-        //cps.add(new CheckPoint());
-        if (getEntity().getLocation().distance(Main.map.getEndPoint()) < Main.map.getEndPointOffset()) {
+        // 轉彎
+        Main.map.getCheckpoints().stream().filter(
+                p -> p.isPassBy(currentLocation,
+                        getBlockPerTick()*1.5 + 0.5))
+                .findFirst()
+                .ifPresent(cp -> setFacingDegree(cp.getYaw()));
+        // 判斷怪物是否到終點
+        if (getEntity().getLocation().distance(Main.map.getEndPoint())
+                < Main.map.getEndPointOffset()) {
             TowerDefense.getInstance().removeHealth();
             kill();
         }

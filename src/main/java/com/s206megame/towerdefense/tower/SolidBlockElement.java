@@ -23,7 +23,10 @@ public class SolidBlockElement extends BlockElement {
         double dz = this.x * Math.sin(theta) + this.z * Math.cos(theta);
         World w = center.getWorld();
         if (w == null) return;
-        Block block = w.getBlockAt(center.getBlockX() + (int) Math.round(dx), center.getBlockY() + y, center.getBlockZ() + (int) Math.round(dz));
+        Block block = w.getBlockAt(
+                center.getBlockX() + (int) Math.round(dx),
+                center.getBlockY() + y,
+                center.getBlockZ() + (int) Math.round(dz));
         this.build = block.getLocation();
         block.setType(mat);
         BlockData data = block.getBlockData();

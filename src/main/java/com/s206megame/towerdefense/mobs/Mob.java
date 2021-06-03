@@ -7,6 +7,22 @@ import org.bukkit.entity.Entity;
 import java.util.ArrayList;
 
 public interface Mob {
+    double getMaxHealth();
+
+    double getBlockPerTick();
+
+    double getAward();
+
+    Location getCurrentLocation();
+
+    double getHealth();
+
+    double getFacingDegree();
+
+    ArrayList<MobEffect> getEffects();
+
+    void strengthen(int l);
+
     boolean isOnFire();
     void setOnFire(boolean t);
     Entity getEntity();
@@ -16,18 +32,12 @@ public interface Mob {
     void spawn(Location loc);
     void moveMob(double distance);
     void setFacingDegree(double yaw);
-    double getBlockPerTick();
     void setSlowness(double ratio);
     void updateDisplayName();
-    double getMaxHealth();
-    double getHealth();
     void kill();
     void damage(double point);
-    ArrayList<MobEffect> getEffects();
     void addEffect(MobEffect ef);
     void effectUpdate();
-    double getAward();
     double getYoffset();
     boolean isAlive();
-    void strengthen(int l);
 }

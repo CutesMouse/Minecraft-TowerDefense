@@ -1,5 +1,12 @@
 package com.s206megame.towerdefense.commands;
 
+import org.bukkit.Material;
+import org.bukkit.World;
+import org.bukkit.block.Block;
+import org.bukkit.block.BlockFace;
+import org.bukkit.block.data.Directional;
+import org.bukkit.block.data.MultipleFacing;
+import org.bukkit.block.data.type.Stairs;
 import org.bukkit.entity.Player;
 
 import java.util.*;
@@ -18,7 +25,7 @@ public class TDTowerTools implements TDCommandBase {
 
     @Override
     public void run(Player player, String[] arg) {
-        /*int mx = Integer.parseInt(arg[0]);
+        int mx = Integer.parseInt(arg[0]);
         int my = Integer.parseInt(arg[1]);
         int mz = Integer.parseInt(arg[2]);
         int ax = Integer.parseInt(arg[3]);
@@ -68,16 +75,17 @@ public class TDTowerTools implements TDCommandBase {
                         }
 
                         //structure.register(new MultipleFacingBlockElement(x,y,z,ma,));
-                        System.out.println(String.format("structure.register(new MultipleFacingBlockElement(%d,%d,%d,Material."+block.getType().name()
-                                +","+north+","+south+","+west+","+east+"));",dx,dy,dz));
+                        System.out.println(String.format("structure.register(new MultipleFacingBlockElement(%d,%d,%d,Material." + block.getType().name()
+                                + "," + north + "," + south + "," + west + "," + east + "));", dx, dy, dz));
                     } else
                         System.out.println("structure.register(new SolidBlockElement(" + dx + "," + dy + "," + dz + ",Material." + block.getType().name().toUpperCase() + "));");
                 }
             }
         }
-       // ParticleManager.playParticle(new Location(player.getWorld(),-51,7 ,-42),new Vector(1,0,0),
-         //       6,0.5, Particle.SNOWBALL);
-        //player.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, player.getLocation(),1);
+    }
+    // ParticleManager.playParticle(new Location(player.getWorld(),-51,7 ,-42),new Vector(1,0,0),
+    //       6,0.5, Particle.SNOWBALL);
+    //player.getWorld().spawnParticle(Particle.EXPLOSION_HUGE, player.getLocation(),1);
         /*if (arg.length == 2) {
             int level = Integer.parseInt(arg[1]);
             TowerStructure st = TowerStructureBank.getStructure(level,arg[0]);
@@ -150,5 +158,4 @@ public class TDTowerTools implements TDCommandBase {
                 }
             }
         }*/
-    }
 }

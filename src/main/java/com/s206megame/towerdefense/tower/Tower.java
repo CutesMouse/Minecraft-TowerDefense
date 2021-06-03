@@ -18,6 +18,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Tower {
+
+    public abstract int getPrice(int level);
+
+    public abstract double getHitDelay();
+
+    public abstract double getDamage();
+
+    public abstract double getRange();
+
+    protected abstract Particle getParticle();
+
+    protected TowerStructure getStructure() {
+        return TowerStructureBank.getStructure(level,getClass());
+    }
+
     protected int level;
     protected long lastAttack;
     protected TowerSlot location;
@@ -56,19 +71,8 @@ public abstract class Tower {
         }
     }
 
-    protected TowerStructure getStructure() {
-        return TowerStructureBank.getStructure(level,getClass());
-    }
 
     public abstract Material getDisplayItem();
-
-    public abstract double getDamage();
-
-    public abstract double getHitDelay();
-
-    public abstract double getRange();
-
-    public abstract int getPrice(int level);
 
     public int getPrice() {
         int level = this.level;
@@ -144,8 +148,6 @@ public abstract class Tower {
     }
 
     protected abstract Location getParticleStartPoint();
-
-    protected abstract Particle getParticle();
 
     protected boolean isInCooldown() {
         return System.currentTimeMillis() - lastAttack < getHitDelay() * 50;

@@ -105,7 +105,10 @@ public class FireTower extends Tower implements AbilityTower {
     @Override
     public void attackMob(Mob target) {
         super.attackMob(target);
-        target.addEffect(new FireEffect(getInitialDamage(),getFireDamage(),getLevel()));
+        target.addEffect(new FireEffect(
+                getInitialDamage(),
+                getFireDamage(),
+                getLevel()));
     }
 
     @Override

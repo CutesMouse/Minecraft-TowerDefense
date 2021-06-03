@@ -9,7 +9,7 @@ public class WaveManager {
         int baseWave = (w-1) % 10;
         return getBaseWaveData(baseWave,w).strengthen(strengthen);
     }
-    private static Wave getBaseWaveData(int base, int total) { // 1 <= w <= 10
+    private static Wave getBaseWaveData(int base, int total) { // 0 <= w <= 9
         Wave wave = new Wave(total);
         switch (base) {
             case 0:

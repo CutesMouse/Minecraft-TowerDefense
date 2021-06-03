@@ -10,19 +10,26 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public interface Map {
-    void tickEvent();
-    ArrayList<TowerSlot> getTowerSlots();
-    TowerSlot identifyTower(Location loc);
-    ArrayList<Mob> getMobList();
     ArrayList<CheckPoint> getCheckpoints();
+
     Location getMobSpawnLocation();
-    ArrayList<Tower> getTowers();
-    LinkedList<Location> getCastleBlocks();
-    ArrayList<Location> getFinalCastleBlocks();
-    Mob spawnMob(Class<? extends Mob> mob);
-    void spawnSpiltSlime(Location parentLocation, int afterSize, int amount);
+
     Location getEndPoint();
     double getEndPointOffset();
+
     Location getSpawnPoint();
+
+    ArrayList<TowerSlot> getTowerSlots();
+
+    LinkedList<Location> getCastleBlocks();
+
+    ArrayList<Location> getFinalCastleBlocks();
+
+    TowerSlot identifyTower(Location loc);
+    ArrayList<Mob> getMobList();
+    ArrayList<Tower> getTowers();
+    Mob spawnMob(Class<? extends Mob> mob);
+    void spawnSpiltSlime(Location parentLocation, int afterSize, int amount);
+    void tickEvent();
     void start();
 }

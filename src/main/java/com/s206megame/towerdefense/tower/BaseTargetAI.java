@@ -17,9 +17,10 @@ public class BaseTargetAI implements TowerAI {
     @Override
     public ArrayList<Mob> getTarget(Map map) {
         return map.getMobList().stream()
-                .filter(this::isValid).
-                        sorted(Comparator.comparing(p -> p.getEntity().getLocation()
-                                .distance(tower.getSlot().getCenter()))).limit(tower.getMaxTargetAmount())
+                .filter(this::isValid) // 判斷怪物與防禦塔距離是否小於射程
+                .sorted(Comparator.comparing(p -> p.getEntity().getLocation()
+                        .distance(tower.getSlot().getCenter())))
+                .limit(tower.getMaxTargetAmount())
                 .collect(Collectors.toCollection(ArrayList::new));
     }
 
