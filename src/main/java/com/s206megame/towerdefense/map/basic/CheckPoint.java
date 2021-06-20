@@ -15,10 +15,6 @@ public class CheckPoint {
     public void connectTo(Location point) {
         yaw = MathTool.locationToDegree(loc,point);
     }
-    public boolean isPassBy(Location loc) {
-        this.loc.setWorld(loc.getWorld());
-        return distance(loc,this.loc) < 0.4;
-    }
     private double distance(Location loc1, Location loc2) {
         double x1 = loc1.getX();
         double z1 = loc1.getZ();
